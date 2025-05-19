@@ -1,0 +1,29 @@
+import random
+
+def letter_guessing_game():
+    # יצירת אות אקראית מהאלפבית הרוסי
+    target_letter = random.choice('АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ')
+    attempts = 0
+
+    print("ברוכים הבאים למשחק 'נחשו את האות'!")
+    print("נסו לנחש את האות שחשבתי עליה (А-Я).")
+
+    while True:
+        # בקשת קלט מהשחקן
+        guess = input("הכנס את האות שלך: ").strip().upper()
+
+        # בדיקת תקינות הקלט
+        if len(guess) != 1 or guess not in 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ':
+            print("אנא הזן אות אחת תקינה מהאלפבית הרוסי (А-Я).")
+            continue
+
+        attempts += 1
+
+        # בדיקת האות שנחושה
+        if guess == target_letter:
+            print(f"נִחַשְׁתָּ נָכוֹן בְּ-{attempts} נִיסיוֹנוֹת!")
+            break
+        elif guess < target_letter:
+            print("מוּקְדָם יוֹתֵר בָּאַלְפָּבֵּית.")
+        else:
+            print("מְאוּחָר יוֹתֵר בָּאַלְפָּבֵּית.")
