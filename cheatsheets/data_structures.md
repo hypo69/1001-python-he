@@ -1,148 +1,223 @@
-להלן תרגום המסמך מרוסית לעברית, בהתאם להנחיות שסופקו:
-
 **1. רשימות (Lists)**
 
-*   **הגדרה:** רשימות ב-Python הן אוספים של איברים סדורות וניתנות לשינוי. משמעות הדבר היא שניתן להוסיף, להסיר ולשנות איברים ברשימה, ולסדר האיברים יש חשיבות.
+*   **הגדרה:** רשימות ב-Python הן אוספים סדורים, הניתנים לשינוי, של איברים. משמעות הדבר היא שניתן להוסיף, למחוק ולשנות איברים ברשימה, ולסדר האיברים יש חשיבות.
 *   **ייצוג:** רשימות נוצרות באמצעות סוגריים מרובעים `[]`, והאיברים מופרדים בפסיקים.
 
 *   **דוגמאות:**
 
     ```python
+    # Создание списка
     # יצירת רשימה
     boris_list = ["Борис", "Москва", 30, "инженер"]
+    print(f"Создание списка: {boris_list}")
+    # יצירת רשימה:
     print(f"יצירת רשימה: {boris_list}")
 
+    # Доступ по индексу
     # גישה לפי אינדקס
+    print(f"Элемент по индексу 0: {boris_list[0]}")
+    # איבר באינדקס 0:
     print(f"איבר באינדקס 0: {boris_list[0]}")
 
+    # Изменение элемента
     # שינוי איבר
     boris_list[2] = 31
+    print(f"Изменение элемента: {boris_list}")
+    # שינוי איבר:
     print(f"שינוי איבר: {boris_list}")
 
-    # הוספת איבר בסוף
+    # Добавление элемента в конец
+    # הוספת איבר לסוף
     boris_list.append("женат")
-    print(f"הוספה בסוף: {boris_list}")
+    print(f"Добавление в конец: {boris_list}")
+    # הוספה לסוף:
+    print(f"הוספה לסוף: {boris_list}")
 
+    # Вставка элемента по индексу
     # הוספת איבר לפי אינדקס
     boris_list.insert(1, "Россия")
+    print(f"Вставка элемента: {boris_list}")
+    # הוספת איבר:
     print(f"הוספת איבר: {boris_list}")
 
-    # הסרת איבר לפי ערך
+    # Удаление элемента по значению
+    # מחיקת איבר לפי ערך
     boris_list.remove("инженер")
-    print(f"הסרת איבר לפי ערך: {boris_list}")
+    print(f"Удаление элемента по значению: {boris_list}")
+    # מחיקת איבר לפי ערך:
+    print(f"מחיקת איבר לפי ערך: {boris_list}")
 
-    # הסרת איבר לפי אינדקס
+    # Удаление элемента по индексу
+    # מחיקת איבר לפי אינדקס
     del boris_list[2]
-    print(f"הסרת איבר לפי אינדקס: {boris_list}")
+    print(f"Удаление элемента по индексу: {boris_list}")
+    # מחיקת איבר לפי אינדקס:
+    print(f"מחיקת איבר לפי אינדקס: {boris_list}")
 
-    # הרחבת רשימה באמצעות רשימה אחרת
+    # Расширение списка другим списком
+    # הרחבת רשימה ברשימה אחרת
     boris_list.extend(["хобби", "рыбалка"])
+    print(f"Расширение списка: {boris_list}")
+    # הרחבת רשימה:
     print(f"הרחבת רשימה: {boris_list}")
 
-    # הסרת איבר מהסוף
+    # Удаление элемента с конца
+    # מחיקת איבר מהסוף
     boris_list.pop()
-    print(f"הסרת איבר מהסוף: {boris_list}")
+    print(f"Удаление элемента с конца: {boris_list}")
+    # מחיקת איבר מהסוף:
+    print(f"מחיקת איבר מהסוף: {boris_list}")
 
     ```
 
 **2. מילונים (Dictionaries)**
 
-*   **הגדרה:** מילונים ב-Python הם אוספים של איברים בלתי סדורות, כאשר כל איבר מורכב מזוג של "מפתח-ערך".
+*   **הגדרה:** מילונים ב-Python הם אוספים בלתי סדורים של איברים, כאשר כל איבר מורכב מזוג "מפתח-ערך".
 *   **ייצוג:** מילונים נוצרים באמצעות סוגריים מסולסלים `{}`, וזוגות "מפתח-ערך" מופרדים בנקודתיים `:`.
 
 *   **דוגמאות:**
     ```python
+    # Создание словаря
     # יצירת מילון
     alice_dict = {"name": "Алиса", "age": 25, "city": "Лондон", "occupation": "художница"}
+    print(f"Создание словаря: {alice_dict}")
+    # יצירת מילון:
     print(f"יצירת מילון: {alice_dict}")
 
+    # Доступ по ключу
     # גישה לפי מפתח
-    print(f"ערך עבור המפתח 'name': {alice_dict['name']}")
+    print(f"Значение по ключу 'name': {alice_dict['name']}")
+    # ערך לפי מפתח 'name':
+    print(f"ערך לפי מפתח 'name': {alice_dict['name']}")
 
+    # Изменение значения
     # שינוי ערך
     alice_dict["age"] = 26
+    print(f"Изменение значения: {alice_dict}")
+    # שינוי ערך:
     print(f"שינוי ערך: {alice_dict}")
 
+    # Добавление пары ключ-значение
     # הוספת זוג מפתח-ערך
     alice_dict["hobby"] = "рисование"
+    print(f"Добавление пары: {alice_dict}")
+    # הוספת זוג:
     print(f"הוספת זוג: {alice_dict}")
 
-    # הסרת זוג לפי מפתח
+    # Удаление пары по ключу
+    # מחיקת זוג לפי מפתח
     del alice_dict["city"]
-    print(f"הסרת זוג: {alice_dict}")
+    print(f"Удаление пары: {alice_dict}")
+    # מחיקת זוג:
+    print(f"מחיקת זוג: {alice_dict}")
 
-    # הסרה זוג באמצעות שיטת pop (עם החזרת הערך)
+    # Удаление пары методом pop (с возвращением значения)
+    # מחיקת זוג באמצעות מתודת pop (עם החזרת הערך)
     hobby = alice_dict.pop("hobby")
-    print(f"הסרה עם החזרת ערך: {alice_dict}, ערך: {hobby}")
+    print(f"Удаление с возвратом значения: {alice_dict}, значение: {hobby}")
+    # מחיקה עם החזרת ערך:
+    print(f"מחיקה עם החזרת ערך: {alice_dict}, ערך: {hobby}")
 
+    # Проверка наличия ключа
     # בדיקת קיום מפתח
+    print(f"Наличие ключа 'name': {'name' in alice_dict}")
+    # קיום מפתח 'name':
     print(f"קיום מפתח 'name': {'name' in alice_dict}")
     ```
 
-**3. מבני Tuple (Tuples)**
+**3. טאפלים (Tuples)**
 
-*   **הגדרה:** מבני Tuple ב-Python הם אוספים של איברים סדורות ו**בלתי ניתנות לשינוי**.
-*   **ייצוג:** מבני Tuple נוצרים באמצעות סוגריים עגולים `()`, והאיברים מופרדים בפסיקים.
+*   **הגדרה:** טאפלים ב-Python הם אוספים סדורים, **בלתי ניתנים לשינוי**, של איברים.
+*   **ייצוג:** טאפלים נוצרים באמצעות סוגריים עגולים `()`, והאיברים מופרדים בפסיקים.
 
 *   **דוגמאות:**
 
     ```python
-    # יצירת tuple
+    # Создание кортежа
+    # יצירת טאפל
     boris_tuple = ("Борис", "Москва", 30, "инженер")
-    print(f"יצירת tuple: {boris_tuple}")
+    print(f"Создание кортежа: {boris_tuple}")
+    # יצירת טאפל:
+    print(f"יצירת טאפל: {boris_tuple}")
 
+    # Доступ по индексу
     # גישה לפי אינדקס
+    print(f"Элемент по индексу 2: {boris_tuple[2]}")
+    # איבר באינדקס 2:
     print(f"איבר באינדקס 2: {boris_tuple[2]}")
 
+    # Нельзя изменить элемент
     # לא ניתן לשנות איבר
-    # boris_tuple[0] = "Борис" # זה יגרום לשגיאה: TypeError: 'tuple' object does not support item assignment
+    # boris_tuple[0] = "Борис" # Это вызовет ошибку: TypeError: 'tuple' object does not support item assignment
+    # boris_tuple[0] = "Борис" # פעולה זו תגרום לשגיאה: TypeError: 'tuple' object does not support item assignment
 
+    # Нельзя добавить элемент
     # לא ניתן להוסיף איבר
-    # boris_tuple.append(4) # זה יגרום לשגיאה: AttributeError: 'tuple' object has no attribute 'append'
+    # boris_tuple.append(4) # Это вызовет ошибку: AttributeError: 'tuple' object has no attribute 'append'
+    # boris_tuple.append(4) # פעולה זו תגרום לשגיאה: AttributeError: 'tuple' object has no attribute 'append'
 
-    # לא ניתן להסיר איבר
-    # del boris_tuple[0]  # זה יגרום לשגיאה: TypeError: 'tuple' object doesn't support item deletion
+    # Нельзя удалить элемент
+    # לא ניתן למחוק איבר
+    # del boris_tuple[0]  # Это вызовет ошибку: TypeError: 'tuple' object doesn't support item deletion
+    # del boris_tuple[0]  # פעולה זו תגרום לשגיאה: TypeError: 'tuple' object doesn't support item deletion
     ```
 
 **4. SimpleNamespace**
 
-*   **הגדרה:** `SimpleNamespace` מהמודול `types` היא מחלקה פשוטה המאפשרת יצירת אובייקטים שבהם ניתן להגדיר מאפיינים (attributes) הן בזמן היצירה והן לאחר מכן.
-*   **ייצוג:** ליצירת אובייקט `SimpleNamespace` יש לייבא אותה מתוך `types` ולהעביר לה ארגומנטים בשם (או לא להעביר כלל):
+*   **הגדרה:** `SimpleNamespace` מהמודול `types` הוא מחלקה פשוטה המאפשרת יצירת אובייקטים שתכונותיהם (מאפייניהם) ניתנות להגדרה הן בעת היצירה והן לאחר מכן.
+*   **ייצוג:** ליצירת אובייקט `SimpleNamespace` יש לייבא אותו מתוך `types` ולהעביר אליו ארגומנטים בעלי שם (או לא להעביר כלל):
      ```python
     from types import SimpleNamespace
 
     alice_namespace = SimpleNamespace(name="Алиса", age=25, city="Лондон")
     ```
-*  **מאפיינים מיוחדים:**
-    *  מאפשר יצירת אובייקטים עם מאפיינים דינמיים (בדומה למילון).
-    *  נוח ליצירת אובייקטים פשוטים לאחסון נתונים.
-    *  המאפיינים נגישים באמצעות נקודה, כמו באובייקטים רגילים: `alice_namespace.name`
-    *  בשונה ממילונים, סדר המאפיינים נשמר.
-    *  ניתן לשנות שדות קיימים, אך לא ניתן להוסיף שדות חדשים באמצעות השמה ישירה (`obj.new_field = value`). הוספה אפשרית באמצעות `setattr`.
+*  **מאפיינים:**
+    *  מאפשר ליצור אובייקטים עם תכונות דינמיות (בדומה למילון).
+    *  נוח ליצירת אובייקטים פשוטים לצורך אחסון נתונים.
+    *  התכונות נגישות באמצעות נקודה, כמו באובייקטים רגילים: `alice_namespace.name`
+    *  בניגוד למילונים, סדר התכונות נשמר.
+    *  ניתן לשנות את הערכים של התכונות, אך לא ניתן להוסיף תכונות חדשות באופן ישיר.
 
 *  **דוגמאות:**
     ```python
     from types import SimpleNamespace
 
+    # Создание SimpleNamespace
     # יצירת SimpleNamespace
     alice_namespace = SimpleNamespace(name="Алиса", age=25, city="Лондон")
+    print(f"Создание SimpleNamespace: {alice_namespace}")
+    # יצירת SimpleNamespace:
     print(f"יצירת SimpleNamespace: {alice_namespace}")
 
-    # גישה למאפיין
-    print(f"מאפיין 'name': {alice_namespace.name}")
+    # Доступ к атрибуту
+    # גישה לתכונה
+    print(f"Атрибут 'name': {alice_namespace.name}")
+    # תכונה 'name':
+    print(f"תכונה 'name': {alice_namespace.name}")
 
-    # שינוי מאפיין
+    # Изменение атрибута
+    # שינוי תכונה
     alice_namespace.age = 26
-    print(f"שינוי מאפיין: {alice_namespace}")
+    print(f"Изменение атрибута: {alice_namespace}")
+    # שינוי תכונה:
+    print(f"שינוי תכונה: {alice_namespace}")
 
-    # לא ניתן להוסיף מאפיין חדש באמצעות השמה ישירה
-    # alice_namespace.occupation = "художница" # זה יגרום לשגיאה: AttributeError: 'SimpleNamespace' object has no attribute 'occupation'
+    # Нельзя добавить новый атрибут
+    # לא ניתן להוסיף תכונה חדשה באופן ישיר
+    # alice_namespace.occupation = "художница" # Это вызовет ошибку: AttributeError: 'SimpleNamespace' object has no attribute 'occupation'
+    # alice_namespace.occupation = "художница" # פעולה זו תגרום לשגיאה: AttributeError: 'SimpleNamespace' object has no attribute 'occupation'
 
+   # Добавление через setattr
    # הוספה באמצעות setattr
     setattr(alice_namespace, "occupation", "художница")
-    print(f"הוספת מאפיין: {alice_namespace}")
+    print(f"Добавление атрибута: {alice_namespace}")
+    # הוספת תכונה:
+    print(f"הוספת תכונה: {alice_namespace}")
 
-    # הסרה באמצעות delattr
+    # Удаление через delattr
+    # מחיקה באמצעות delattr
     delattr(alice_namespace, "city")
-    print(f"הסרת מאפיין: {alice_namespace}")
+    print(f"Удаление атрибута: {alice_namespace}")
+    # מחיקת תכונה:
+    print(f"מחיקת תכונה: {alice_namespace}")
     ```

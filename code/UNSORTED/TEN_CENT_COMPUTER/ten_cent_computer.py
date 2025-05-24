@@ -5,7 +5,7 @@ import google.generativeai as genai
 
 class GoogleGenerativeAI:
     """
-    מחלקה לצורך אינטראקציה עם מודלי Google Generative AI.
+    מחלקה ליצירת אינטראקציה עם מודלי Google Generative AI.
     """
 
     MODELS = [
@@ -18,36 +18,36 @@ class GoogleGenerativeAI:
         """
         אתחול מודל GoogleGenerativeAI.
 
-        :param api_key: מפתח API לגישה ל-Gemini.
+        :param api_key: מפתח ה-API לגישה ל-Gemini.
         :type api_key: str
-        :param system_instruction: הנחיה למודל (פרומפט מערכת).
+        :param system_instruction: הנחיה למודל (פרומפט מערכתי).
         :type system_instruction: str
-        :param model_name: שם מודל Gemini בשימוש. ברירת המחדל היא 'gemini-2-13b'.
+        :param model_name: שם מודל Gemini הנמצא בשימוש. ברירת המחדל היא 'gemini-2-13b'.
         :type model_name: str
         """
         self.api_key = api_key
         self.model_name = model_name
-        genai.configure(api_key=self.api_key)  # קונפיגורציה של הספרייה עם מפתח ה-API
+        genai.configure(api_key=self.api_key)  # הגדרת הספרייה עם מפתח ה-API
         self.model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_instruction)  # אתחול המודל עם ההנחיה
 
     def ask(self, q: str) -> str:
         """
-        שליחת בקשה למודל וקבלת תגובה.
+        שליחת שאילתה למודל וקבלת תגובה.
 
-        :param q: טקסט הבקשה.
+        :param q: טקסט השאילתה.
         :type q: str
         :return: תגובת המודל או הודעת שגיאה.
         :rtype: str
         """
         try:
-            response = self.model.generate_content(q)  # שליחת בקשה למודל
-            return response.text  # קבלת תגובת טקסט
+            response = self.model.generate_content(q)  # שליחת השאילתה למודל
+            return response.text  # קבלת התגובה הטקסטואלית
         except Exception as ex:
             return f'Error: {str(ex)}'  # טיפול וקבלת השגיאה
 
 
 def set_key(dotenv_path: str, key: str, value: str):
-    """שומר זוג מפתח-ערך בקובץ .env"""
+    """שומר צמד מפתח-ערך בקובץ .env"""
     if os.path.exists(dotenv_path):
         with open(dotenv_path, 'r') as f:
             lines = f.readlines()
@@ -70,10 +70,10 @@ def set_key(dotenv_path: str, key: str, value: str):
 if __name__ == '__main__':
 
     __root__ = Path(__file__).resolve().parent
-    relative_path: Path = Path('games', 'ai')  # נתיב יחסי לספריית המשחקים
-    base_path: Path = __root__ / relative_path  # נתיב מוחלט לספרייה
+    relative_path: Path = Path('games', 'ai')  # נתיב יחסי לתיקיית המשחקים
+    base_path: Path = __root__ / relative_path  # נתיב מוחלט לתיקייה
 
-    # קריאת מפתח ה-API ממשתני סביבה או בקשתו מהמשתמש
+    # קריאת מפתח ה-API ממשתני הסביבה או בקשה מהמשתמש
     API_KEY: str = os.getenv('API_KEY')
     if not API_KEY:
         API_KEY = input('מפתח API לא נמצא. אנא הזן את מפתח ה-API עבור `gemini`: ')  # בקשת מפתח ה-API מהמשתמש
@@ -85,15 +85,15 @@ if __name__ == '__main__':
         '2': 'ten_cent_computer',
     }
 
-    # ברכת משתמש
+    # ברכת שלום למשתמש
     print('ברוכים הבאים לעולם המשחקים המתמטיים!')
-    print('אנא בחרו באיזה משחק תרצו לשחק:')
+    print('אנא בחר באיזה משחק תרצה לשחק:')
 
     while True:
-        # בחירת משחק
-        print('1. משחק "קלט-פלט"')
-        print('2. משחק "מחשב 10 סנט"')
-        choice = input('אנא הזן את מספר המשחק (1 או 2, או "q" ליציאה): ')
+        # בחירת המשחק
+        print('1. המשחק "קלט-פלט"')
+        print('2. המשחק "מחשב 10 סנט"')
+        choice = input('הזן את מספר המשחק (1 או 2, או "q" ליציאה): ')
 
         if choice == 'q':
              print('להתראות!')
@@ -104,22 +104,22 @@ if __name__ == '__main__':
             # יצירת מופע של המחלקה עם ההנחיה שנבחרה
             model: GoogleGenerativeAI = GoogleGenerativeAI(api_key=API_KEY, system_instruction=system_instruction)
             if choice == '1':
-                # הפעלת משחק קלט-פלט
+                # הפעלת המשחק קלט-פלט
                 while True:
-                    user_input = input("אנא הזן בקשה למשחק 'קלט-פלט' ('q' ליציאה): ")
+                    user_input = input("הזן שאילתה למשחק 'קלט-פלט' ('q' ליציאה): ")
                     if user_input.lower() == 'q':
                         break
                     response = model.ask(user_input)
                     print(response)
 
             elif choice == '2':
-                # הפעלת משחק מחשב 10 סנט
+                # הפעלת המשחק מחשב 10 סנט
                 while True:
-                     user_input = input("אנא הזן בקשה למשחק 'מחשב 10 סנט' ('q' ליציאה): ")
+                     user_input = input("הזן שאילתה למשחק 'מחשב 10 סנט' ('q' ליציאה): ")
                      if user_input.lower() == 'q':
                          break
                      response = model.ask(user_input)
                      print(response)
 
         else:
-            print('בחירה שגויה. אנא נסה שוב.')
+            print('בחירה לא חוקית. אנא נסה שוב.')

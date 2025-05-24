@@ -4,9 +4,9 @@ from typing import List, Optional
 
 class FakeDataGenerator:
     """
-    לייצור נתונים מדומים.
+    יצירת נתונים פיקטיביים.
 
-    מממש פונקציות יסוד כגון יצירת שמות, כתובות, מספרי טלפון ונתונים נוספים.
+    מיישמת פונקציות בסיסיות, כגון יצירת שמות, כתובות, מספרי טלפון ונתונים אחרים.
     """
 
     first_names = ['John', 'Jane', 'Alice', 'Bob', 'Charlie', 'Diana']
@@ -31,7 +31,7 @@ class FakeDataGenerator:
         יצירת כתובת דוא"ל אקראית.
 
         Returns:
-            str: כתובת דוא"ל בפורמט `שם_פרטי.שם_משפחה@דומיין`.
+            str: כתובת דוא"ל בפורמט `שם.משפחה@דומיין`.
         """
         first_name = random.choice(self.first_names).lower()
         last_name = random.choice(self.last_names).lower()
@@ -52,7 +52,7 @@ class FakeDataGenerator:
         יצירת כתובת אקראית.
 
         Returns:
-            str: כתובת בפורמט רחוב, עיר.
+            str: הכתובת בפורמט `רחוב, עיר`.
         """
         street = random.choice(self.streets)
         city = random.choice(self.cities)
@@ -64,7 +64,7 @@ class FakeDataGenerator:
         יצירת מחרוזת אקראית באורך נתון.
 
         Args:
-            length (int, optional): אורך המחרוזת. ערך ברירת המחדל הוא 10.
+            length (int, optional): אורך המחרוזת. ברירת מחדל 10.
 
         Returns:
             str: מחרוזת אקראית המכילה אותיות וספרות.
@@ -76,27 +76,27 @@ class FakeDataGenerator:
         יצירת מספר שלם אקראי בטווח נתון.
 
         Args:
-            min_value (int, optional): ערך מינימלי. ערך ברירת המחדל הוא 0.
-            max_value (int, optional): ערך מקסימלי. ערך ברירת המחדל הוא 100.
+            min_value (int, optional): ערך מינימלי. ברירת מחדל 0.
+            max_value (int, optional): ערך מקסימלי. ברירת מחדל 100.
 
         Returns:
-            int: מספר שלם אקראי.
+            int: המספר השלם האקראי.
         """
         return random.randint(min_value, max_value)
 
     def random_choice(self, options: List[str]) -> str:
         """
-        בחירת רכיב אקראי מתוך רשימה.
+        בחירת פריט אקראי מרשימה.
 
         Args:
             options (List[str]): רשימת ערכים לבחירה.
 
         Returns:
-            str: רכיב אקראי מהרשימה.
+            str: הפריט האקראי מהרשימה.
         """
         return random.choice(options)
 
-# דוגמת שימוש
+# דוגמה לשימוש
 if __name__ == '__main__':
     faker = FakeDataGenerator()
 

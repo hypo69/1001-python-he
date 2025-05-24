@@ -1,9 +1,9 @@
-import google.generativeai as genai  # ייבוא ספריית לעבודה עם Gemini
-import re  # ייבוא ספריית לעבודה עם ביטויים רגולריים
+import google.generativeai as genai  # ייבוא הספרייה לעבודה עם Gemini
+import re  # ייבוא הספרייה לעבודה עם ביטויים רגולריים
 
 class GoogleGenerativeAI:
     """
-    מחלקה לאינטראקציה עם מודלים של Google Generative AI.
+    מחלקה לאינטראקציה עם מודלי Google Generative AI.
     """
 
     MODELS = [
@@ -16,55 +16,55 @@ class GoogleGenerativeAI:
         """
         אתחול מודל GoogleGenerativeAI.
 
-        Args:
-            api_key: מפתח API לגישה ל-Gemini.
+        ארגומנטים:
+            api_key: מפתח ה-API לגישה ל-Gemini.
             system_instruction: הוראה למודל (פרומפט מערכת).
-            model_name: שם מודל ה-Gemini הנמצא בשימוש.
+            model_name: שם מודל Gemini שבו משתמשים.
         """
         self.api_key = api_key
         self.model_name = model_name
-        genai.configure(api_key=self.api_key)  # מגדירים את הספרייה עם מפתח ה-API
-        self.model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_instruction) # מאתחלים את המודל עם ההוראה
+        genai.configure(api_key=self.api_key)  # מגדיר את הספרייה עם מפתח ה-API
+        self.model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_instruction) # מאתחל את המודל עם ההוראה
 
     def ask(self, q: str) -> str:
         """
-        שולח בקשה למודל ומחזיר תשובה.
+        שולח שאילתה למודל ומחזיר את התשובה.
 
-        Args:
-            q: טקסט הבקשה.
+        ארגומנטים:
+            q: טקסט השאילתה.
 
-        Returns:
+        מחזיר:
             תשובת המודל או הודעת שגיאה.
         """
         try:
-            response = self.model.generate_content(q)  # שולחים בקשה למודל
-            return response.text  # מחזירים את התשובה הטקסטואלית
+            response = self.model.generate_content(q)  # שולח את השאילתה למודל
+            return response.text  # מחזיר את התשובה כטקסט
         except Exception as ex:
-            return f"Error: {str(ex)}"  # מטפלים בשגיאה ומחזירים אותה
+            return f"Error: {str(ex)}"  # מטפל ומחזיר את השגיאה
 
-# הוראה ל-Gemini (פרומפט מערכת)
+# הוראה עבור Gemini (פרומפט מערכת)
 system_instruction = """
-את/ה מחולל אנאגרמות. משימתך היא למצוא מילה קיימת בשפה הרוסית, המורכבת מאוסף אותיות נתון (באמצעות כולן או חלקן).
+את/ה מחולל אנאגרמות. משימתך היא למצוא מילה קיימת בשפה הרוסית מתוך קבוצת אותיות נתונה (שימוש בכל האותיות או בחלקן).
 
 כללים:
 
-1. התעלם/י מכל התווים למעט אותיות רוסיות. ספרות ותווים אחרים אינם נלקחים בחשבון.
-2. אם ניתן להרכיב מספר מילים מהאותיות הנתונות, החזר/י אחת מהן.
-3. אם לא ניתן להרכיב אף מילה בשפה הרוסית מהאותיות הנתונות, החזר/י את התשובה "Нет анаграмм".
-4. אל תייצר/י נאולוגיזמים או מילים מומצאות. השתמש/י רק במילים קיימות בשפה הרוסית.
-5. אל תסביר/י את התהליך, פשוט החזר/י את המילה או "Нет анаграмм".
+1. התעלם/התעלמי מכל תווים פרט לאותיות רוסיות. ספרות ותווים אחרים אינם נלקחים בחשבון.
+2. אם ניתן להרכיב מספר מילים מהאותיות הנתונות, החזר/החזירי אחת מהן.
+3. אם לא ניתן להרכיב אף מילה בשפה הרוסית מהאותיות הנתונות, החזר/החזירי את התשובה "Нет анаграмм".
+4. אל תייצר/תייצרי מילים חדשות או מילים מומצאות. השתמש/י רק במילים קיימות בשפה הרוסית.
+5. אל תסביר/י את התהליך, פשוט החזר/החזירי את המילה או את "Нет анаграмм".
 """
 
-API_KEY: str = input("מפתח API מ-`gemini`: ")  # מבקשים את מפתח ה-API מהמשתמש
-model = GoogleGenerativeAI(api_key=API_KEY, system_instruction=system_instruction) # יוצרים מופע של המחלקה, מעבירים את מפתח ה-API וההוראה
+API_KEY: str = input("מפתח API מ-`gemini`: ")  # מבקש את מפתח ה-API מהמשתמש
+model = GoogleGenerativeAI(api_key=API_KEY, system_instruction=system_instruction) # יוצר מופע של המחלקה, מעביר את מפתח ה-API וההוראה
 
 if __name__ == "__main__":
-    while True:  # לולאה אינסופית לקבלת בקשות
-        q = input("הכנס/י אותיות שלפיהן Gemini תמצא אנאגרמה (לסיום לחץ/י Ctrl+C): ")
+    while True:  # לולאה אינסופית לקליטת שאילתות
+        q = input("הכנס אותיות שעבורן Gemini ימצא אנאגרמה (ליציאה לחץ על Ctrl+C): ")
         # ניקוי הקלט מתווים שאינם קיריליים
-        q = re.sub(r"[^а-яА-ЯёЁ]", "", q) # מסירים את כל התווים מלבד אותיות רוסיות
-        if not q: # בודקים אם המחרוזת נשארה ריקה לאחר הניקוי
-            print("הוזנו תווים לא תקינים. הכנס/י אותיות רוסיות.")
-            continue # עוברים לאיטרציה הבאה של הלולאה
-        response = model.ask(q) # שולחים בקשה למודל
-        print(response) # מדפיסים את תשובת המודל
+        q = re.sub(r"[^а-яА-ЯёЁ]", "", q) # מסיר את כל התווים מלבד אותיות רוסיות
+        if not q: # בודק אם המחרוזת נשארה ריקה לאחר הניקוי
+            print("הוזנו תווים לא תקינים. אנא הכנס אותיות רוסיות.")
+            continue # עובר לאיטרציה הבאה של הלולאה
+        response = model.ask(q) # שולח את השאילתה למודל
+        print(response) # מדפיס את תשובת המודל

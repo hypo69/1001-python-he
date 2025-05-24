@@ -13,7 +13,7 @@ def do_something():
     log_message("לחייך 😊")
 
 def do_something_else():
-    log_message("לנופף ביד 👋")
+    log_message("לנופף לשלום 👋")
 
 # פונקציה לרישום הודעות
 log_text = None  # יאותחל בהמשך
@@ -22,7 +22,7 @@ def log_message(message):
         log_text.insert(tk.END, message + "\n")
         log_text.yview(tk.END)
 
-# פונקציה להפעלת המתזמן
+# פונקציה להפעלת הסדרן (Scheduler)
 def run_scheduler():
     while running:
         if scheduler_active_1:
@@ -31,11 +31,11 @@ def run_scheduler():
             schedule.run_pending()
         time.sleep(0.1)
 
-# הפעלת המתזמן באשכול נפרד
+# הפעלת הסדרן (Scheduler) בתהליך נפרד
 scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
 scheduler_thread.start()
 
-# פונקציות שליטה
+# פונקציות בקרה
 
 def start_task_1():
     global scheduler_active_1
@@ -74,7 +74,7 @@ def list_tasks():
     for job in schedule.jobs:
         log_message(str(job))
 
-# יצירת ממשק המשתמש הגרפי
+# יצירת ממשק משתמש (GUI)
 root = tk.Tk()
 root.title("Task Scheduler")
 root.geometry("500x300")
@@ -107,7 +107,7 @@ list_btn.pack(fill=tk.X, pady=2)
 log_text = scrolledtext.ScrolledText(log_frame, height=10, width=60)
 log_text.pack(pady=10, fill=tk.BOTH, expand=True)
 
-# הפעלת ממשק המשתמש הגרפי
+# הפעלת ממשק המשתמש (GUI)
 root.mainloop()
 
 running = False

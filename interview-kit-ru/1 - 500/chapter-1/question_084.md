@@ -1,6 +1,6 @@
 ### `question_084.md`
 
-**שאלה 84.** מה תהיה התוצאה בעת ביצוע קוד הפייתון הבא?
+**שאלה 84.** מה תהיה התוצאה שתתקבל בעת הרצת קוד הפייתון הבא?
 
 ```python
 def anagram(word1, word2):
@@ -19,7 +19,7 @@ print(anagram("python", "pythno"))
 -   ג. `False True False True`
 -   ד. `True True False True`
 
-**תשובה נכונה: ד**
+**התשובה הנכונה: D**
 
 **הסבר:**
 
@@ -28,12 +28,12 @@ print(anagram("python", "pythno"))
 1.  **הפונקציה `anagram(word1, word2)`:**
     -   ממירה את שתי המילים לאותיות קטנות (`lower()`).
     -   ממיינת את האותיות של כל מילה (`sorted()`).
-    -   אם האותיות הממוינות זהות, מחזירה `True` (המילים הן אנאגרמות), אחרת `False`.
+    -   אם האותיות הממוינות זהות, מחזירה `True` (המילים הן אנאגרמות), אחרת מחזירה `False`.
 
 2.  **תוצאות הקריאות לפונקציה:**
-    -   "`cinema`" ו-"`iceman`": אנאגרמות. `sorted("cinema") == sorted("iceman")` -> `True`
-    -   "`cool`" ו-"`loco`": אנאגרמות. `sorted("cool") == sorted("loco")` -> `True`
-    -   "`men`" ו-"`women`": לא אנאגרמות. `sorted("men") != sorted("women")` -> `False`
-    -   "`python`" ו-"`pythno`": אנאגרמות. `sorted("python") == sorted("pythno")` -> `True`
+    -   `"cinema"` ו-"`iceman"`: אנאגרמות. `sorted("cinema") == sorted("iceman")` -> `True`
+    -   `"cool"` ו-"`loco"`: אנאגרמות. `sorted("cool") == sorted("loco")` -> `True`
+    -   `"men"` ו-"`women"`: אינן אנאגרמות. `sorted("men") != sorted("women")` -> `False`
+    -   `"python"` ו-"`pythno"`: אנאגרמות. `sorted("python") == sorted("pythno")` -> `True`
 
 לפיכך, פלט התוכנית: `True True False True`.

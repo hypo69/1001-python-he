@@ -23,19 +23,19 @@ while True:
     numberOfGuesses += 1
     # חישוב מספר פיבונאצ'י עבור הניסיון הנוכחי
     fibonacciNumber = fibonacci(numberOfGuesses)
-    # העלאת המספר המטרה בחזקת מספר פיבונאצ'י
+    # העלאת המספר האקראי בחזקת מספר פיבונאצ'י
     poweredNumber = targetNumber ** fibonacciNumber
 
-    # בקשת קלט מספר מהמשתמש
+    # בקשת קלט מהמשתמש
     try:
         userGuess = int(input(f"ניסיון {numberOfGuesses}: אנא הכנס מספר: "))
     except ValueError:
-         print("אנא הזן מספר שלם.")
+         print("אנא הכנס מספר שלם.")
          continue
 
-    # בדיקה האם המספר נחזה נכונה
+    # בדיקה האם המספר נוחש
     if userGuess == poweredNumber:
         print(f"מזל טוב! ניחשת את המספר ב-{numberOfGuesses} ניסיונות!")
-        break  # סיום הלולאה אם המספר נחזה
+        break  # סיום הלולאה אם המספר נוחש
     else:
-         print("אנא נסה שוב!") # הודעה למשתמש לנסות שוב
+         print("אנא נסה שוב!") # הודעה על צורך בניסיון נוסף

@@ -1,7 +1,7 @@
 from tkinter import *
 import time
 import random
-import pygame  # למרות שהוא מיובא, אינו בשימוש בקוד
+import pygame  # אף על פי שיובא, אינו בשימוש בקוד
 
 class Ball():
     """
@@ -10,10 +10,10 @@ class Ball():
     def __init__(self, canvas: Canvas, platform: object, color: str) -> None:
         """
         אתחול הכדור.
-
-        Args:
-            canvas: קנבס Tkinter שעליו מצויר הכדור.
-            platform: אובייקט הפלטפורמה לצורך זיהוי התנגשויות.
+        
+        ארגומנטים:
+            canvas: בד ה-Tkinter שעליו מצויר הכדור.
+            platform: אובייקט הפלטפורמה לקביעת התנגשויות.
             color: צבע הכדור.
         """
         self.canvas = canvas
@@ -27,11 +27,11 @@ class Ball():
     def touch_platform(self, ball_pos: tuple) -> bool:
         """
         בודק התנגשות של הכדור עם הפלטפורמה.
-
-        Args:
+        
+        ארגומנטים:
              ball_pos: קואורדינטות הכדור (x1, y1, x2, y2).
-        Returns:
-            True אם הכדור התנגש בפלטפורמה, אחרת False.
+        החזרות:
+            True, אם הכדור התנגש בפלטפורמה, אחרת False.
         """
         platform_pos = self.canvas.coords(self.platform.rect)
         if ball_pos[2] >= platform_pos[0] and ball_pos[0] <= platform_pos[2]:
@@ -41,7 +41,7 @@ class Ball():
 
     def draw(self) -> None:
          """
-        מזיז את הכדור על הקנבס ומטפל בהתנגשויות עם הקירות והפלטפורמה.
+        מזיז את הכדור על הבד ומטפל בהתנגשויות עם קירות ופלטפורמה.
         """
         self.canvas.move(self.oval, self.x, self.y)
         pos = self.canvas.coords(self.oval)
@@ -63,9 +63,9 @@ class Platform():
     def __init__(self, canvas: Canvas, color: str) -> None:
         """
         אתחול הפלטפורמה.
-
-        Args:
-             canvas: קנבס Tkinter שעליו מצוירת הפלטפורמה.
+        
+        ארגומנטים:
+             canvas: בד ה-Tkinter שעליו מצוירת הפלטפורמה.
              color: צבע הפלטפורמה.
         """
         self.canvas = canvas
@@ -76,25 +76,25 @@ class Platform():
 
     def left(self, event: object) -> None:
          """
-        מטפל בלחיצת מקש "שמאלה".
-
-        Args:
+        מטפל באירוע לחיצת מקש "שמאלה".
+        
+        ארגומנטים:
             event: אירוע לחיצת המקש.
         """
         self.x = -2
 
     def right(self, event: object) -> None:
         """
-         מטפל בלחיצת מקש "ימינה".
-
-        Args:
+         מטפל באירוע לחיצת מקש "ימינה".
+         
+        ארגומנטים:
             event: אירוע לחיצת המקש.
         """
         self.x = 2
 
     def draw(self) -> None:
         """
-        מזיז את הפלטפורמה על הקנבס ומטפל בהתנגשויות עם הקירות.
+        מזיז את הפלטפורמה על הבד ומטפל בהתנגשויות עם קירות.
         """
         self.canvas.move(self.rect, self.x, 0)
         pos = self.canvas.coords(self.rect)
@@ -106,8 +106,8 @@ class Platform():
 # אתחול החלון
 window = Tk()
 window.title("ארקייד")
-window.resizable(0, 0) # גודל לא ניתן לשינוי
-window.wm_attributes("-topmost", 1) # הצגה בראש המסך
+window.resizable(0, 0)
+window.wm_attributes("-topmost", 1)
 
 canvas = Canvas(window, width=500, height=400)
 canvas.pack()

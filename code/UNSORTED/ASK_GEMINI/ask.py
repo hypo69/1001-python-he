@@ -17,15 +17,15 @@ class GoogleGenerativeAI:
 
         :param api_key: מפתח API לגישה ל-Gemini.
         :type api_key: str
-        :param system_instruction: הוראה למודל (הנחיה מערכתית).
+        :param system_instruction: הנחיה למודל (פרומפט מערכת).
         :type system_instruction: str
-        :param model_name: שם מודל Gemini בשימוש. ברירת מחדל היא 'gemini-2.0-flash-exp'.
+        :param model_name: שם המודל של Gemini הנמצא בשימוש. ברירת מחדל 'gemini-2.0-flash-exp'.
         :type model_name: str
         """
         self.api_key = api_key
         self.model_name = model_name
         genai.configure(api_key=self.api_key)  # הגדרת הספרייה עם מפתח ה-API
-        self.model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_instruction)  # אתחול המודל עם ההוראה
+        self.model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_instruction)  # אתחול המודל עם ההנחיה
 
     def ask(self, q: str) -> str:
         """

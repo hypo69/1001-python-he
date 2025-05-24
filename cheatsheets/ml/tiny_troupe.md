@@ -1,0 +1,1 @@
+המאמר הועבר למאגר [MyTinyTroupe](https://github.com/hypo69/MyTinyTroupe/blob/master/tiny_troupe.md)

@@ -3,93 +3,93 @@ UGLY:
 =================
 מורכבות: 4
 -----------------
-המשחק "UGLY" הוא משחק ניחוש פשוט, שבו המחשב מייצר מספר אקראי, והשחקן צריך לנחש את המספר הזה. לאחר כל ניסיון, השחקן מקבל הודעה האם הניחוש שלו היה גבוה או נמוך מהמספר שנגרל.
+המשחק "UGLY" הוא משחק ניחושים פשוט, בו המחשב מייצר מספר אקראי, והשחקן צריך לנחש מספר זה. לאחר כל ניסיון, השחקן מקבל משוב האם הניחוש שלו היה גבוה או נמוך מהמספר שהוגרל.
 
 כללי המשחק:
-1.  המחשב מייצר מספר שלם אקראי בטווח שבין 1 ל-100.
-2.  השחקן מזין את ניחושו לגבי המספר שנגרל.
-3.  לאחר כל ניסיון, המחשב מודיע האם המספר שהוזן היה "TOO HIGH" (גבוה מדי) או "TOO LOW" (נמוך מדי).
-4.  המשחק מסתיים כאשר השחקן מנחש את המספר.
+1. המחשב מייצר מספר שלם אקראי בטווח שבין 1 ל-100.
+2. השחקן מזין את ניחושו לגבי המספר שהוגרל.
+3. לאחר כל ניסיון, המחשב מודיע האם המספר שהוזן היה "TOO HIGH" (גבוה מדי) או "TOO LOW" (נמוך מדי).
+4. המשחק מסתיים כאשר השחקן מנחש את המספר.
 -----------------
 אלגוריתם:
-1.  הפק מספר אקראי בטווח שבין 1 ל-100 ושמור אותו במשתנה `targetNumber`.
-2.  התחל בלולאה "כל עוד לא נוחש":
+1. יצר מספר אקראי בטווח שבין 1 ל-100 ושמור אותו במשתנה `targetNumber`.
+2. התחל לולאה "עד שניחוש נכון":
     2.1 בקש מהשחקן להזין מספר ושמור אותו במשתנה `userGuess`.
     2.2 אם `userGuess` שווה ל-`targetNumber`, הצג את ההודעה "YOU GOT IT!" ועבור לשלב 3.
     2.3 אם `userGuess` קטן מ-`targetNumber`, הצג את ההודעה "TOO LOW".
     2.4 אם `userGuess` גדול מ-`targetNumber`, הצג את ההודעה "TOO HIGH".
-3.  סיים את המשחק.
+3. סיים את המשחק.
 -----------------
 תרשים זרימה:
 ```mermaid
 flowchart TD
-    Start["Начало"] --> InitializeTargetNumber["<p align='left'>Инициализация:
+    Start["התחלה"] --> InitializeTargetNumber["<p align='left'>אתחול: 
     <code><b>targetNumber = random(1, 100)</b></code></p>"]
-    InitializeTargetNumber --> LoopStart{"Начало цикла: пока не угадано"}
-    LoopStart --> InputGuess["Ввод числа пользователем: <code><b>userGuess</b></code>"]
-    InputGuess --> CheckGuess{"Проверка: <code><b>userGuess == targetNumber?</b></code>"}
-    CheckGuess -- Да --> OutputWin["Вывод сообщения: <b>YOU GOT IT!</b>"]
-    OutputWin --> End["Конец"]
-    CheckGuess -- Нет --> CheckLow{"Проверка: <code><b>userGuess &lt; targetNumber?</b></code>"}
-    CheckLow -- Да --> OutputLow["Вывод сообщения: <b>TOO LOW</b>"]
+    InitializeTargetNumber --> LoopStart{"תחילת לולאה: עד שלא ניחוש נכון"}
+    LoopStart --> InputGuess["קלט מהמשתמש: <code><b>userGuess</b></code>"]
+    InputGuess --> CheckGuess{"בדיקה: <code><b>userGuess == targetNumber?</b></code>"}
+    CheckGuess -- כן --> OutputWin["הצגת הודעה: <b>YOU GOT IT!</b>"]
+    OutputWin --> End["סיום"]
+    CheckGuess -- לא --> CheckLow{"בדיקה: <code><b>userGuess &lt; targetNumber?</b></code>"}
+    CheckLow -- כן --> OutputLow["הצגת הודעה: <b>TOO LOW</b>"]
     OutputLow --> LoopStart
-    CheckLow -- Нет --> OutputHigh["Вывод сообщения: <b>TOO HIGH</b>"]
+    CheckLow -- לא --> OutputHigh["הצגת הודעה: <b>TOO HIGH</b>"]
     OutputHigh --> LoopStart
 ```
 מקרא:
-    Start - תחילת התוכנית.
-    InitializeTargetNumber - אתחול המשתנה targetNumber במספר שלם אקראי בטווח מ-1 עד 100.
-    LoopStart - תחילת הלולאה שנמשכת כל עוד המספר לא נוחש.
-    InputGuess - בקשת קלט מספר מהמשתמש ושמירתו במשתנה userGuess.
-    CheckGuess - בדיקה האם המספר שהוזן userGuess שווה למספר שנגרל targetNumber.
+    Start - התחלת התוכנית.
+    InitializeTargetNumber - אתחול המשתנה targetNumber במספר שלם אקראי בין 1 ל-100.
+    LoopStart - תחילת הלולאה שנמשכת עד שהמספר מנוחש.
+    InputGuess - בקשת קלט מהמשתמש (מספר) ושמירתו במשתנה userGuess.
+    CheckGuess - בדיקה האם המספר המוזן userGuess שווה למספר שהוגרל targetNumber.
     OutputWin - הצגת הודעת ניצחון אם המספרים שווים.
     End - סיום התוכנית.
-    CheckLow - בדיקה האם המספר שהוזן userGuess קטן מהמספר שנגרל targetNumber.
-    OutputLow - הצגת ההודעה "TOO LOW" אם המספר שהוזן קטן מהמספר שנגרל.
-    OutputHigh - הצגת ההודעה "TOO HIGH" אם המספר שהוזן גדול מהמספר שנגרל.
+    CheckLow - בדיקה האם המספר המוזן userGuess קטן מהמספר שהוגרל targetNumber.
+    OutputLow - הצגת ההודעה "TOO LOW" אם המספר המוזן קטן מהמספר שהוגרל.
+    OutputHigh - הצגת ההודעה "TOO HIGH" אם המספר המוזן גדול מהמספר שהוגרל.
 """
 import random
 
-# מייצרים מספר אקראי מ-1 עד 100
+# מייצר מספר אקראי בין 1 ל-100
 targetNumber = random.randint(1, 100)
 
 # לולאה אינסופית עד שהשחקן ינחש את המספר
 while True:
-    # מבקשים מהמשתמש להזין מספר
+    # מבקש מהמשתמש להזין מספר
     try:
-        userGuess = int(input("Угадай число: ")) # השארת "Угадай число: " ברוסית כחלק מהקלט הצפוי
+        userGuess = int(input("נחש מספר: "))
     except ValueError:
-        print("Пожалуйста, введите целое число.") # השארת "Пожалуйста, введите целое число." ברוסית כחלק מהפלט הצפוי
+        print("אנא הזן מספר שלם.")
         continue
 
-    # בודקים אם המספר נוחש
+    # בודק אם המספר נוחש
     if userGuess == targetNumber:
         print("YOU GOT IT!")
-        break  # מסיימים את הלולאה אם ניחשנו
-    # בודקים אם המספר שהוזן קטן מהמספר שנגרל
+        break  # מסיים את הלולאה אם המספר נוחש
+    # בודק אם המספר שהוזן קטן מהמספר שהוגרל
     elif userGuess < targetNumber:
         print("TOO LOW")
-    # אם לא קטן ולא נוחש, משמע גדול
+    # אם הוא לא קטן ולא נוחש, משמע שהוא גדול
     else:
         print("TOO HIGH")
 """
 הסבר הקוד:
 1.  **ייבוא מודול `random`**:
-    -   `import random`: מייבא את מודול `random`, המשמש להפקת מספר אקראי.
-2.  **הפקת מספר אקראי**:
-    -   `targetNumber = random.randint(1, 100)`: מפיק מספר שלם אקראי בטווח שבין 1 ל-100 ושומר אותו במשתנה `targetNumber`.
+    -   `import random`: מייבוא את מודול `random`, המשמש לייצור מספרים אקראיים.
+2.  **ייצור מספר אקראי**:
+    -   `targetNumber = random.randint(1, 100)`: מייצר מספר שלם אקראי בטווח שבין 1 ל-100 ושומר אותו במשתנה `targetNumber`.
 3.  **הלולאה הראשית `while True:`**:
-    -   `while True:`: יוצרת לולאה אינסופית, הנמשכת עד שהשחקן מנחש את המספר.
+    -   `while True:`: יוצר לולאה אינסופית שנמשכת כל עוד השחקן לא ניחש את המספר.
     -  **קלט נתונים**:
         - `try...except ValueError`: בלוק try-except מטפל בשגיאות קלט אפשריות. אם המשתמש יזין קלט שאינו מספר שלם, תוצג הודעת שגיאה.
-        -   `userGuess = int(input("Угадай число: "))`: מבקש מהמשתמש להזין מספר ושומר אותו במשתנה `userGuess`.
+        -   `userGuess = int(input("נחש מספר: "))`: מבקש קלט מהמשתמש (מספר) ושומר אותו במשתנה `userGuess`.
     -   **בדיקת תנאי הניצחון**:
-        -   `if userGuess == targetNumber:`: בודק האם המספר שהוזן שווה למספר שנגרל.
-        -   `print("YOU GOT IT!")`: מציג הודעת ניצחון.
+        -   `if userGuess == targetNumber:`: בודק האם המספר שהוזן שווה למספר שהוגרל.
+        -   `print("YOU GOT IT!")`: מציג את הודעת הניצחון.
         -   `break`: מסיים את הלולאה (ואת המשחק) אם המספר נוחש.
     -   **רמזים**:
-        -   `elif userGuess < targetNumber:`: בודק האם המספר שהוזן קטן מהמספר שנגרל.
+        -   `elif userGuess < targetNumber:`: בודק האם המספר שהוזן קטן מהמספר שהוגרל.
         -   `print("TOO LOW")`: מציג רמז שיש להזין מספר גדול יותר.
-        -   `else:`: אם המספר לא נוחש ואינו קטן מהמספר שנגרל, אזי הוא גדול ממנו.
+        -   `else:`: אם המספר לא נוחש ואינו קטן מהמספר שהוגרל, הרי שהוא גדול יותר.
         -   `print("TOO HIGH")`: מציג רמז שיש להזין מספר קטן יותר.
 """

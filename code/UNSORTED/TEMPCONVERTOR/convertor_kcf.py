@@ -28,13 +28,13 @@ def fahrenheit_to_celsius(fahrenheit: float) -> float:
 
 def celsius_to_kelvin(celsius: float) -> float:
     """
-    ממיר טמפרטורה ממעלות צלזיוס לקלווינים.
+    ממיר טמפרטורה ממעלות צלזיוס לקלווין.
 
     Args:
         celsius: הטמפרטורה במעלות צלזיוס.
 
     Returns:
-        הטמפרטורה בקלווינים.
+        הטמפרטורה בקלווין.
     """
     kelvin = celsius + 273.15
     return kelvin
@@ -42,10 +42,10 @@ def celsius_to_kelvin(celsius: float) -> float:
 
 def kelvin_to_celsius(kelvin: float) -> float:
     """
-    ממיר טמפרטורה מקלווינים למעלות צלזיוס.
+    ממיר טמפרטורה מקלווין למעלות צלזיוס.
 
     Args:
-        kelvin: הטמפרטורה בקלווינים.
+        kelvin: הטמפרטורה בקלווין.
 
     Returns:
         הטמפרטורה במעלות צלזיוס.
@@ -56,13 +56,13 @@ def kelvin_to_celsius(kelvin: float) -> float:
 
 def fahrenheit_to_kelvin(fahrenheit: float) -> float:
     """
-    ממיר טמפרטורה ממעלות פרנהייט לקלווינים.
+    ממיר טמפרטורה ממעלות פרנהייט לקלווין.
 
     Args:
         fahrenheit: הטמפרטורה במעלות פרנהייט.
 
     Returns:
-        הטמפרטורה בקלווינים.
+        הטמפרטורה בקלווין.
     """
     celsius = fahrenheit_to_celsius(fahrenheit)
     kelvin = celsius_to_kelvin(celsius)
@@ -71,10 +71,10 @@ def fahrenheit_to_kelvin(fahrenheit: float) -> float:
 
 def kelvin_to_fahrenheit(kelvin: float) -> float:
     """
-    ממיר טמפרטורה מקלווינים למעלות פרנהייט.
+    ממיר טמפרטורה מקלווין למעלות פרנהייט.
 
     Args:
-        kelvin: הטמפרטורה בקלווינים.
+        kelvin: הטמפרטורה בקלווין.
 
     Returns:
         הטמפרטורה במעלות פרנהייט.
@@ -86,18 +86,18 @@ def kelvin_to_fahrenheit(kelvin: float) -> float:
 
 def convert_temperature(value: float, from_unit: str, to_unit: str) -> float:
     """
-    ממיר טמפרטורה מיחידת מידה אחת לאחרת.
+    ממיר טמפרטורה מיחידת מדידה אחת לאחרת.
 
     Args:
-        value: הטמפרטורה המיועדת להמרה.
-        from_unit: יחידת המידה המקורית ('C', 'F', 'K').
-        to_unit: יחידת המידה היעד ('C', 'F', 'K').
+        value: הטמפרטורה להמרה.
+        from_unit: יחידת המדידה המקורית ('C', 'F', 'K').
+        to_unit: יחידת המדידה היעד ('C', 'F', 'K').
 
     Returns:
-        הטמפרטורה שהומרה.
+        הטמפרטורה המומרה.
 
     Raises:
-        ValueError: אם צוינו יחידות מידה שגויות.
+        ValueError: אם צוינו יחידות מדידה שגויות.
     """
     if from_unit == to_unit:
         return value  # אין צורך בהמרה
@@ -118,7 +118,7 @@ def convert_temperature(value: float, from_unit: str, to_unit: str) -> float:
         elif to_unit == 'F':
             return kelvin_to_fahrenheit(value)
 
-    raise ValueError("יחידות מידה שגויות.")
+    raise ValueError("יחידות מדידה שגויות.")
 
 
 def main():
@@ -127,16 +127,16 @@ def main():
     """
     while True:
         print("\nבחר פעולה:")
-        print("1. המרת טמפרטורה")
+        print("1. המר טמפרטורה")
         print("2. יציאה")
 
-        choice = input("הזן מספר פעולה: ")
+        choice = input("הזן את מספר הפעולה: ")
 
         if choice == '1':
             try:
                 value = float(input("הזן טמפרטורה: "))
-                from_unit = input("הזן יחידת מידה מקורית (C, F, K): ").upper()
-                to_unit = input("הזן יחידת מידה יעד (C, F, K): ").upper()
+                from_unit = input("הזן את יחידת המדידה המקורית (C, F, K): ").upper()
+                to_unit = input("הזן את יחידת המדידה היעד (C, F, K): ").upper()
 
                 result = convert_temperature(value, from_unit, to_unit)
                 print(f"תוצאה: {result:.2f} {to_unit}")
@@ -151,7 +151,7 @@ def main():
             print("להתראות!")
             break
         else:
-            print("קלט שגוי. אנא נסה שוב.")
+            print("קלט שגוי. נסה שוב.")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
-## יסודות פייתון
+## יסודות Python
 
-- סימני שפה [symbols_and_usage.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/symbols_and_usage.md)
+- סמלי שפה [symbols_and_usage.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/symbols_and_usage.md)
 - מחרוזות [string.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/string.md)
 - משתנים [variables.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/variables.md)
 - מבני נתונים [data_structures.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/data_structures.md)
@@ -23,7 +23,7 @@
 - Google Colab [powershell.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/powershell.md)
 
 ## Git, github.com, GitHub Pages (Jekyll)
-- פריסה אוטומטית של אתר Jekyll על GitHub Pages [jekyll.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/jekyll.md.md)
+- פריסה אוטומטית של אתר Jekyll ב-GitHub Pages [jekyll.md](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/jekyll.md.md)
 
 ## נוסף
 - [readbytes_vs_pillow](https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets/readbytes_vs_pillow.md)

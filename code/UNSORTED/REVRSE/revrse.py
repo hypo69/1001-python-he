@@ -1,181 +1,182 @@
-"""
 REVRSE:
 =================
-קושי: 5
+מורכבות: 5
 -----------------
-המשחק "REVRSE" מזמין את השחקן לנחש רצף של 4 ספרות, אשר ממוקמות בסדר מסוים, תוך אפשרות לחזרה על ספרות.
-לאחר כל מהלך של השחקן, המחשב מציג את כמות הספרות שנניח כהלכה ואת כמות הספרות הקיימות ברצף המבוקש אך אינן נמצאות במקומן הנכון.
-המשחק נמשך עד שהשחקן מנחש את רצף הספרות, או עד שנגמר מספר הניסיונות.
+המשחק "REVRSE" מציע לשחקן לנחש רצף של 4 ספרות, שמיקומן ברצף קבוע, כאשר הספרות יכולות לחזור על עצמן.
+לאחר כל מהלך של השחקן, המחשב מציג את מספר הספרות שנוחשו נכונה ואת מספר הספרות הקיימות ברצף הנסתר, אך אינן נמצאות במיקומן הנכון.
+המשחק נמשך עד שהשחקן מנחש את רצף הספרות, או עד שמספר הניסיונות מסתיים.
 
 חוקי המשחק:
-1.  המחשב מייצר רצף אקראי של 4 ספרות מ-1 עד 6, הספרות עשויות לחזור על עצמן.
-2.  השחקן מזין את הרצף שלו המורכב מ-4 ספרות, גם כן מ-1 עד 6, ומפריד בין הספרות ברווחים.
+1.  המחשב מייצר רצף אקראי של 4 ספרות בין 1 ל-6, כאשר הספרות יכולות לחזור על עצמן.
+2.  השחקן מזין את הרצף שלו המורכב מ-4 ספרות, גם כן בין 1 ל-6, ומפריד בין הספרות באמצעות רווחים.
 3.  לאחר כל ניסיון, המחשב מציג:
-    -   כמות הספרות שנניח כהלכה במקומן (התאמה מדויקת).
-    -   כמות הספרות שנניח כהלכה אך קיימות ברצף המבוקש ולא במקומן הנכון (התאמה חלקית).
+    -   מספר הספרות שנוחשו נכונה במיקומן הנכון (פגיעה ישירה).
+    -   מספר הספרות שנוחשו נכונה ואשר קיימות ברצף הנסתר, אך אינן נמצאות במיקומן הנכון (פגיעה עקיפה).
 4.  המשחק מסתיים כאשר השחקן מנחש את הרצף או לאחר 10 ניסיונות.
 -----------------
 אלגוריתם:
-1.  אפס את מונה הניסיונות (numberOfGuesses).
-2.  הפק רצף אקראי של 4 ספרות מ-1 עד 6 (targetSequence).
-3.  התחל בלולאה "כל עוד מספר הניסיונות קטן מ-10":
-    3.1 הגדל את מונה הניסיונות ב-1.
-    3.2 בקש מהשחקן להזין רצף של 4 ספרות (userSequence).
-    3.3 השווה את userSequence ל-targetSequence:
-        -   ספור את מספר ההתאמות המדויקות (ספרות במקומן).
-        -   ספור את מספר ההתאמות החלקיות (ספרות קיימות אך לא במקומן).
-    3.4 הצג את מספר ההתאמות המדויקות והחלקיות.
-    3.5 אם מספר ההתאמות המדויקות שווה ל-4, הצג הודעת ניצחון וסיים את המשחק.
-4.  אם הלולאה הסתיימה (לאחר 10 ניסיונות), הצג הודעת הפסד והראה את הרצף הנכון.
+1.  מאתחלים את מונה הניסיונות ל-0.
+2.  מייצרים רצף אקראי של 4 ספרות בין 1 ל-6 (targetSequence).
+3.  מתחילים לולאה "כל עוד מספר הניסיונות קטן מ-10":
+    3.1 מגדילים את מספר הניסיונות ב-1.
+    3.2 מבקשים מהשחקן להזין רצף של 4 ספרות (userSequence).
+    3.3 משווים את userSequence ל-targetSequence:
+        -   סופרים את מספר הפגיעות הישירות (ספרות במיקומן הנכון).
+        -   סופרים את מספר הפגיעות העקיפות (ספרות קיימות, אך לא במיקומן הנכון).
+    3.4 מציגים את מספר הפגיעות הישירות והעקיפות.
+    3.5 אם מספר הפגיעות הישירות שווה ל-4, מציגים הודעת ניצחון ומסיימים את המשחק.
+4.  אם הלולאה הסתיימה (לאחר 10 ניסיונות), מציגים הודעת הפסד ומראים את הרצף הנכון.
 5.  סוף המשחק.
 -----------------
 תרשים זרימה:
 ```mermaid
 flowchart TD
-    Start["התחלה"] --> InitializeVariables["<p align='left'>אתחול משתנים:<br><code><b>
+    Start["Начало"] --> InitializeVariables["<p align='left'>Инициализация переменных:
+    <code><b>
     numberOfGuesses = 0
     targetSequence = random sequence of 4 numbers (1 to 6)
     </b></code></p>"]
-    InitializeVariables --> LoopStart{"תחילת לולאה: כל עוד numberOfGuesses < 10"}
-    LoopStart -- כן --> IncreaseGuesses["<code><b>numberOfGuesses = numberOfGuesses + 1</b></code>"]
-    IncreaseGuesses --> InputSequence["קלט רצף מהמשתמש: <code><b>userSequence</b></code>"]
-    InputSequence --> CompareSequences["<p align='left'>השוואת רצפים:<br><code><b>
+    InitializeVariables --> LoopStart{"Начало цикла: пока numberOfGuesses < 10"}
+    LoopStart -- Да --> IncreaseGuesses["<code><b>numberOfGuesses = numberOfGuesses + 1</b></code>"]
+    IncreaseGuesses --> InputSequence["Ввод последовательности пользователем: <code><b>userSequence</b></code>"]
+    InputSequence --> CompareSequences["<p align='left'>Сравнение последовательностей:<br><code><b>
     directHits = count of numbers in correct position<br>
     indirectHits = count of numbers present but in wrong position
     </b></code></p>"]
-    CompareSequences --> OutputHits["פלט: <b>directHits, indirectHits</b>"]
-    OutputHits --> CheckWin{"בדיקה: <code><b>directHits == 4?</b></code>"}
-    CheckWin -- כן --> OutputWin["פלט הודעת ניצחון"]
-    OutputWin --> End["סוף"]
-    CheckWin -- לא --> LoopStart
-    LoopStart -- לא --> OutputLose["פלט הודעת הפסד"]
-    OutputLose --> ShowTarget["פלט: <b>targetSequence</b>"]
+    CompareSequences --> OutputHits["Вывод: <b>directHits, indirectHits</b>"]
+    OutputHits --> CheckWin{"Проверка: <code><b>directHits == 4?</b></code>"}
+    CheckWin -- Да --> OutputWin["Вывод сообщения о победе"]
+    OutputWin --> End["Конец"]
+    CheckWin -- Нет --> LoopStart
+    LoopStart -- Нет --> OutputLose["Вывод сообщения о проигрыше"]
+    OutputLose --> ShowTarget["Вывод: <b>targetSequence</b>"]
     ShowTarget --> End
 ```
 
 מקרא:
     Start - התחלת התוכנית.
-    InitializeVariables - אתחול משתנים: numberOfGuesses (מונה ניסיונות) מאופס ל-0, ו-targetSequence (הרצף המבוקש) נוצר באופן אקראי מ-4 מספרים מ-1 עד 6.
-    LoopStart - התחלת הלולאה, שנמשכת כל עוד מספר הניסיונות numberOfGuesses קטן מ-10.
-    IncreaseGuesses - הגדלת מונה הניסיונות ב-1.
-    InputSequence - בקשת קלט רצף של 4 מספרים מהמשתמש.
-    CompareSequences - השוואת הרצף שהוזן לרצף המבוקש וספירת התאמות מדויקות וחלקיות.
-    OutputHits - הצגת מספר ההתאמות המדויקות והחלקיות.
-    CheckWin - בדיקה האם מספר ההתאמות המדויקות שווה ל-4.
-    OutputWin - הצגת הודעת ניצחון.
+    InitializeVariables - אתחול משתנים: numberOfGuesses (מספר ניסיונות) מאותחל ל-0, ו-targetSequence (הרצף הנסתר) מיוצר באופן אקראי מ-4 מספרים בין 1 ל-6.
+    LoopStart - התחלת לולאה שנמשכת כל עוד מספר הניסיונות numberOfGuesses קטן מ-10.
+    IncreaseGuesses - הגדלת מונה מספר הניסיונות ב-1.
+    InputSequence - בקשה מהמשתמש להזין רצף של 4 מספרים.
+    CompareSequences - השוואת הרצף שהוזן לרצף הנסתר וספירת הפגיעות הישירות והעקיפות.
+    OutputHits - הצגת מספר הפגיעות הישירות והעקיפות.
+    CheckWin - בדיקה האם מספר הפגיעות הישירות שווה ל-4.
+    OutputWin - הצגת הודעה על ניצחון.
     End - סוף התוכנית.
-    OutputLose - הצגת הודעת הפסד.
-    ShowTarget - הצגת הרצף המבוקש.
-"""
+    OutputLose - הצגת הודעה על הפסד.
+    ShowTarget - הצגת הרצף הנסתר.
+```python
 import random
 
-# פונקציה ליצירת רצף אקראי של 4 ספרות מ-1 עד 6
+# Function to generate a random sequence of 4 digits from 1 to 6
 def generate_target_sequence():
     return [random.randint(1, 6) for _ in range(4)]
 
-# פונקציה להשוואת רצפים וספירת התאמות
+# Function to compare sequences and count hits
 def compare_sequences(target, user):
-    direct_hits = 0 # התאמות מדויקות (ספרה במקומה)
-    indirect_hits = 0 # התאמות חלקיות (ספרה קיימת, אך לא במקומה)
-    target_copy = list(target) # יוצרים עותק של הרצף המבוקש כדי לא לשנות את המקור
+    direct_hits = 0 # Direct hits (number in the correct position)
+    indirect_hits = 0 # Indirect hits (number is present but not in the correct position)
+    target_copy = list(target) # Create a copy of the target sequence to avoid modifying the original
+    user_copy = list(user) # Create a copy of the user sequence to avoid modifying the original
 
-    # סופרים התאמות מדויקות ומסמנים אותן בעותק
+    # Counting direct hits and removing them from the copy
     for i in range(4):
-        if user[i] == target_copy[i]:
+        if user_copy[i] == target_copy[i]:
             direct_hits += 1
-            target_copy[i] = None # מסמנים כדי לא לספור שנית
-            user[i] = None # מסמנים כדי לא לספור שנית
+            target_copy[i] = None # Mark as used to avoid counting again
+            user_copy[i] = None # Mark as used to avoid counting again
 
-    # סופרים התאמות חלקיות
+    # Counting indirect hits
     for i in range(4):
-      if user[i] is not None:
+      if user_copy[i] is not None:
         for j in range(4):
-            if user[i] == target_copy[j]:
+            if user_copy[i] == target_copy[j]:
                 indirect_hits += 1
-                target_copy[j] = None
-                break
+                target_copy[j] = None # Mark as used to avoid counting again
+                break # Move to the next number in the user sequence
     return direct_hits, indirect_hits
 
-# לוגיקת המשחק העיקרית
+# Main game logic
 def play_reverse_game():
-    numberOfGuesses = 0  # מונה ניסיונות
-    targetSequence = generate_target_sequence()  # הרצף המבוקש
+    numberOfGuesses = 0  # Attempt counter
+    targetSequence = generate_target_sequence()  # Target sequence
 
-    print("ברוכים הבאים למשחק REVRSE!")
-    print("חישבתי רצף של 4 ספרות (מ-1 עד 6).")
-    print("נסה לנחש אותו. יש לך 10 ניסיונות.")
+    print("Добро пожаловать в игру REVRSE!") # Welcome message in Russian
+    print("Я загадал последовательность из 4 цифр (от 1 до 6).") # Game description in Russian
+    print("Попробуй ее отгадать. У тебя есть 10 попыток.") # Instructions in Russian
 
     while numberOfGuesses < 10:
         numberOfGuesses += 1
         try:
-            user_input = input(f"ניסיון {numberOfGuesses}. הזן 4 ספרות עם רווח ביניהן (לדוגמה, 1 2 3 4): ")
+            user_input = input(f"Попытка {numberOfGuesses}. Введи 4 цифры через пробел (например, 1 2 3 4): ") # Prompt for input in Russian
             userSequence = [int(x) for x in user_input.split()]
             if len(userSequence) != 4 or not all(1 <= x <= 6 for x in userSequence):
-                print("אנא הזן בדיוק 4 ספרות מ-1 עד 6, מופרדות ברווחים.")
+                print("Пожалуйста, введи ровно 4 цифры от 1 до 6, разделенные пробелами.") # Error message in Russian
                 continue
         except ValueError:
-            print("אנא הזן מספרים שלמים.")
+            print("Пожалуйста, введи целые числа.") # Error message in Russian
             continue
             
         directHits, indirectHits = compare_sequences(targetSequence, userSequence)
-        print(f"התאמות מדויקות: {directHits}, התאמות חלקיות: {indirectHits}")
+        print(f"Прямые попадания: {directHits}, Косвенные попадания: {indirectHits}") # Output hits in Russian
         if directHits == 4:
-            print("ברכות! ניחשת את הרצף!")
+            print("Поздравляю! Ты угадал последовательность!") # Win message in Russian
             return
 
-    print("למרבה הצער, הניסיונות נגמרו. לא ניחשת את הרצף.")
-    print(f"הרצף הנכון: {targetSequence}")
-# הפעלת המשחק
+    print("Увы, попытки закончились. Ты не угадал последовательность.") # Lose message in Russian
+    print(f"Правильная последовательность: {targetSequence}") # Show target sequence in Russian
+# Running the game
 if __name__ == "__main__":
     play_reverse_game()
-"""
+```
 הסבר הקוד:
-1.  **ייבוא מודול `random`**:
-    -   `import random`: מייבא את מודול `random`, המשמש ליצירת מספרים אקראיים.
-2.  **פונקציה `generate_target_sequence()`**:
-    -   `def generate_target_sequence():`: מגדירה פונקציה ליצירת רצף אקראי של 4 ספרות מ-1 עד 6.
-    -   `return [random.randint(1, 6) for _ in range(4)]`: משתמשת בהבנת רשימות (list comprehension) ליצירת רשימה של 4 מספרים שלמים אקראיים, כל אחד בטווח מ-1 עד 6.
-3.  **פונקציה `compare_sequences(target, user)`**:
-    -   `def compare_sequences(target, user):`: מגדירה פונקציה להשוואת שני רצפים וספירת התאמות מדויקות וחלקיות.
-    -   `direct_hits = 0`: מאתחל משתנה לספירת התאמות מדויקות.
-    -   `indirect_hits = 0`: מאתחל משתנה לספירת התאמות חלקיות.
-    -   `target_copy = list(target)`: יוצרת עותק של הרצף המבוקש כדי לא לשנות את הרשימה המקורית.
-    -   **ספירת התאמות מדויקות**:
-        -   `for i in range(4):`: לולאה לעבור על כל עמדה ברצף.
-        -   `if user[i] == target_copy[i]:`: בודקת האם הספרה בעמדה הנוכחית זהה בשני הרצפים.
-        -   `direct_hits += 1`: מגדילה את מספר ההתאמות המדויקות ב-1.
-        -   `target_copy[i] = None` וגם `user[i] = None`: מסמנת את הספרה ככזו שנוצלה, כדי לא לספור אותה שנית בעת ספירת התאמות חלקיות.
-    -   **ספירת התאמות חלקיות**:
-        -   `for i in range(4):`: לולאה לעבור על כל עמדה ברצף המשתמש.
-        -   `if user[i] is not None:`: בודקת שהספרה לא נוצלה בהתאמות מדויקות
-        -   `for j in range(4):`: לולאה לעבור על כל עמדה בעותק של הרצף המבוקש.
-        -   `if user[i] == target_copy[j]:`: בודקת האם הספרה מרצף המשתמש קיימת בעותק של הרצף המבוקש
-        -   `indirect_hits += 1`: מגדילה את מספר ההתאמות החלקיות ב-1
-        -   `target_copy[j] = None`: מסמנת את הספרה ככזו שנוצלה, כדי לא לספור שנית.
+1.  **ייבוא המודול `random`**:
+    -   `import random`: מייבא את המודול `random`, המשמש לייצור מספרים אקראיים.
+2.  **הפונקציה `generate_target_sequence()`**:
+    -   `def generate_target_sequence():`: מגדירה פונקציה לייצור רצף אקראי של 4 ספרות מ-1 עד 6.
+    -   `return [random.randint(1, 6) for _ in range(4)]`: משתמשת בהבנת רשימה (list comprehension) ליצירת רשימה של 4 מספרים שלמים אקראיים, כל אחד בטווח שבין 1 ל-6.
+3.  **הפונקציה `compare_sequences(target, user)`**:
+    -   `def compare_sequences(target, user):`: מגדירה פונקציה להשוואת שני רצפים וספירת פגיעות ישירות ועקיפות.
+    -   `direct_hits = 0`: מאתחלת משתנה לספירת פגיעות ישירות.
+    -   `indirect_hits = 0`: מאתחלת משתנה לספירת פגיעות עקיפות.
+    -   `target_copy = list(target)`: יוצרת עותק של הרצף הנסתר כדי לא לשנות את הרשימה המקורית.
+    -   `user_copy = list(user)`: יוצרת עותק של רצף המשתמש כדי לא לשנות את הרשימה המקורית.
+    -   **ספירת פגיעות ישירות**:
+        -   `for i in range(4):`: לולאה למעבר על כל עמדה ברצף.
+        -   `if user_copy[i] == target_copy[i]:`: בודקת האם הספרה בעמדה הנוכחית זהה בשני הרצפים.
+        -   `direct_hits += 1`: מגדילה את מספר הפגיעות הישירות ב-1.
+        -   `target_copy[i] = None` ו-`user_copy[i] = None`: מסמנת את הספרה כ"בשימוש" כדי לא לספור אותה שוב בעת ספירת פגיעות עקיפות.
+    -   **ספירת פגיעות עקיפות**:
+        -   `for i in range(4):`: לולאה למעבר על כל עמדה ברצף המשתמש.
+        -   `if user_copy[i] is not None:`: בודקת שהספרה לא נוצלה בפגיעות ישירות.
+        -   `for j in range(4):`: לולאה למעבר על כל עמדה בעותק של הרצף הנסתר.
+        -   `if user_copy[i] == target_copy[j]:`: בודקת האם הספרה מרצף המשתמש קיימת בעותק של הרצף הנסתר.
+        -   `indirect_hits += 1`: מגדילה את מספר הפגיעות העקיפות ב-1.
+        -   `target_copy[j] = None`: מסמנת את הספרה כ"בשימוש" כדי לא לספור אותה שוב.
         -   `break`: עוברת לספרה הבאה ברצף המשתמש.
-    -   `return direct_hits, indirect_hits`: מחזירה את מספר ההתאמות המדויקות והחלקיות.
-4.  **פונקציה `play_reverse_game()`**:
-    -   `def play_reverse_game():`: מגדירה את פונקציית המשחק העיקרית.
-    -   `numberOfGuesses = 0`: מאתחל את מונה הניסיונות.
-    -   `targetSequence = generate_target_sequence()`: יוצר את הרצף המבוקש.
-    -   הצגת הודעת פתיחה והוראות.
+    -   `return direct_hits, indirect_hits`: מחזירה את מספר הפגיעות הישירות והעקיפות.
+4.  **הפונקציה `play_reverse_game()`**:
+    -   `def play_reverse_game():`: מגדירה את פונקציית המשחק הראשית.
+    -   `numberOfGuesses = 0`: מאתחלת את מספר הניסיונות.
+    -   `targetSequence = generate_target_sequence()`: מייצרת את הרצף הנסתר.
+    -   מציגה הודעת קבלת פנים והוראות.
     -   **הלולאה הראשית `while numberOfGuesses < 10:`**:
         -   `numberOfGuesses += 1`: מגדילה את מונה הניסיונות ב-1.
         -   **קלט נתונים**:
             -   `try ... except ValueError`: בלוק לטיפול בשגיאות קלט אפשריות.
-            -   `user_input = input(f"ניסיון {numberOfGuesses}. הזן 4 ספרות עם רווח ביניהן (לדוגמה, 1 2 3 4): ")`: מבקש מהמשתמש להזין רצף של 4 מספרים מופרדים ברווח.
-            -   `userSequence = [int(x) for x in user_input.split()]`: ממירה את המחרוזת שהוזנה לרשימה של מספרים שלמים.
-            -   `if len(userSequence) != 4 or not all(1 <= x <= 6 for x in userSequence):`: בודקת האם הנתונים הוזנו כראוי.
-            -   `continue`: מדלגת על איטרציית הלולאה הנוכחית ומבקשת נתונים שוב.
-        -   `directHits, indirectHits = compare_sequences(targetSequence, userSequence)`: קוראת לפונקציה להשוואת רצפים.
-        -   `print(f"התאמות מדויקות: {directHits}, התאמות חלקיות: {indirectHits}")`: מציגה את תוצאות ההשוואה.
+            -   `user_input = input(f"...")`: מבקשת מהמשתמש להזין רצף של 4 מספרים המופרדים ברווח. (הודעה ברוסית נשמרה כהוראה, הטקסט עצמו הוא חלק מהקוד)
+            -   `userSequence = [int(x) for x in user_input.split()]`: ממירה את המחרוזת שהוזנה לרשימת מספרים שלמים.
+            -   `if len(userSequence) != 4 or not all(1 <= x <= 6 for x in userSequence):`: בודקת האם הקלט הוזן כהלכה.
+            -   `continue`: מדלגת על איטרציה זו של הלולאה ומבקשת קלט שוב.
+        -   `directHits, indirectHits = compare_sequences(targetSequence, userSequence)`: קוראת לפונקציה להשוואת הרצפים.
+        -   `print(f"...")`: מציגה את תוצאות ההשוואה. (הודעה ברוסית נשמרה כהוראה, הטקסט עצמו הוא חלק מהקוד)
         -   `if directHits == 4`: בודקת האם הרצף נוחש.
-        -   `print("ברכות! ניחשת את הרצף!")`: מציגה הודעת ניצחון.
+        -   `print("...")`: מציגה הודעה על ניצחון. (הודעה ברוסית נשמרה כהוראה, הטקסט עצמו הוא חלק מהקוד)
         -   `return`: מסיימת את המשחק.
     -   **אם הניסיונות הסתיימו**:
-        -   `print("למרבה הצער, הניסיונות נגמרו. לא ניחשת את הרצף.")`: מציגה הודעת הפסד.
-        -   `print(f"הרצף הנכון: {targetSequence}")`: מציגה את הרצף המבוקש.
+        -   `print("...")`: מציגה הודעה על הפסד. (הודעה ברוסית נשמרה כהוראה, הטקסט עצמו הוא חלק מהקוד)
+        -   `print(f"...")`: מציגה את הרצף הנסתר. (הודעה ברוסית נשמרה כהוראה, הטקסט עצמו הוא חלק מהקוד)
 5.  **הפעלת המשחק**:
     -   `if __name__ == "__main__":`: בודקת האם הקובץ הופעל כתוכנית ראשית.
-    -   `play_reverse_game()`: קוראת לפונקציה להפעלת המשחק.
-"""
+    -   `play_reverse_game()`: קוראת לפונקציה כדי להתחיל את המשחק.
