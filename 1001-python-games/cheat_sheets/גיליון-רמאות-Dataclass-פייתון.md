@@ -1,15 +1,15 @@
-**<span dir="rtl">מה זה `dataclass`?</span>**
+**מה זה `dataclass`?**
 
 `dataclass` — זהו דקורטור, שהוצג בפייתון 3.7, המייצר אוטומטית שיטות מיוחדות (כגון `__init__`, `__repr__`, `__eq__` ואחרות) עבור מחלקות המשמשות בעיקר כקונטיינרים לנתונים. זה חוסך ממך את הצורך לכתוב הרבה קוד תבניתי.
 
-**<span dir="rtl">למה להשתמש ב-`dataclass`?</span>**
+**למה להשתמש ב-`dataclass`?**
 
-1.  <span dir="rtl">**קיצור קוד:**</span> במקום להגדיר ידנית שיטות `__init__`, `__repr__`, `__eq__` וכו', אתה פשוט מצהיר על שדות הנתונים, ו-`dataclass` יעשה את כל השאר.
-2.  <span dir="rtl">**שיפור קריאות:**</span> מחלקות הופכות לתמציתיות ומובנות יותר, מכיוון שהן מתמקדות בנתונים ולא ביישום הטכני.
-3.  <span dir="rtl">**הפחתת שגיאות:**</span> קוד שנוצר אוטומטית אמין יותר בדרך כלל מקוד שנכתב ידנית.
-4.  <span dir="rtl">**האצת פיתוח:**</span> תוכל ליצור מחלקות לעבודה עם נתונים מהר יותר, מבלי לבזבז זמן על שגרה.
+1.  **קיצור קוד:** במקום להגדיר ידנית שיטות `__init__`, `__repr__`, `__eq__` וכו', אתה פשוט מצהיר על שדות הנתונים, ו-`dataclass` יעשה את כל השאר.
+2.  **שיפור קריאות:** מחלקות הופכות לתמציתיות ומובנות יותר, מכיוון שהן מתמקדות בנתונים ולא ביישום הטכני.
+3.  **הפחתת שגיאות:** קוד שנוצר אוטומטית אמין יותר בדרך כלל מקוד שנכתב ידנית.
+4.  **האצת פיתוח:** תוכל ליצור מחלקות לעבודה עם נתונים מהר יותר, מבלי לבזבז זמן על שגרה.
 
-**<span dir="rtl">כיצד להשתמש ב-`dataclass`?</span>**
+**כיצד להשתמש ב-`dataclass`?**
 
 ראשית, עליך לייבא את הדקורטור `dataclass` מהמודול `dataclasses`:
 
@@ -33,7 +33,7 @@ class Point:
     *  `__repr__`, המחזיר ייצוג מחרוזתי של האובייקט, לדוגמה `Point(x=1, y=2)`.
     * `__eq__`, המאפשר להשוות אובייקטים, לדוגמה `Point(1, 2) == Point(1, 2)`.
 
-**<span dir="rtl">דוגמה לשימוש פשוט</span>**
+**דוגמה לשימוש פשוט**
 ```python
 from dataclasses import dataclass
 
@@ -53,7 +53,7 @@ print(point1 == point2) # יוציא: True
 print(point1 == point3) # יוציא: False
 ```
 
-**<span dir="rtl">אפשרויות `dataclass`</span>**
+**אפשרויות `dataclass`**
 
 `dataclass` מספקת מספר פרמטרים להתאמה אישית של ההתנהגות:
 
@@ -64,7 +64,7 @@ print(point1 == point3) # יוציא: False
 *   `unsafe_hash`: אם `False` (ברירת מחדל), שיטת `__hash__` לא נוצרת. אם `True`, שיטת `__hash__` תיווצר, ו-`dataclass` תהפוך לניתנת לגיבוב (hashable).
 *   `frozen`: אם `True`, מופעי המחלקה יהיו בלתי ניתנים לשינוי (לקריאה בלבד). ברירת המחדל היא `False`.
 
-**<span dir="rtl">דוגמאות לשימוש בפרמטרים</span>**
+**דוגמאות לשימוש בפרמטרים**
 1. השבתת שיטת `__repr__` והפיכת המחלקה לבלתי ניתנת לשינוי
 ```python
 from dataclasses import dataclass
@@ -83,7 +83,7 @@ print(point1) # יוציא: <__main__.Point object at 0x000001D8322F6770> (מכ�
 try:
     point1.x = 10
 except Exception as e:
-    print(e) # יוציא: cannot assign to field 'x'
+    print (e) # יוציא: cannot assign to field 'x'
 ```
 2. הגדרת סדר, הוספת שיטת hash והפיכת המחלקה לבלתי ניתנת לשינוי
 ```python
@@ -107,7 +107,7 @@ my_dict = {point1: "first", point2: "second"}
 print(my_dict) # יוציא: {Point(x=1, y=2): 'first', Point(x=3, y=4): 'second'}
 ```
 
-**<span dir="rtl">ערכי ברירת מחדל</span>**
+**ערכי ברירת מחדל**
 
 תוכל להגדיר ערכי ברירת מחדל לשדות:
 
@@ -129,7 +129,7 @@ print(point2) # יוציא: Point(x=1, y=2)
 ```
 בעת יצירת מופע של המחלקה, אם לא הועברו ערכים, ייעשה שימוש בערך ברירת המחדל.
 
-**<span dir="rtl">שימוש ב-`dataclass` עם טיפוסים ניתנים לשינוי</span>**
+**שימוש ב-`dataclass` עם טיפוסים ניתנים לשינוי**
 
 היזהר בעת שימוש בטיפוסי נתונים ניתנים לשינוי (רשימות, מילונים) כערכי ברירת מחדל. הם ייווצרו רק פעם אחת וישמשו את כל מופעי המחלקה:
 
@@ -145,8 +145,8 @@ bad1 = BadExample()
 bad2 = BadExample()
 
 bad1.items.append(1)
-print(bad1.items) # יוציא: [1]
-print(bad2.items) # יוציא: [1] 
+print (bad1.items) # יוציא: [1]
+print (bad2.items) # יוציא: [1] 
 ```
 בדוגמה לעיל, שינויים ב-`bad1.items` משתקפים גם ב-`bad2.items`. זה קורה מכיוון ששני מופעי המחלקה משתמשים באותה רשימת ברירת מחדל.
 
@@ -163,12 +163,12 @@ good1 = GoodExample()
 good2 = GoodExample()
 
 good1.items.append(1)
-print(good1.items) # יוציא: [1]
-print(good2.items) # יוציא: []
+print (good1.items) # יוציא: [1]
+print (good2.items) # יוציא: []
 ```
 במקרה זה, `default_factory=list` תיצור רשימה ריקה חדשה עבור כל מופע חדש של המחלקה.
 
-**<span dir="rtl">דיאגרמה</span>**
+**דיאגרמה**
 
 הנה דיאגרמה המציגה את המושגים העיקריים של `dataclass`:
 
@@ -209,13 +209,13 @@ classDiagram
 
 
 
-## <span dir="rtl">`dict()`, `__dir__()` ותכונות נוספות של `dataclass`.</span>
+## `dict()`, `__dir__()` ותכונות נוספות של `dataclass`.
 
 *   `dict()` לא עובד ישירות עם מופעי `dataclass`. כדי להמיר למילון, עליך להשתמש בשיטות ידניות או בספריות צד שלישי.
 *   `__dir__()` מחזיר רשימה של כל התכונות והשיטות של האובייקט, כולל שיטות ושדות שנוצרו על ידי `dataclass`.
 *   `__dataclass_fields__` ו-`__dataclass_params__` מספקים מטא-נתונים על שדות ופרמטרים של `dataclass`.
 
-**<span dir="rtl">1. `dict()` בהקשר של `dataclass`</span>**
+**1. `dict()` בהקשר של `dataclass`**
 
    - **אין תמיכה אוטומטית:** הפונקציה המובנית `dict()` לא עובדת ישירות עם מופעי `dataclass`, כמו עם מילונים רגילים. אם תנסה לקרוא ל-`dict(instance_of_dataclass)`, תקבל שגיאה `TypeError: cannot convert dictionary update sequence element #0 to a sequence`.
    
@@ -235,13 +235,13 @@ classDiagram
      person_dict = {field.name: getattr(person, field.name) for field in dataclasses.fields(Person)}
      print(person_dict)  # יוציא: {'name': 'Alice', 'age': 30}
 
-     # אפשרות חלופית:
+     #אפשרות חלופית:
      person_dict = person.__dict__
-     print(person_dict) # יוציא: {'name': 'Alice', 'age': 30}
+     print(person_dict) #יוציא: {'name': 'Alice', 'age': 30}
      ```
    - **למה כך?** `dataclass` מיועדת בעיקר לייצג נתונים בצורת מחלקות. למרות שהנתונים נשמרים כתכונות אובייקט, `dataclass` לא הופכת אותם לנגישים אוטומטית כמילון.
 
-**<span dir="rtl">2. `__dir__()` ב-`dataclass`</span>**
+**2. `__dir__()` ב-`dataclass`**
 
    - **מחזיר תכונות:** השיטה `__dir__()` מחזירה רשימה של מחרוזות המייצגות את שמות התכונות והשיטות של האובייקט. עבור `dataclass`, `__dir__()` יכלול:
      - את כל שדות הנתונים המוגדרים.
@@ -262,14 +262,14 @@ classDiagram
       
       point = Point(1, 2)
       print(dir(point))
-      # יוציא:
+      #יוציא:
       #['__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'distance', 'x', 'y']
 
       ```
 
    - **שימושיות:** `__dir__()` יכול להיות שימושי לאינטרוספקציה - צפייה בתכונות ובשיטות הזמינות של מופע `dataclass`.
    
-**<span dir="rtl">3. תכונות נוספות של `dataclass`</span>**
+**3. תכונות נוספות של `dataclass`**
 
    - **`__dataclass_fields__`:**
       - זוהי תכונת מחלקה המכילה מילון, שבו המפתחות הם שמות שדות `dataclass`, והערכים הם אובייקטים `dataclasses.Field`.
@@ -284,14 +284,14 @@ classDiagram
           y: int = 0
      
      print(Point.__dataclass_fields__)
-     # יוציא:
+     #יוציא:
      #{'x': Field(name='x',type=<class 'int'>,default=0,default_factory=MISSING,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False), 'y': Field(name='y',type=<class 'int'>,default=0,default_factory=MISSING,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False)}
      ```
      ```python
      # נשתמש ב-fields() לאותה תוצאה
      for field in fields(Point):
          print(field.name, field.type, field.default)
-     # יוציא:
+     #יוציא:
      #x <class 'int'> 0
      #y <class 'int'> 0
      ```
@@ -308,7 +308,7 @@ classDiagram
         x: int
         y: int
       print(Point.__dataclass_params__)
-      # יוציא:
+      #יוציא:
       #dataclass_params(init=True,repr=True,eq=True,order=True,unsafe_hash=False,frozen=True)
       ```
 
