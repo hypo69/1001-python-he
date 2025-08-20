@@ -1,0 +1,97 @@
+<p dir="rtl"><strong>משתנים בפייתון: מהם ולמה הם נחוצים</strong></p>
+<p dir="rtl">משתנים — הם מיכלים בעלי שם לאחסון נתונים בזיכרון המחשב. הם מאפשרים לגשת לנתונים לפי שם, במקום להשתמש בהם ישירות.</p>
+<p dir="rtl">דוגמה:</p>
+<pre class="line-numbers"><code class="language-python">x = 10
+y = 'שלום, עולם!'
+</code></pre>
+<p dir="rtl">כאן <code dir="ltr">x</code> ו-<code dir="ltr">y</code> — משתנים. <code dir="ltr">x</code> מאחסן את המספר 10, ו-<code dir="ltr">y</code> — את המחרוזת 'שלום, עולם!'.</p>
+<h3 dir="rtl"><strong>כיצד פועלים משתנים בפייתון?</strong></h3>
+<ol>
+<li dir="rtl"><strong>טיפוס דינמי</strong>:
+בפייתון אין צורך לציין את טיפוס המשתנה בעת יצירתו — זה נעשה אוטומטית. לדוגמה:
+<pre class="line-numbers"><code class="language-python">a = 42      # מספר שלם (int)
+b = 3.14    # מספר נקודה צפה (float)
+c = 'טקסט' # מחרוזת (str)
+</code></pre>
+</li>
+<li dir="rtl"><strong>מודל אחסון נתונים מבוסס הפניה</strong>:
+משתנים בפייתון — הם הפניות לאובייקטים בזיכרון. לדוגמה:
+<pre class="line-numbers"><code class="language-python">x = 5
+y = x  # y כעת גם מצביע על אובייקט 5
+x = 10 # x כעת מצביע על אובייקט אחר 10, ו-y עדיין מצביע על 5
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 dir="rtl"><strong>כללי מתן שמות למשתנים</strong></h3>
+<ol>
+<li dir="rtl"><strong>כללים מחייבים</strong>:
+<ul>
+<li dir="rtl">שם משתנה יכול להכיל אותיות, ספרות וסימן <code dir="ltr">_</code>, אך אינו יכול להתחיל בספרה.
+✅ דוגמאות: <code dir="ltr">my_var</code>, <code dir="ltr">_data</code>, <code dir="ltr">var123</code>
+❌ לא נכון: <code dir="ltr">123var</code>, <code dir="ltr">my-var</code></li>
+<li dir="rtl">שם משתנה רגיש לאותיות רישיות/קטנות.
+דוגמה: <code dir="ltr">age</code> ו-<code dir="ltr">Age</code> — הם משתנים שונים.</li>
+</ul>
+</li>
+<li dir="rtl"><strong>המלצות לשמות משמעותיים</strong>:
+<ul>
+<li dir="rtl">השתמש בשמות המשקפים את מהות הנתונים.
+❌ גרוע: <code dir="ltr">a = 100</code>, <code dir="ltr">b = 'שם'</code>
+✅ טוב: <code dir="ltr">salary = 100</code>, <code dir="ltr">username = 'שם'</code></li>
+<li dir="rtl">לשמות מרובי מילים, השתמש בסגנון <strong>snake_case</strong>:
+דוגמה: <code dir="ltr">user_age</code>, <code dir="ltr">total_cost</code>.</li>
+</ul>
+</li>
+<li dir="rtl"><strong>מילים שמורות</strong>:
+אסור להשתמש במילות מפתח של פייתון (לדוגמה, <code dir="ltr">if</code>, <code dir="ltr">for</code>, <code dir="ltr">while</code>) כשמות משתנים.
+<p dir="rtl">כדי לראות רשימת מילות מפתח, הרץ:</p>
+<pre class="line-numbers"><code class="language-python">import keyword
+print(keyword.kwlist)
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 dir="rtl"><strong>מאפייני אחסון טיפוסי נתונים</strong></h3>
+<ol>
+<li dir="rtl"><strong>טיפוסי נתונים בפייתון</strong>:
+<ul>
+<li dir="rtl"><strong>מספרים</strong>: <code dir="ltr">int</code>, <code dir="ltr">float</code>, <code dir="ltr">complex</code></li>
+<li dir="rtl"><strong>מחרוזות</strong>: <code dir="ltr">str</code></li>
+<li dir="rtl"><strong>רשימות</strong>: <code dir="ltr">list</code></li>
+<li dir="rtl"><strong>טאפלים</strong>: <code dir="ltr">tuple</code></li>
+<li dir="rtl"><strong>קבוצות</strong>: <code dir="ltr">set</code></li>
+<li dir="rtl"><strong>מילונים</strong>: <code dir="ltr">dict</code></li>
+</ul>
+</li>
+<li dir="rtl"><strong>טיפוסים ניתנים לשינוי ובלתי ניתנים לשינוי</strong>:
+<ul>
+<li dir="rtl"><strong>ניתנים לשינוי</strong>: <code dir="ltr">list</code>, <code dir="ltr">dict</code>, <code dir="ltr">set</code>.
+דוגמה:
+<pre class="line-numbers"><code class="language-python">lst = [1, 2, 3]
+lst.append(4)  # הרשימה השתנתה
+</code></pre>
+</li>
+<li dir="rtl"><strong>בלתי ניתנים לשינוי</strong>: <code dir="ltr">int</code>, <code dir="ltr">float</code>, <code dir="ltr">str</code>, <code dir="ltr">tuple</code>.
+דוגמה:
+<pre class="line-numbers"><code class="language-python">name = 'אליס'
+name[0] = 'B'  # שגיאה, מחרוזות בלתי ניתנות לשינוי
+</code></pre>
+</li>
+</ul>
+</li>
+<li dir="rtl"><strong>פונקציית <code dir="ltr">type</code> לבדיקת טיפוס</strong>:
+<pre class="line-numbers"><code class="language-python">x = 10
+print(type(x))  # &lt;class 'int'&gt;
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 dir="rtl"><strong>טיפים למתחילים</strong></h3>
+<ol>
+<li dir="rtl">השתמש בשמות משתנים משמעותיים כדי שהקוד שלך יהיה מובן.</li>
+<li dir="rtl">זכור שפייתון אינה דורשת הצהרת טיפוס משתנה, אך היזהר לא להתבלבל עם טיפוסי נתונים.</li>
+<li dir="rtl">למד פונקציות מובנות לעבודה עם משתנים, כגון <code dir="ltr">type()</code>, <code dir="ltr">id()</code> ומודולים, כגון <code dir="ltr">sys</code>, כדי להבין טוב יותר כיצד פייתון מנהלת זיכרון.</li>
+</ol>
+<hr>
+<p dir="rtl"><a href="https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets#readme">לתוכן העניינים</a></p>

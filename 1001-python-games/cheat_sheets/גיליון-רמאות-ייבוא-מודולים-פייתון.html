@@ -1,0 +1,61 @@
+<h2 dir="rtl">ייבוא מודולים בפייתון</h2>
+<p dir="rtl">ייבוא ספריות בפייתון מאפשר להשתמש במודולים ופונקציות חיצוניים או משלך, המוגדרים בקבצים או ספריות אחרות. זה עוזר לארגן את הקוד, לשפר את קריאותו ולמנוע כפילויות.</p>
+<h3 dir="rtl">מהם מודולים?</h3>
+<p dir="rtl">מודול בפייתון הוא פשוט קובץ עם סיומת <code dir="ltr">.py</code>, המכיל קוד (פונקציות, מחלקות, משתנים וכו'). כאשר אתה רוצה להשתמש בקוד ממודול אחר, עליך לייבא אותו לקובץ הנוכחי.</p>
+<h3 dir="rtl">מודולים חיצוניים ופנימיים</h3>
+<ol>
+<li dir="rtl"><strong>מודולים חיצוניים</strong> — אלו מודולים שאינם חלק מהספרייה הסטנדרטית של פייתון ויש להתקין אותם בנפרד. לדוגמה, מודולים לעבודה עם שרת אינטרנט, עיבוד נתונים או למידת מכונה, כגון <code dir="ltr">numpy</code>, <code dir="ltr">requests</code> ואחרים.</li>
+<li dir="rtl"><strong>מודולים פנימיים</strong> — אלו מודולים שכבר כלולים בספרייה הסטנדרטית של פייתון. לדוגמה, מודולים לעבודה עם קבצים, זמן, פעולות מתמטיות: <code dir="ltr">os</code>, <code dir="ltr">math</code>, <code dir="ltr">datetime</code>.</li>
+</ol>
+<h3 dir="rtl">התקנת מודולים חיצוניים באמצעות pip</h3>
+<p dir="rtl">כדי להתקין מודול חיצוני, נשתמש בפקודה <code dir="ltr">pip</code> — זהו כלי לניהול חבילות פייתון. לדוגמה, כדי להתקין את ספריית <code dir="ltr">requests</code>, יש להריץ את הפקודה הבאה בטרמינל:</p>
+<pre class="line-numbers"><code class="language-bash">pip install requests
+</code></pre>
+<p dir="rtl">פקודה זו תוריד ותתקין את הספרייה בפרויקט שלך.</p>
+<h3 dir="rtl">ייבוא מודולים</h3>
+<p dir="rtl">כאשר אתה רוצה להשתמש במודול בפייתון, עליך לייבא אותו:</p>
+<ol>
+<li dir="rtl"><strong>ייבוא מודול שלם</strong>:
+<pre class="line-numbers"><code class="language-python">import os
+</code></pre>
+<p dir="rtl">לאחר מכן תוכל להשתמש בכל הפונקציות והמשתנים מהמודול, לדוגמה:</p>
+<pre class="line-numbers"><code class="language-python">os.listdir()  # רשימת קבצים בספרייה
+</code></pre>
+</li>
+<li dir="rtl"><strong>ייבוא אלמנטים ספציפיים ממודול</strong>:
+<pre class="line-numbers"><code class="language-python">from math import sqrt
+</code></pre>
+<p dir="rtl">כעת ניתן להשתמש בפונקציה <code dir="ltr">sqrt</code> ללא צורך לפנות למודול <code dir="ltr">math</code>.</p>
+</li>
+<li dir="rtl"><strong>ייבוא עם כינוי</strong>:
+<pre class="line-numbers"><code class="language-python">import pandas as pd
+</code></pre>
+<p dir="rtl">במקרה זה, כדי להשתמש בפונקציות של ספריית <code dir="ltr">pandas</code>, תכתוב <code dir="ltr">pd</code>, ולא את השם המלא <code dir="ltr">pandas</code>.</p>
+</li>
+</ol>
+<h3 dir="rtl">ייבוא מודולים משלך</h3>
+<p dir="rtl">אם אתה כותב מספר קבצים בפרויקט אחד, ניתן ליצור מודולים משלך. לדוגמה, אם יש לך קובץ <code dir="ltr">utils.py</code> עם פונקציות שימושיות, תוכל לייבא אותו לקבצים אחרים כך:</p>
+<pre class="line-numbers"><code class="language-python">import utils
+</code></pre>
+<p dir="rtl">או לייבא פונקציה ספציפית:</p>
+<pre class="line-numbers"><code class="language-python">from utils import my_function
+</code></pre>
+<h3 dir="rtl">למה ליצור מודול אחד ולייבא אותו לחלקים אחרים של הפרויקט?</h3>
+<ol>
+<li dir="rtl"><strong>ארגון קוד</strong>: הפרדת לוגיקה למודולים שונים עוזרת למנוע בלאגן בפרויקט גדול. לדוגמה, ניתן ליצור מודול לעבודה עם נתונים, אחר לעיבוד בקשות, ושלישי לממשק.</li>
+<li dir="rtl"><strong>שימוש חוזר בקוד</strong>: כאשר לוגיקה מופרדת למודולים, ניתן להשתמש בה בחלקים שונים של הפרויקט. זה מפחית כפילויות קוד ומקל על תחזוקה.</li>
+<li dir="rtl"><strong>קריאות ותחזוקתיות</strong>: כאשר קוד מופרד למודולים, מפתחים אחרים (או אתה בעצמך בעתיד) יוכלו להבין ולתחזק את הפרויקט בקלות רבה יותר.</li>
+</ol>
+<p dir="rtl">דוגמה:</p>
+<pre class="line-numbers"><code class="language-python"># utils.py
+def greet(name):
+    return f"Hello, {name}!"
+    
+# main.py
+from utils import greet
+
+print(greet("Alice"))
+</code></pre>
+<p dir="rtl">בדוגמה זו, הפונקציה <code dir="ltr">greet</code> מוגדרת במודול אחד (<code dir="ltr">utils.py</code>), אך משמשת במודול אחר (<code dir="ltr">main.py</code>), מה שמשפר את המבנה והופך את הקוד למודולרי ונוח יותר לשינוי.</p>
+<hr>
+<p dir="rtl"><a href="https://github.com/hypo69/101_python_computer_games_ru/blob/master/cheat_sheets#readme">לתוכן העניינים</a></p>
