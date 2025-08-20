@@ -1,20 +1,24 @@
-<p dir="rtl"># אלגוריתמי מיון</p>
-<p dir="rtl">בחיי היומיום ובתכנות אנו נתקלים בצורך לסדר נתונים.</p>
-<p dir="rtl">זה יכול להיות כל דבר: רשימת קניות, ספרים על מדף או תוצאות חיפוש.</p>
-<p dir="rtl">אלגוריתמי מיון – זוהי קבוצת הוראות, העוזרות לנו לסדר אלמנטים בסדר מסוים, בין אם עולה,</p>
-<p dir="rtl">יורד או לפי קריטריון אחר.</p>
+<h2 dir="rtl">אלגוריתמי מיון</h2>
+<p dir="rtl">בחיי היומיום ובתכנות אנו נתקלים בצורך לסדר נתונים.
+זה יכול להיות כל דבר: רשימת קניות, ספרים על מדף או תוצאות חיפוש.
+אלגוריתמי מיון – זוהי קבוצת הוראות, העוזרות לנו לסדר אלמנטים בסדר מסוים, בין אם עולה,
+יורד או לפי קריטריון אחר.</p>
 <p dir="rtl">לדוגמה, אני משתמש בפירות בגדלים שונים.</p>
-<p dir="rtl">**ייצוג פירות עם גדלים:**</p>
-<p dir="rtl">נתאים פירות לגדלים. נשתמש בטאפלים (<span dir="ltr">tuple</span>), כאשר:</p>
-<li dir="rtl">האלמנט הראשון – זהו גודל הפרי:</li>
-<p dir="rtl">*   🍎 (קטן) – תפוח</p>
-<p dir="rtl">*   🍐 (בינוני) – אגס</p>
-<p dir="rtl">*   🍉 (גדול) – אבטיח</p>
-<p dir="rtl">*   🧺 (גדול מאוד) – סלסלה</p>
+<p dir="rtl"><strong>ייצוג פירות עם גדלים:</strong></p>
+<p dir="rtl">נתאים פירות לגדלים. נשתמש בטאפלים (tuple), כאשר:</p>
+<ul>
+<li dir="rtl">האלמנט הראשון – זהו גודל הפרי:
+<ul>
+<li dir="rtl">🍎 (קטן) – תפוח</li>
+<li dir="rtl">🍐 (בינוני) – אגס</li>
+<li dir="rtl">🍉 (גדול) – אבטיח</li>
+<li dir="rtl">🧺 (גדול מאוד) – סלסלה</li>
+</ul>
+</li>
 <li dir="rtl">האלמנט השני – זהו מזהה ייחודי, לצורך פעולת התוכנית.</li>
-<p dir="rtl">דוגמה: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>(🍎, 1)</<span dir="ltr">code</span>></<span dir="ltr">span</span>> – זהו תפוח קטן עם מזהה 1.</p>
-<pre class="line-numbers"><code class="language-python">
-from typing import List, Tuple
+</ul>
+<p dir="rtl">דוגמה: <code dir="ltr">(🍎, 1)</code> – זהו תפוח קטן עם מזהה 1.</p>
+<pre class="line-numbers"><code class="language-python">from typing import List, Tuple
 
 def compare_fruits(fruit1: Tuple[str, int], fruit2: Tuple[str, int]) -> int:
     """
@@ -37,51 +41,63 @@ def compare_fruits(fruit1: Tuple[str, int], fruit2: Tuple[str, int]) -> int:
     else: # אם הגדלים שווים, מחזיר 0
       return 0
 </code></pre>
-<p dir="rtl">**אלגוריתמי מיון (השוואה לפי גודל פרי):**</p>
-<li dir="rtl">**מיון בועות (<span dir="ltr">Bubble</span> <span dir="ltr">Sort</span>):**(בועות קלות יותר צפות מוקדם יותר)</li>
-<p dir="rtl">*   האלגוריתם משווה פירות סמוכים לפי גודל. אם פרי גדול יותר מהשכן, הוא מחליף איתו מקומות.</p>
-<p dir="rtl">*   תהליך זה חוזר על עצמו עד שכל רשימת הפירות ממוינת מהקטן לגדול.</p>
-<p dir="rtl">*   אנלוגיה: תאר לעצמך שיש לך אקווריום עם בועות אוויר בגדלים שונים. בועות קלות יותר (המתאימות לפירות קטנים יותר) יצופו אל פני השטח מוקדם יותר מבועות כבדות יותר (המתאימות לפירות גדולים יותר). כך, פירות קלים יותר "צפים" לראש הרשימה, והכבדים יותר שוקעים לתחתית.</p>
-<p dir="rtl">```<span dir="ltr">mermaid</span></p>
-<p dir="rtl"><span dir="ltr">graph</span> <span dir="ltr">TD</span></p>
-<p dir="rtl"><span dir="ltr">A</span>[התחלה] --> <span dir="ltr">B</span>{האם יש פירות לא ממוינים?};</p>
-<p dir="rtl"><span dir="ltr">B</span> -- כן --> <span dir="ltr">C</span>[השווה שני פירות סמוכים];</p>
-<p dir="rtl"><span dir="ltr">C</span> -- הראשון גדול יותר --> <span dir="ltr">D</span>[החלף מקומות];</p>
-<p dir="rtl"><span dir="ltr">D</span> --> <span dir="ltr">E</span>[עבור לזוג הבא];</p>
-<p dir="rtl"><span dir="ltr">C</span> -- הראשון לא גדול יותר --> <span dir="ltr">E</span>;</p>
-<p dir="rtl"><span dir="ltr">E</span> --> <span dir="ltr">F</span>{האם הגיע לסוף הרשימה?};</p>
-<p dir="rtl"><span dir="ltr">F</span> -- לא --> <span dir="ltr">C</span>;</p>
-<p dir="rtl"><span dir="ltr">F</span> -- כן --> <span dir="ltr">G</span>{האם הייתה החלפה?};</p>
-<p dir="rtl"><span dir="ltr">G</span> -- כן --> <span dir="ltr">B</span>;</p>
-<p dir="rtl"><span dir="ltr">G</span> -- לא --> <span dir="ltr">H</span>[סיום];</p>
-<p dir="rtl"><span dir="ltr">B</span> -- לא --> <span dir="ltr">H</span>;</p>
-<p dir="rtl"><span dir="ltr">H</span>[סיום]</p>
-<p dir="rtl">```</p>
-<p dir="rtl">```<span dir="ltr">python</span></p>
-<p dir="rtl"><span dir="ltr">def</span> <span dir="ltr">bubble_sort(fruits</span>: <span dir="ltr">List</span>[<span dir="ltr">Tuple</span>[<span dir="ltr">str</span>, <span dir="ltr">int</span>]]) -> <span dir="ltr">List</span>[<span dir="ltr">Tuple</span>[<span dir="ltr">str</span>, <span dir="ltr">int</span>]]:</p>
-<p dir="rtl">"""</p>
-<p dir="rtl">ממיין רשימת פירות לפי גודל, באמצעות אלגוריתם "מיון בועות".</p>
-<p dir="rtl"><span dir="ltr">Args</span>:</p>
-<p dir="rtl"><span dir="ltr">fruits</span>: רשימת טאפלים (גודל, מזהה).</p>
-<p dir="rtl"><span dir="ltr">Returns</span>:</p>
-<p dir="rtl">רשימת טאפלים ממוינת.</p>
-<p dir="rtl">"""</p>
-<p dir="rtl"><span dir="ltr">n</span> = <span dir="ltr">len(fruits</span>)  # מקבל את מספר הפירות</p>
-<p dir="rtl"><span dir="ltr">for</span> <span dir="ltr">i</span> <span dir="ltr">in</span> <span dir="ltr">range(n</span>):  # עובר על הרשימה <span dir="ltr">n</span> פעמים</p>
-<p dir="rtl"><span dir="ltr">for</span> <span dir="ltr">j</span> <span dir="ltr">in</span> <span dir="ltr">range(0</span>, <span dir="ltr">n</span> - <span dir="ltr">i</span> - 1):  # עובר על החלק הלא ממוין של הרשימה</p>
-<p dir="rtl"><span dir="ltr">if</span> <span dir="ltr">compare_fruits(fruits</span>[<span dir="ltr">j</span>], <span dir="ltr">fruits</span>[<span dir="ltr">j</span> + 1]) == 1:  # אם הפרי משמאל גדול יותר מהפרי מימין</p>
-<p dir="rtl"><span dir="ltr">fruits</span>[<span dir="ltr">j</span>], <span dir="ltr">fruits</span>[<span dir="ltr">j</span> + 1] = <span dir="ltr">fruits</span>[<span dir="ltr">j</span> + 1], <span dir="ltr">fruits</span>[<span dir="ltr">j</span>]  # מחליף מקומות</p>
-<p dir="rtl"><span dir="ltr">return</span> <span dir="ltr">fruits</span></p>
-<p dir="rtl">```</p>
-<li dir="rtl">**מיון הכנסה (<span dir="ltr">Insertion</span> <span dir="ltr">Sort</span>):**</li>
-<p dir="rtl">*   האלגוריתם בונה רשימה ממוינת, על ידי הוספת פירות אחד אחד. פרי חדש מוכנס למקום הנכון, כדי לשמור על הסדר לפי גודל.</p>
-<p dir="rtl">*   מיון הכנסה טוב לרשימות קטנות או לאלו שבהן הנתונים כבר כמעט ממוינים.</p>
-<li dir="rtl">**מיון בחירה (<span dir="ltr">Selection</span> <span dir="ltr">Sort</span>):**</li>
-<p dir="rtl">*   האלגוריתם מוצא את הפרי הקטן ביותר בחלק הלא ממוין של הרשימה. לאחר מכן הוא מציב את הפרי הזה במקום הראשון בחלק הלא ממוין של הרשימה.</p>
-<p dir="rtl">*   תהליך זה חוזר על עצמו עד שכל הפירות ממוינים.</p>
-<p dir="rtl">*   מיון בחירה פשוט, אך לא יעיל לרשימות גדולות.</p>
-<pre class="line-numbers"><code class="language-python">
-def insertion_sort(fruits: List[Tuple[str, int]]) -> List[Tuple[str, int]]:
+<p dir="rtl"><strong>אלגוריתמי מיון (השוואה לפי גודל פרי):</strong></p>
+<ol>
+<li dir="rtl"><strong>מיון בועות (Bubble Sort):</strong>(בועות קלות יותר צפות מוקדם יותר)
+<ul>
+<li dir="rtl">האלגוריתם משווה פירות סמוכים לפי גודל. אם פרי גדול יותר מהשכן, הוא מחליף איתו מקומות.</li>
+<li dir="rtl">תהליך זה חוזר על עצמו עד שכל רשימת הפירות ממוינת מהקטן לגדול.</li>
+<li dir="rtl">אנלוגיה: תאר לעצמך שיש לך אקווריום עם בועות אוויר בגדלים שונים. בועות קלות יותר (המתאימות לפירות קטנים יותר) יצופו אל פני השטח מוקדם יותר מבועות כבדות יותר (המתאימות לפירות גדולים יותר). כך, פירות קלים יותר "צפים" לראש הרשימה, והכבדים יותר שוקעים לתחתית.</li>
+</ul>
+</li>
+</ol>
+<pre class="line-numbers"><code class="language-mermaid">graph TD
+    A[התחלה] --> B{האם יש פירות לא ממוינים?};
+    B -- כן --> C[השווה שני פירות סמוכים];
+    C -- הראשון גדול יותר --> D[החלף מקומות];
+    D --> E[עבור לזוג הבא];
+    C -- הראשון לא גדול יותר --> E;
+    E --> F{האם הגיע לסוף הרשימה?};
+    F -- לא --> C;
+    F -- כן --> G{האם הייתה החלפה?};
+    G -- כן --> B;
+    G -- לא --> H[סיום];
+    B -- לא --> H;
+    H[סיום]
+</code></pre>
+<pre class="line-numbers"><code class="language-python">def bubble_sort(fruits: List[Tuple[str, int]]) -> List[Tuple[str, int]]:
+    """
+    ממיין רשימת פירות לפי גודל, באמצעות אלגוריתם "מיון בועות".
+
+    Args:
+        fruits: רשימת טאפלים (גודל, מזהה).
+
+    Returns:
+        רשימת טאפלים ממוינת.
+    """
+    n = len(fruits)  # מקבל את מספר הפירות
+    for i in range(n):  # עובר על הרשימה n פעמים
+        for j in range(0, n - i - 1):  # עובר על החלק הלא ממוין של הרשימה
+            if compare_fruits(fruits[j], fruits[j + 1]) == 1:  # אם הפרי משמאל גדול יותר מהפרי מימין
+                fruits[j], fruits[j + 1] = fruits[j + 1], fruits[j]  # מחליף מקומות
+    return fruits
+</code></pre>
+<ol start="2">
+<li dir="rtl"><strong>מיון הכנסה (Insertion Sort):</strong>
+<ul>
+<li dir="rtl">האלגוריתם בונה רשימה ממוינת, על ידי הוספת פירות אחד אחד. פרי חדש מוכנס למקום הנכון, כדי לשמור על הסדר לפי גודל.</li>
+<li dir="rtl">מיון הכנסה טוב לרשימות קטנות או לאלו שבהן הנתונים כבר כמעט ממוינים.</li>
+</ul>
+</li>
+<li dir="rtl"><strong>מיון בחירה (Selection Sort):</strong>
+<ul>
+<li dir="rtl">האלגוריתם מוצא את הפרי הקטן ביותר בחלק הלא ממוין של הרשימה. לאחר מכן הוא מציב את הפרי הזה במקום הראשון בחלק הלא ממוין של הרשימה.</li>
+<li dir="rtl">תהליך זה חוזר על עצמו עד שכל הפירות ממוינים.</li>
+<li dir="rtl">מיון בחירה פשוט, אך לא יעיל לרשימות גדולות.</li>
+</ul>
+</li>
+</ol>
+<pre class="line-numbers"><code class="language-python">def insertion_sort(fruits: List[Tuple[str, int]]) -> List[Tuple[str, int]]:
     """
     ממיין רשימת פירות לפי גודל, באמצעות אלגוריתם "מיון הכנסה".
 
@@ -153,10 +169,12 @@ print("מיון הכנסה: " + display_fruits(sorted_fruits_insertion)) # מד�
 sorted_fruits_selection = selection_sort(fruits.copy()) # ממיין עותק של הרשימה
 print("מיון בחירה: " + display_fruits(sorted_fruits_selection)) # מדפיס את התוצאה
 </code></pre>
-<p dir="rtl">**הסבר קוד:**</p>
-<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">compare_fruits(fruit1</span>, <span dir="ltr">fruit2</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** פונקציה זו משווה שני פירות לפי גודל ומחזירה -1 אם הפרי הראשון קטן יותר, 1 אם גדול יותר, ו-0 אם הם שווים. אני משתמש במילון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">order</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> כדי להגדיר את סדר גודל הפירות.</li>
-<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">bubble_sort(fruits</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** אני מיישם את אלגוריתם מיון בועות, שבו פירות סמוכים מושווים ומוחלפים אם הם בסדר שגוי.</li>
-<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">insertion_sort(fruits</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** אני מיישם את אלגוריתם מיון הכנסה, שבו כל פרי חדש מוכנס למקום הנכון בחלק הממוין כבר של הרשימה.</li>
-<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">selection_sort(fruits</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** אני מיישם את אלגוריתם מיון בחירה, שבו בכל מעבר אני מוצא את הפרי הקטן ביותר ומציב אותו במקום הנכון.</li>
-<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">display_fruits(fruits</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** פונקציה זו ממירה רשימת פירות למחרוזת לצורך פלט נוח.</li>
-<li dir="rtl">**דוגמאות:** בסוף, אני יוצר רשימת פירות ומיישם עליה את כל שלושת אלגוריתמי המיון, ומדפיס את תוצאות כל אחד מהם. אני גם מראה לך את הסדר שבו הפירות ממוינים.</li>
+<p dir="rtl"><strong>הסבר קוד:</strong></p>
+<ol>
+<li dir="rtl"><strong><code dir="ltr">compare_fruits(fruit1, fruit2)</code>:</strong> פונקציה זו משווה שני פירות לפי גודל ומחזירה -1 אם הפרי הראשון קטן יותר, 1 אם גדול יותר, ו-0 אם הם שווים. אני משתמש במילון <code dir="ltr">order</code> כדי להגדיר את סדר גודל הפירות.</li>
+<li dir="rtl"><strong><code dir="ltr">bubble_sort(fruits)</code>:</strong> אני מיישם את אלגוריתם מיון בועות, שבו פירות סמוכים מושווים ומוחלפים אם הם בסדר שגוי.</li>
+<li dir="rtl"><strong><code dir="ltr">insertion_sort(fruits)</code>:</strong> אני מיישם את אלגוריתם מיון הכנסה, שבו כל פרי חדש מוכנס למקום הנכון בחלק הממוין כבר של הרשימה.</li>
+<li dir="rtl"><strong><code dir="ltr">selection_sort(fruits)</code>:</strong> אני מיישם את אלגוריתם מיון בחירה, שבו בכל מעבר אני מוצא את הפרי הקטן ביותר ומציב אותו במקום הנכון.</li>
+<li dir="rtl"><strong><code dir="ltr">display_fruits(fruits)</code>:</strong> פונקציה זו ממירה רשימת פירות למחרוזת לצורך פלט נוח.</li>
+<li dir="rtl"><strong>דוגמאות:</strong> בסוף, אני יוצר רשימת פירות ומיישם עליה את כל שלושת אלגוריתמי המיון, ומדפיס את תוצאות כל אחד מהם. אני גם מראה לך את הסדר שבו הפירות ממוינים.</li>
+</ol>
