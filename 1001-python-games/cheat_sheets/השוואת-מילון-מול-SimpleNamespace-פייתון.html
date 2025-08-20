@@ -1,0 +1,122 @@
+<p dir="rtl">השוואת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ו-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> בפייתון. תכונות, יתרונות, מתי עדיף להשתמש בכל אחד מהם.</p>
+<p dir="rtl">שניהם מאפשרים לאחסן נתונים בעלי שם, אך עושים זאת בדרכים שונות, ולכל אחד מהם מאפיינים משלו.</p>
+<p dir="rtl">**1. מילונים (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>)**</p>
+<li dir="rtl">**הגדרה:** **מילון בפייתון** – זוהי מבנה נתונים המאחסן זוגות "מפתח-ערך". מפתחות חייבים להיות טיפוסי נתונים בלתי ניתנים לשינוי (לדוגמה, מחרוזות, מספרים, טאפלים), והערכים יכולים להיות כל דבר.</li>
+<li dir="rtl">**יצירה:** מילונים נוצרים באמצעות סוגריים מסולסלים <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>{}</<span dir="ltr">code</span>></<span dir="ltr">span</span>> או הפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">dict</span>()</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</li>
+<li dir="rtl">**גישה לערכים:** ערכים נגישים לפי מפתח באמצעות סוגריים מרובעים <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>[]</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</li>
+<li dir="rtl">**שינוי:** ניתן לשנות ערכים, להוסיף זוגות "מפתח-ערך" חדשים ולמחוק קיימים.</li>
+<li dir="rtl">**דוגמה:**</li>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">my_dict</span> = {</p>
+<p dir="rtl">"<span dir="ltr">name</span>": "אליס",</p>
+<p dir="rtl">"<span dir="ltr">age</span>": 30,</p>
+<p dir="rtl">"<span dir="ltr">city</span>": "ניו יורק"</p>
+<p dir="rtl">}</p>
+<p dir="rtl"><span dir="ltr">print(my_dict</span>["<span dir="ltr">name</span>"])  # יוציא "אליס"</p>
+<p dir="rtl"><span dir="ltr">my_dict</span>["<span dir="ltr">age</span>"] = 31 # משנה ערך</p>
+<p dir="rtl"><span dir="ltr">print(my_dict</span>["<span dir="ltr">age</span>"]) # יוציא 31</p>
+<p dir="rtl"><span dir="ltr">my_dict</span>["<span dir="ltr">occupation</span>"] = "מהנדס" # מוסיף ערך חדש</p>
+<p dir="rtl"><span dir="ltr">print(my_dict</span>)</p>
+<p dir="rtl"><span dir="ltr">del</span> <span dir="ltr">my_dict</span>["<span dir="ltr">city</span>"] # מוחק ערך</p>
+<p dir="rtl"><span dir="ltr">print(my_dict</span>)</p>
+<p dir="rtl">```</p>
+<p dir="rtl">**2. <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</p>
+<li dir="rtl">**<span dir="ltr">SimpleNamespace</span>** – זוהי מחלקה פשוטה מהמודול <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">types</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, המאפשרת לגשת לערכים כתכונות אובייקט. היא טובה לאחסון והעברת קבוצת נתונים.</li>
+<li dir="rtl">**יצירה:** <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> נוצרת באמצעות הפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">SimpleNamespace</span>()</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>> והעברת ארגומנטים בעלי שם.</li>
+<li dir="rtl">**גישה לערכים:** ערכים נגישים כתכונות אובייקט באמצעות סימון נקודה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>.</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</li>
+<li dir="rtl">**שינוי:** ניתן לשנות ערכים, להוסיף תכונות חדשות ולמחוק קיימות.</li>
+<li dir="rtl">**דוגמה:**</li>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">from</span> <span dir="ltr">types</span> <span dir="ltr">import</span> <span dir="ltr">SimpleNamespace</span></p>
+<p dir="rtl"><span dir="ltr">my_namespace</span> = <span dir="ltr">SimpleNamespace</span>(</p>
+<p dir="rtl"><span dir="ltr">name</span>="בוב",</p>
+<p dir="rtl"><span dir="ltr">age</span>=25,</p>
+<p dir="rtl"><span dir="ltr">city</span>="לונדון"</p>
+<p dir="rtl">)</p>
+<p dir="rtl"><span dir="ltr">print(my_namespace.name</span>)  # יוציא "בוב"</p>
+<p dir="rtl"><span dir="ltr">my_namespace.age</span> = 26 # משנה ערך</p>
+<p dir="rtl"><span dir="ltr">print(my_namespace.age</span>) # יוציא 26</p>
+<p dir="rtl"><span dir="ltr">my_namespace.occupation</span> = "רופא" # מוסיף ערך חדש</p>
+<p dir="rtl"><span dir="ltr">print(my_namespace</span>)</p>
+<p dir="rtl"><span dir="ltr">del</span> <span dir="ltr">my_namespace.city</span> # מוחק ערך</p>
+<p dir="rtl"><span dir="ltr">print(my_namespace</span>)</p>
+<p dir="rtl">```</p>
+<p dir="rtl">**השוואת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ו-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</p>
+<p dir="rtl">| מאפיין        | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                             | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                      |</p>
+<p dir="rtl">| :-------------------- | :--------------------------------- | :------------------------------------- |</p>
+<p dir="rtl">| **גישה לערכים** | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_dict</span>["<span dir="ltr">key</span>"]</<span dir="ltr">code</span>></<span dir="ltr">span</span>>                   | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_namespace.attribute</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>             |</p>
+<p dir="rtl">| **יצירה**          | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>{}</<span dir="ltr">code</span>></<span dir="ltr">span</span>> או <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">dict</span>()</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                   | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">SimpleNamespace</span>()</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                   |</p>
+<p dir="rtl">| **מפתחות/תכונות**    | מפתחות - כל אובייקט בלתי ניתן לשינוי | תכונות - מחרוזות, כמו אובייקטים רגילים     |</p>
+<p dir="rtl">| **מוטביליות**    | מוטבילי (ניתן לשינוי)            | מוטבילי (ניתן לשינוי)             |</p>
+<p dir="rtl">| **נוחות** |  גמיש, מאפשר איטרציה על מפתחות וערכים, שימוש דינמי במפתחות        |  נוח לגישה פשוטה לערכים כתכונות, כמו אובייקטים רגילים                    |</p>
+<p dir="rtl">| **מטרה**    | אחסון ועיבוד נתונים        | אחסון והעברת נתונים כתכונות |</p>
+<p dir="rtl">**מתי להשתמש במה?**</p>
+<li dir="rtl">**מילונים (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>):**</li>
+<p dir="rtl">*   כאשר יש לך מפתחות דינמיים (לדוגמה, כאשר מפתחות מגיעים ממקורות חיצוניים או נוצרים במהלך הריצה).</p>
+<p dir="rtl">*   כאשר אתה צריך להשתמש בשיטות מילון לעיבוד ואיטרציה של נתונים.</p>
+<p dir="rtl">*   כאשר אתה עובד עם נתונים שבהם שמות המפתחות יכולים להיות כל דבר.</p>
+<p dir="rtl">*   כאשר אתה צריך גמישות ודינמיות.</p>
+<p dir="rtl">*   כאשר אתה צריך מפתחות שאינם מחרוזות.</p>
+<li dir="rtl"><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>**<span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>:**</li>
+<p dir="rtl">*   כאשר אתה צריך ליצור אובייקט לאחסון נתונים ולגשת אליהם כתכונות.</p>
+<p dir="rtl">*   כאשר יש לך קבוצה מוגדרת מראש של תכונות.</p>
+<p dir="rtl">*   כאשר אתה רוצה שהקוד יהיה קריא יותר בעת גישה לתכונות (באמצעות סימון נקודה במקום סוגריים מרובעים).</p>
+<p dir="rtl">*   כאשר אתה מעביר נתונים לפונקציות או מודולים אחרים ורוצה לעשות זאת כאובייקט.</p>
+<p dir="rtl">**הבדלים בין <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ל-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</p>
+<p dir="rtl">| מאפיין        | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                                                                    | <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                                                                                             |</p>
+<p dir="rtl">| :-------------------- | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |</p>
+<p dir="rtl">| **מבנה**         | מאחסן זוגות "מפתח-ערך"                                                 | מאחסן ערכים כתכונות אובייקט                                                                         |</p>
+<p dir="rtl">| **גישה לערכים** | משתמש בסוגריים מרובעים <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>[]</<span dir="ltr">code</span>></<span dir="ltr">span</span>> ומפתח: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_dict</span>["<span dir="ltr">key</span>"]</<span dir="ltr">code</span>></<span dir="ltr">span</span>>                 | משתמש בסימון נקודה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>.</<span dir="ltr">code</span>></<span dir="ltr">span</span>>: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_namespace.attribute</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>                                                     |</p>
+<p dir="rtl">| **מפתחות/תכונות**    | מפתחות יכולים להיות כל אובייקט *בלתי ניתן לשינוי* (מחרוזות, מספרים, טאפלים)    | תכונות חייבות להיות מחרוזות, כמו שמות משתנים, אך הן למעשה מפתחות מילון בצורת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>.<span dir="ltr">attr</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> |</p>
+<p dir="rtl">| **גמישות**          | גמיש מאוד, תומך בשיטות רבות (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">keys</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">values</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">items</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>) | פחות גמיש, אין סט גדול של שיטות מובנות                                                          |</p>
+<p dir="rtl">| **מטרה**     | אחסון ועיבוד נתונים שרירותיים                                   | אחסון והעברת נתונים *בעלי שם* כאובייקט, לעיתים קרובות עם מבנה מוגדר מראש                 |</p>
+<p dir="rtl">| **ייצוג**        | ייצוג מחרוזתי הוא <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>{"<span dir="ltr">key</span>": "<span dir="ltr">value</span>"}</<span dir="ltr">code</span>></<span dir="ltr">span</span>>   | ייצוג מחרוזתי הוא  <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">namespace(attr</span>="<span dir="ltr">value</span>")</<span dir="ltr">code</span>></<span dir="ltr">span</span>>                        |</p>
+<p dir="rtl">**יתרונות <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</p>
+<li dir="rtl">**גמישות מפתחות:** מפתחות מילון יכולים להיות כל טיפוס נתונים בלתי ניתן לשינוי (מחרוזות, מספרים, טאפלים). זה מאפשר ליצור מילונים עם מבנה מורכב, שבהם מפתחות יכולים להיות, לדוגמה, קואורדינטות של נקודות או אובייקטים מורכבים אחרים.</li>
+<li dir="rtl">**שיטות רבות:** מילונים מספקים סט עשיר של שיטות מובנות לעבודה עם נתונים:</li>
+<p dir="rtl">*   <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">keys</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>: מחזיר את כל המפתחות במילון.</p>
+<p dir="rtl">*   <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">values</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>: מחזיר את כל הערכים במילון.</p>
+<p dir="rtl">*   <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">items</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>: מחזיר את כל זוגות "מפתח-ערך" כטאפלים.</p>
+<p dir="rtl">*   <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">get</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>: מחזיר את הערך עבור מפתח או ערך ברירת מחדל אם המפתח אינו נמצא.</p>
+<p dir="rtl">*   <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">pop</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>: מסיר אלמנט לפי מפתח ומחזיר את ערכו.</p>
+<p dir="rtl">*   ורבים אחרים.</p>
+<li dir="rtl">**יצירה דינמית:** מילונים ניתנים להרחבה בקלות, על ידי הוספת זוגות "מפתח-ערך" חדשים במהלך ביצוע התוכנית.</li>
+<li dir="rtl">**איטרציה:** ניתן לבצע איטרציה על מילונים בנוחות: לפי מפתחות, לפי ערכים או לפי זוגות מפתח-ערך.</li>
+<li dir="rtl">**נוח ל-<span dir="ltr">JSON</span>:** למילונים יש ייצוג נוח לעבודה עם נתוני <span dir="ltr">JSON</span>.</li>
+<p dir="rtl">**יתרונות <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</p>
+<li dir="rtl">**גישה לתכונות באמצעות סימון נקודה:** גישה לערכים באמצעות סימון נקודה (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_namespace.attribute</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>) קריאה ונוחה יותר מאשר שימוש בסוגריים מרובעים ומפתחות (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_dict</span>["<span dir="ltr">key</span>"]</<span dir="ltr">code</span>></<span dir="ltr">span</span>>). זה הופך את הקוד לדומה יותר לעבודה עם אובייקטים רגילים.</li>
+<li dir="rtl">**נוחות בהעברת נתונים:** <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> נוחה לשימוש להעברת נתונים לפונקציות או מודולים כאשר יש צורך להעביר קבוצה של ערכים בעלי שם קשורים. ניתן להעביר אובייקט יחיד במקום מספר משתנים.</li>
+<li dir="rtl">**פשטות יצירה:** <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> קלה ליצירה על ידי העברת ארגומנטים בעלי שם: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">SimpleNamespace(name</span>="אליס", <span dir="ltr">age</span>=30)</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</li>
+<li dir="rtl">**פחות קוד:** לגישה פשוטה לערכים כתכונות אובייקט, שימוש ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> עשוי לדרוש פחות קוד מאשר עבודה עם מילונים.</li>
+<li dir="rtl">**מבנה צפוי:** בניגוד למילון, <span dir="ltr">SimpleNamespace</span> יוצר אובייקט עם תכונות ספציפיות.</li>
+<p dir="rtl">**מתי להשתמש במה:**</p>
+<li dir="rtl">**השתמש ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> כאשר:**</li>
+<p dir="rtl">*   יש לך קבוצה דינמית של מפתחות שעשויה להשתנות במהלך ביצוע התוכנית.</p>
+<p dir="rtl">*   אתה צריך להשתמש בשיטות מילון לעיבוד ואיטרציה של נתונים.</p>
+<p dir="rtl">*   אתה עובד עם נתונים בפורמט "מפתח-ערך".</p>
+<p dir="rtl">*   אתה צריך גמישות ודינמיות.</p>
+<p dir="rtl">*   אתה צריך מפתחות שאינם מחרוזות.</p>
+<li dir="rtl">**השתמש ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> כאשר:**</li>
+<p dir="rtl">*   יש לך קבוצה מוגדרת מראש של ערכים בעלי שם (תכונות).</p>
+<p dir="rtl">*   אתה צריך להעביר קבוצת נתונים כאובייקט.</p>
+<p dir="rtl">*   אתה צריך סימון נקודה קריא יותר לגישה לערכים.</p>
+<p dir="rtl">*   אתה צריך פשטות ונוחות ביצירת אובייקטים לאחסון נתונים.</p>
+<p dir="rtl">*   כאשר מבנה הנתונים לא אמור להשתנות באופן דינמי.</p>
+<p dir="rtl">**דוגמה:**</p>
+<p dir="rtl">יש לך פונקציה שמקבלת נתוני משתמש.</p>
+<pre class="line-numbers"><code class="language-python">
+from types import SimpleNamespace
+
+def process_user_data_with_dict(user_data: dict):
+    print(f"משתמש: {user_data.get('name', 'Unknown')}, גיל: {user_data.get('age', 'Unknown')}")
+
+def process_user_data_with_namespace(user_data: SimpleNamespace):
+     print(f"משתמש: {user_data.name}, גיל: {user_data.age}")
+
+user_dict = {"name": "אליס", "age": 30}
+user_namespace = SimpleNamespace(name="בוב", age=25)
+
+process_user_data_with_dict(user_dict)
+process_user_data_with_namespace(user_namespace)
+</code></pre>
+<p dir="rtl">בדוגמה זו, עבור <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> אנו משתמשים בשיטה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">get</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> כדי לאחזר ערכים, עם ערך מוגדר מראש אם המפתח אינו נמצא. עבור <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SimpleNamespace</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> אנו ניגשים לתכונות ישירות, וזה קריא יותר.</p>

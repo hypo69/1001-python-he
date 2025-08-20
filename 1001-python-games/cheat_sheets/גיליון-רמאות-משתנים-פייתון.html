@@ -1,0 +1,78 @@
+<p dir="rtl">**משתנים בפייתון: מהם ולמה הם נחוצים**</p>
+<p dir="rtl">משתנים — הם מיכלים בעלי שם לאחסון נתונים בזיכרון המחשב. הם מאפשרים לגשת לנתונים לפי שם, במקום להשתמש בהם ישירות.</p>
+<p dir="rtl">דוגמה:</p>
+<pre class="line-numbers"><code class="language-python">
+x = 10
+y = 'שלום, עולם!'
+</code></pre>
+<p dir="rtl">כאן <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">x</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ו-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">y</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> — משתנים. <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">x</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> מאחסן את המספר 10, ו-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">y</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> — את המחרוזת 'שלום, עולם!'.</p>
+<h3 dir="rtl">**כיצד פועלים משתנים בפייתון?**</h3>
+<li dir="rtl">**טיפוס דינמי**:</li>
+<p dir="rtl">בפייתון אין צורך לציין את טיפוס המשתנה בעת יצירתו — זה נעשה אוטומטית. לדוגמה:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">a</span> = 42      # מספר שלם (<span dir="ltr">int</span>)</p>
+<p dir="rtl"><span dir="ltr">b</span> = 3.14    # מספר נקודה צפה (<span dir="ltr">float</span>)</p>
+<p dir="rtl"><span dir="ltr">c</span> = 'טקסט' # מחרוזת (<span dir="ltr">str</span>)</p>
+<p dir="rtl">```</p>
+<li dir="rtl">**מודל אחסון נתונים מבוסס הפניה**:</li>
+<p dir="rtl">משתנים בפייתון — הם הפניות לאובייקטים בזיכרון. לדוגמה:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">x</span> = 5</p>
+<p dir="rtl"><span dir="ltr">y</span> = <span dir="ltr">x</span>  # <span dir="ltr">y</span> כעת גם מצביע על אובייקט 5</p>
+<p dir="rtl"><span dir="ltr">x</span> = 10 # <span dir="ltr">x</span> כעת מצביע על אובייקט אחר 10, ו-<span dir="ltr">y</span> עדיין מצביע על 5</p>
+<p dir="rtl">```</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">**כללי מתן שמות למשתנים**</h3>
+<li dir="rtl">**כללים מחייבים**:</li>
+<p dir="rtl">- שם משתנה יכול להכיל אותיות, ספרות וסימן <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>_</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, אך אינו יכול להתחיל בספרה.</p>
+<p dir="rtl">✅ דוגמאות: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my_var</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>_data</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">var123</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">❌ לא נכון: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>123var</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">my</span>-<span dir="ltr">var</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- שם משתנה רגיש לאותיות רישיות/קטנות.</p>
+<p dir="rtl">דוגמה: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">age</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ו-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Age</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> — הם משתנים שונים.</p>
+<li dir="rtl">**המלצות לשמות משמעותיים**:</li>
+<p dir="rtl">- השתמש בשמות המשקפים את מהות הנתונים.</p>
+<p dir="rtl">❌ גרוע: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">a</span> = 100</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">b</span> = 'שם'</<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">✅ טוב: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">salary</span> = 100</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">username</span> = 'שם'</<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- לשמות מרובי מילים, השתמש בסגנון **<span dir="ltr">snake_case</span>**:</p>
+<p dir="rtl">דוגמה: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">user_age</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">total_cost</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<li dir="rtl">**מילים שמורות**:</li>
+<p dir="rtl">אסור להשתמש במילות מפתח של פייתון (לדוגמה, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">if</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">for</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">while</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>) כשמות משתנים.</p>
+<p dir="rtl">כדי לראות רשימת מילות מפתח, הרץ:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">import</span> <span dir="ltr">keyword</span></p>
+<p dir="rtl"><span dir="ltr">print(keyword.kwlist</span>)</p>
+<p dir="rtl">```</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">**מאפייני אחסון טיפוסי נתונים**</h3>
+<li dir="rtl">**טיפוסי נתונים בפייתון**:</li>
+<p dir="rtl">- **מספרים**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">int</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">float</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">complex</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- **מחרוזות**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">str</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- **רשימות**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">list</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- **טאפלים**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">tuple</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- **קבוצות**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">set</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">- **מילונים**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<li dir="rtl">**טיפוסים ניתנים לשינוי ובלתי ניתנים לשינוי**:</li>
+<p dir="rtl">- **ניתנים לשינוי**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">list</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">dict</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">set</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">דוגמה:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">lst</span> = [1, 2, 3]</p>
+<p dir="rtl"><span dir="ltr">lst.append(4</span>)  # הרשימה השתנתה</p>
+<p dir="rtl">```</p>
+<p dir="rtl">- **בלתי ניתנים לשינוי**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">int</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">float</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">str</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">tuple</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">דוגמה:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">name</span> = 'אליס'</p>
+<p dir="rtl"><span dir="ltr">name</span>[0] = '<span dir="ltr">B</span>'  # שגיאה, מחרוזות בלתי ניתנות לשינוי</p>
+<p dir="rtl">```</p>
+<li dir="rtl">**פונקציית <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">type</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> לבדיקת טיפוס**:</li>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">x</span> = 10</p>
+<p dir="rtl"><span dir="ltr">print(type(x</span>))  # <<span dir="ltr">class</span> '<span dir="ltr">int</span>'></p>
+<p dir="rtl">```</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">**טיפים למתחילים**</h3>
+<li dir="rtl">השתמש בשמות משתנים משמעותיים כדי שהקוד שלך יהיה מובן.</li>
+<li dir="rtl">זכור שפייתון אינה דורשת הצהרת טיפוס משתנה, אך היזהר לא להתבלבל עם טיפוסי נתונים.</li>
+<li dir="rtl">למד פונקציות מובנות לעבודה עם משתנים, כגון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">type</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">id</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>> ומודולים, כגון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">sys</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, כדי להבין טוב יותר כיצד פייתון מנהלת זיכרון.</li>
+<p dir="rtl">---</p>
+<p dir="rtl">[לתוכן העניינים](<span dir="ltr">https</span>://<span dir="ltr">github.com</span>/<span dir="ltr">hypo69</span>/101_python_computer_games_ru/<span dir="ltr">blob</span>/<span dir="ltr">master</span>/<span dir="ltr">cheat_sheets</span>#<span dir="ltr">readme</span>)</p>

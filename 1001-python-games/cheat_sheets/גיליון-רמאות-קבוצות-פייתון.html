@@ -1,0 +1,124 @@
+<p dir="rtl"># קבוצות (סטים) בפייתון</p>
+<p dir="rtl">**1. מבוא: מהן קבוצות?**</p>
+<p dir="rtl">במדעי המחשב ובמתמטיקה, קבוצות – זוהי דרך לייצג אוספים של אלמנטים ייחודיים. חשוב להבין ש:</p>
+<li dir="rtl">**ייחודיות:** כל אלמנט בקבוצה חייב להיות ייחודי. חזרות אינן מותרות.</li>
+<li dir="rtl">**אי-סדר:** סדר האלמנטים בקבוצה אינו חשוב.</li>
+<p dir="rtl">**2. קבוצות ופירות**</p>
+<p dir="rtl">נדמיין שיש לנו רק את הפירות עצמם:</p>
+<li dir="rtl">🍎 (תפוח)</li>
+<li dir="rtl">🍐 (אגס)</li>
+<li dir="rtl">🍉 (אבטיח)</li>
+<li dir="rtl">🧺 (סלסלה)</li>
+<p dir="rtl">חשוב ש:</p>
+<li dir="rtl">**בסט *אין* פירות זהים:** אם בסט יש תפוח, לא יהיה שם תפוח זהה נוסף. כל פרי ייחודי בסט שלו.</li>
+<li dir="rtl">**סדר הפירות אינו חשוב:** אם בסט יש תפוח ואגס, זה אותו דבר כאילו היו שם אגס ותפוח. הסדר אינו משנה.</li>
+<p dir="rtl">לדוגמה, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>{🍎, 🍐, 🍉}</<span dir="ltr">code</span>></<span dir="ltr">span</span>> — זוהי קבוצה, שבה יש תפוח, אגס ואבטיח.</p>
+<p dir="rtl">**3. מדוע קבוצות דורשות ייחודיות של אלמנטים?**</p>
+<li dir="rtl">קבוצות מיועדות למעקב אחר *נוכחות* אלמנטים, ולא אחר *כמותם*.</li>
+<li dir="rtl">ייחודיות האלמנטים מפשטת את ביצוע הפעולות על קבוצות.</li>
+<li dir="rtl">קבוצות משמשות למניעת יתירות נתונים.</li>
+<p dir="rtl">**4. פעולות על קבוצות (סטים של פירות):**</p>
+<li dir="rtl">**איחוד (<span dir="ltr">Union</span>): "אוספים את כל הפירות לסט אחד"**</li>
+<p dir="rtl">*   מאחדים שני סטים של פירות, אוספים את כל הפירות לסט חדש. אם בשני הסטים יש פירות זהים, בסט החדש יהיה רק פרי אחד כזה.</p>
+<p dir="rtl">*   אם בסט <span dir="ltr">A</span> יש {🍎, 🍐}, ובסט <span dir="ltr">B</span> יש {🍐, 🍉}, אז בסט <span dir="ltr">A</span> ∪ <span dir="ltr">B</span> יהיה {🍎, 🍐, 🍉}.</p>
+<li dir="rtl">**חיתוך (<span dir="ltr">Intersection</span>): "מוצאים פירות משותפים"**</li>
+<p dir="rtl">*   מחפשים *רק* את הפירות שנמצאים גם בסט <span dir="ltr">A</span> וגם בסט <span dir="ltr">B</span>.</p>
+<p dir="rtl">*   אם בסט <span dir="ltr">A</span> יש {🍎, 🍐}, ובסט <span dir="ltr">B</span> יש {🍐, 🍉}, אז בסט <span dir="ltr">A</span> ∩ <span dir="ltr">B</span> יהיה רק {🍐}.</p>
+<li dir="rtl">**הפרש (<span dir="ltr">Difference</span>): "פירות שנמצאים בסט אחד, אך לא באחר"**</li>
+<p dir="rtl">*   מחפשים *רק* את הפירות שנמצאים בסט <span dir="ltr">A</span>, אך אינם נמצאים בסט <span dir="ltr">B</span>.</p>
+<p dir="rtl">*   אם בסט <span dir="ltr">A</span> יש {🍎, 🍐}, ובסט <span dir="ltr">B</span> יש {🍐, 🍉}, אז בסט <span dir="ltr">A</span> - <span dir="ltr">B</span> יהיה {🍎}, ובסט <span dir="ltr">B</span> - <span dir="ltr">A</span> יהיה {🍉}.</p>
+<li dir="rtl">**הפרש סימטרי (<span dir="ltr">Symmetric</span> <span dir="ltr">Difference</span>): "פירות שנמצאים רק באחד מהסטים"**</li>
+<p dir="rtl">*   מחפשים *את כל* הפירות שנמצאים בסט <span dir="ltr">A</span> או בסט <span dir="ltr">B</span>, אך לא בשניהם בו זמנית.</p>
+<p dir="rtl">*   אם בסט <span dir="ltr">A</span> יש {🍎, 🍐}, ובסט <span dir="ltr">B</span> יש {🍐, 🍉}, אז בסט <span dir="ltr">A</span> ^ <span dir="ltr">B</span> יהיה {🍎, 🍉}.</p>
+<li dir="rtl">**תת-קבוצה (<span dir="ltr">Subset</span>): "האם כל הפירות מסט אחד נמצאים באחר?"**</li>
+<p dir="rtl">*   בודקים האם סט <span dir="ltr">A</span> הוא תת-קבוצה של סט <span dir="ltr">B</span>. זה אומר שכל הפירות מסט <span dir="ltr">A</span> נמצאים גם בסט <span dir="ltr">B</span>.</p>
+<p dir="rtl">*   **דוגמה:** אם בסט <span dir="ltr">A</span> יש {🍎, 🍐}, ובסט <span dir="ltr">B</span> יש {🍎, 🍐, 🍉}, אז <span dir="ltr">A</span> <= <span dir="ltr">B</span>.</p>
+<li dir="rtl">**על-קבוצה (<span dir="ltr">Superset</span>): "האם סט אחד מכיל את כל הפירות מסט אחר?"**</li>
+<p dir="rtl">*   בודקים האם סט <span dir="ltr">A</span> הוא על-קבוצה של סט <span dir="ltr">B</span>. זה אומר שכל הפירות מסט <span dir="ltr">B</span> נמצאים גם בסט <span dir="ltr">A</span>.</p>
+<p dir="rtl">*   אם בסט <span dir="ltr">A</span> יש {🍎, 🍐, 🍉}, ובסט <span dir="ltr">B</span> יש {🍎, 🍐}, אז <span dir="ltr">A</span> >= <span dir="ltr">B</span>.</p>
+<pre class="line-numbers"><code class="language-python">
+from typing import Set
+
+def create_fruit_set(fruit_string: str) -> Set[str]:
+    """
+    יוצר קבוצת פירות ממחרוזת.
+
+    Args:
+        fruit_string: מחרוזת פירות (🍎, 🍐, 🍉, 🧺).
+
+    Returns:
+        קבוצת פירות ייחודיים.
+    """
+    if not all(fruit in ["🍎", "🍐", "🍉", "🧺"] for fruit in fruit_string):
+        raise ValueError("מחרוזת יכולה להכיל רק סמלים 🍎, 🍐, 🍉, 🧺")
+    return set(fruit_string)  # השתמש ב-set() ליצירת קבוצה
+
+def display_set(fruit_set: Set[str]) -> str:
+  """
+  ממיר קבוצת פירות למחרוזת להצגה.
+
+    Args:
+        fruit_set: קבוצת פירות.
+
+    Returns:
+        מחרוזת להצגה.
+  """
+  return "{" + ", ".join(fruit_set) + "}"
+
+
+# יוצרים קבוצות פירות
+fruits_set_A = create_fruit_set("🍎🍐")  # קבוצה A: {🍎, 🍐}
+fruits_set_B = create_fruit_set("🍐🍉")  # קבוצה B: {🍐, 🍉}
+fruits_set_C = create_fruit_set("🍎🍐🍉")  # קבוצה C: {🍎, 🍐, 🍉}
+fruits_set_D = create_fruit_set("🧺")  # קבוצה D: {🧺}
+
+# מדפיסים קבוצות
+print(f"קבוצה A: {display_set(fruits_set_A)}")
+print(f"קבוצה B: {display_set(fruits_set_B)}")
+print(f"קבוצה C: {display_set(fruits_set_C)}")
+print(f"קבוצה D: {display_set(fruits_set_D)}")
+
+# איחוד קבוצות (Union)
+union_result = fruits_set_A | fruits_set_B
+print(f"A ∪ B: {display_set(union_result)}")  # תוצאה: {🍎, 🍐, 🍉}
+
+# חיתוך קבוצות (Intersection)
+intersection_result = fruits_set_A & fruits_set_B
+print(f"A ∩ B: {display_set(intersection_result)}")  # תוצאה: {🍐}
+
+# הפרש קבוצות (Difference)
+difference_result_AB = fruits_set_A - fruits_set_B
+print(f"A - B: {display_set(difference_result_AB)}")  # תוצאה: {🍎}
+difference_result_BA = fruits_set_B - fruits_set_A
+print(f"B - A: {display_set(difference_result_BA)}")  # תוצאה: {🍉}
+
+# הפרש סימטרי של קבוצות (Symmetric Difference)
+symmetric_difference_result = fruits_set_A ^ fruits_set_B
+print(f"A ^ B: {display_set(symmetric_difference_result)}")  # תוצאה: {🍎, 🍉}
+
+# תת-קבוצה (Subset)
+subset_result1 = fruits_set_A <= fruits_set_C
+print(f"A <= C: {subset_result1}")  # תוצאה: True (A היא תת-קבוצה של C)
+subset_result2 = fruits_set_A <= fruits_set_B
+print(f"A <= B: {subset_result2}") # תוצאה: False (A אינה תת-קבוצה של B)
+
+# על-קבוצה (Superset)
+superset_result1 = fruits_set_C >= fruits_set_A
+print(f"C >= A: {superset_result1}")  # תוצאה: True (C היא על-קבוצה של A)
+superset_result2 = fruits_set_B >= fruits_set_A
+print(f"B >= A: {superset_result2}")  # תוצאה: False (B אינה על-קבוצה של A)
+
+# בדיקת נוכחות אלמנט
+print(f"🍎 ב-A: {'🍎' in fruits_set_A}")  # תוצאה: True
+print(f"🍉 ב-A: {'🍉' in fruits_set_A}")  # תוצאה: False
+</code></pre>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">create_fruit_set(fruit_string</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** פונקציה זו יוצרת קבוצה ממחרוזת פירות.</li>
+<p dir="rtl">*   <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">set(fruit_string</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>> הופך את המחרוזת לקבוצה, מסיר כפילויות והופך את סדר האלמנטים ללא רלוונטי.</p>
+<p dir="rtl">*   אנו בודקים שהמחרוזת מורכבת רק מתווי יוניקוד מותרים.</p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">display_set(fruit_set</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:** פונקציה זו משמשת להמרת קבוצה למחרוזת קריאה לצורך פלט.</li>
+<li dir="rtl">**דוגמאות:** אנו יוצרים מספר קבוצות ומפעילים עליהן פעולות שונות. תוצאות כל פעולה מודפסות למסך.</li>
+<p dir="rtl">**5. משימות לתרגול:**</p>
+<li dir="rtl">צור קבוצות פירות משלך ונסה את כל הפעולות עליהן.</li>
+<li dir="rtl">יישם את הפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">is_disjoint(set1</span>, <span dir="ltr">set2</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, שתבדוק האם שתי קבוצות זרות זו לזו (חיתוך = קבוצה ריקה).</li>
+<li dir="rtl">יישם את הפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">power_set(fruit_set</span>)</<span dir="ltr">code</span>></<span dir="ltr">span</span>>, שתחזיר את קבוצת כל תתי-הקבוצות של קבוצה נתונה.</li>
+<li dir="rtl">נסה ליישם קבוצות לפתרון בעיה אמיתית. לדוגמה, יש לך שתי רשימות אורחים למסיבה, מצא אורחים שנמצאים בשתי הרשימות, אורחים שנמצאים רק ברשימה הראשונה וכו'.</li>

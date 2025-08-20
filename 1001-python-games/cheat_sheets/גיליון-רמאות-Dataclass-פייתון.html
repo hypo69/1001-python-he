@@ -1,102 +1,40 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>מה זה dataclass?</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            margin: 2rem auto;
-            max-width: 900px;
-            background-color: #f9f9fb;
-            color: #333;
-            padding: 1rem;
-            direction: rtl;
-            text-align: right;
-        }
+<h2 dir="rtl">מה זה <code>dataclass</code>?</h2>
 
-        h1, h2, h3, h4 {
-            color: #2c3e50;
-        }
+<p dir="rtl"><code>dataclass</code> — זהו דקורטור, שהוצג בפייתון 3.7, המייצר אוטומטית שיטות מיוחדות (כגון <span dir="ltr">__init__</span>, <span dir="ltr">__repr__</span>, <span dir="ltr">__eq__</span> ואחרות) עבור מחלקות המשמשות בעיקר כקונטיינרים לנתונים. זה חוסך ממך את הצורך לכתוב הרבה קוד תבניתי.</p>
 
-        code {
-            background-color: #f0f0f0;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-family: Consolas, Monaco, 'Courier New', monospace;
-            font-size: 0.95em;
-        }
+<h2 dir="rtl">למה להשתמש ב-<code>dataclass</code>?</h2>
+<ol dir="rtl">
+    <li><strong>קיצור קוד:</strong> במקום להגדיר ידנית שיטות <span dir="ltr">__init__</span>, <span dir="ltr">__repr__</span>, <span dir="ltr">__eq__</span> וכו', אתה פשוט מצהיר על שדות הנתונים, ו-<code>dataclass</code> יעשה את כל השאר.</li>
+    <li><strong>שיפור קריאות:</strong> מחלקות הופכות לתמציתיות ומובנות יותר, מכיוון שהן מתמקדות בנתונים ולא ביישום הטכני.</li>
+    <li><strong>הפחתת שגיאות:</strong> קוד שנוצר אוטומטית אמין יותר בדרך כלל מקוד שנכתב ידנית.</li>
+    <li><strong>האצת פיתוח:</strong> תוכל ליצור מחלקות לעבודה עם נתונים מהר יותר, מבלי לבזבז זמן על שגרה.</li>
+</ol>
 
-        pre {
-            overflow-x: auto;
-            background-color: #2d2d2d;
-            color: #f8f8f2;
-            padding: 1rem;
-            border-radius: 6px;
-            margin: 1.2em 0;
-        }
+<h2 dir="rtl">כיצד להשתמש ב-<code>dataclass</code>?</h2>
+<p dir="rtl">ראשית, עליך לייבא את הדקורטור <code>dataclass</code> מהמודול <code>dataclasses</code>:</p>
 
-            pre code {
-                background: none;
-                color: inherit;
-                font-size: 0.95em;
-            }
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
+</code></pre>
 
-        ul, ol {
-            margin: 1em 2em;
-        }
+<p dir="rtl">לאחר מכן, אתה מסמן את המחלקה בדקורטור <code>@dataclass</code>, ומגדיר את שדות הנתונים כמשתני מחלקה רגילים עם הערות סוג:</p>
 
-        blockquote {
-            border-right: 4px solid #3498db;
-            padding: 0.5em 1em;
-            background-color: #eef7ff;
-            margin: 1.5em 0;
-        }
-    </style>
-    <!-- Подсветка синтаксиса -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <!-- Поддержка Mermaid -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-</head>
-<body>
-    <h1>מה זה <code>dataclass</code>?</h1>
-
-    <p><code>dataclass</code> — זהו דקורטור, שהוצג בפייתון 3.7, המייצר אוטומטית שיטות מיוחדות (כגון <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> ואחרות) עבור מחלקות המשמשות בעיקר כקונטיינרים לנתונים. זה חוסך ממך את הצורך לכתוב הרבה קוד תבניתי.</p>
-
-    <h2>למה להשתמש ב-<code>dataclass</code>?</h2>
-    <ol>
-        <li><strong>קיצור קוד:</strong> במקום להגדיר ידנית שיטות <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> וכו', אתה פשוט מצהיר על שדות הנתונים, ו-<code>dataclass</code> יעשה את כל השאר.</li>
-        <li><strong>שיפור קריאות:</strong> מחלקות הופכות לתמציתיות ומובנות יותר, מכיוון שהן מתמקדות בנתונים ולא ביישום הטכני.</li>
-        <li><strong>הפחתת שגיאות:</strong> קוד שנוצר אוטומטית אמין יותר בדרך כלל מקוד שנכתב ידנית.</li>
-        <li><strong>האצת פיתוח:</strong> תוכל ליצור מחלקות לעבודה עם נתונים מהר יותר, מבלי לבזבז זמן על שגרה.</li>
-    </ol>
-
-    <h2>כיצד להשתמש ב-<code>dataclass</code>?</h2>
-    <p>ראשית, עליך לייבא את הדקורטור <code>dataclass</code> מהמודול <code>dataclasses</code>:</p>
-    <pre><code class="language-python">from dataclasses import dataclass
-  </code></pre>
-
-    <p>לאחר מכן, אתה מסמן את המחלקה בדקורטור <code>@dataclass</code>, ומגדיר את שדות הנתונים כמשתני מחלקה רגילים עם הערות סוג:</p>
-    <pre><code class="language-python">from dataclasses import dataclass
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
 
 @dataclass
 class Point:
     x: int
     y: int
-  </code></pre>
+</code></pre>
 
-    <p>בדוגמה זו, <code>Point</code> — זוהי <code>dataclass</code>, שיש לה שני שדות: <code>x</code> ו-<code>y</code>, שניהם מסוג שלם. <code>dataclass</code> תיצור אוטומטית:</p>
-    <ul>
-        <li>בנאי <code>__init__</code>, המאפשר ליצור מופעים של המחלקה, לדוגמה <code>Point(1, 2)</code>.</li>
-        <li><code>__repr__</code>, המחזיר ייצוג מחרוזתי של האובייקט, לדוגמה <code>Point(x=1, y=2)</code>.</li>
-        <li><code>__eq__</code>, המאפשר להשוות אובייקטים, לדוגמה <code>Point(1, 2) == Point(1, 2)</code>.</li>
-    </ul>
+<p dir="rtl">בדוגמה זו, <code>Point</code> — זוהי <code>dataclass</code>, שיש לה שני שדות: <code>x</code> ו-<code>y</code>, שניהם מסוג שלם. <code>dataclass</code> תיצור אוטומטית:</p>
+<ul dir="rtl">
+    <li>בנאי <span dir="ltr">__init__</span>, המאפשר ליצור מופעים של המחלקה, לדוגמה <span dir="ltr">Point(1, 2)</span>.</li>
+    <li><span dir="ltr">__repr__</span>, המחזיר ייצוג מחרוזתי של האובייקט, לדוגמה <span dir="ltr">Point(x=1, y=2)</span>.</li>
+    <li><span dir="ltr">__eq__</span>, המאפשר להשוות אובייקטים, לדוגמה <span dir="ltr">Point(1, 2) == Point(1, 2)</span>.</li>
+</ul>
 
-    <h2>דוגמה לשימוש פשוט</h2>
-    <pre><code class="language-python">from dataclasses import dataclass
+<h2 dir="rtl">דוגמה לשימוש פשוט</h2>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
 
 @dataclass
 class Point:
@@ -112,24 +50,24 @@ point3 = Point(3, 4)
 print(point1) # יוציא: Point(x=1, y=2)
 print(point1 == point2) # יוציא: True
 print(point1 == point3) # יוציא: False
-  </code></pre>
+</code></pre>
 
-    <h2>אפשרויות <code>dataclass</code></h2>
-    <p><code>dataclass</code> מספקת מספר פרמטרים להתאמה אישית של ההתנהגות:</p>
-    <ul>
-        <li><code>init</code>: אם <code>True</code> (ברירת מחדל), נוצרת שיטת <code>__init__</code>. אם <code>False</code>, שיטת <code>__init__</code> לא נוצרת.</li>
-        <li><code>repr</code>: אם <code>True</code> (ברירת מחדל), נוצרת שיטת <code>__repr__</code>. אם <code>False</code>, שיטת <code>__repr__</code> לא נוצרת.</li>
-        <li><code>eq</code>: אם <code>True</code> (ברירת מחדל), נוצרת שיטת <code>__eq__</code>. אם <code>False</code>, שיטת <code>__eq__</code> לא נוצרת.</li>
-        <li><code>order</code>: אם <code>True</code>, נוצרות שיטות השוואה (<code>__lt__</code>, <code>__le__</code>, <code>__gt__</code>, <code>__ge__</code>). ברירת המחדל היא <code>False</code>.</li>
-        <li><code>unsafe_hash</code>: אם <code>False</code> (ברירת מחדל), שיטת <code>__hash__</code> לא נוצרת. אם <code>True</code>, שיטת <code>__hash__</code> תיווצר, ו-<code>dataclass</code> תהפוך לניתנת לגיבוב (hashable).</li>
-        <li><code>frozen</code>: אם <code>True</code>, מופעי המחלקה יהיו בלתי ניתנים לשינוי (לקריאה בלבד). ברירת המחדל היא <code>False</code>.</li>
-    </ul>
+<h2 dir="rtl">אפשרויות <code>dataclass</code></h2>
+<p dir="rtl"><code>dataclass</code> מספקת מספר פרמטרים להתאמה אישית של ההתנהגות:</p>
+<ul dir="rtl">
+    <li><code>init</code>: אם <code>True</code> (ברירת מחדל), נוצרת שיטת <span dir="ltr">__init__</span>. אם <code>False</code>, שיטת <span dir="ltr">__init__</span> לא נוצרת.</li>
+    <li><code>repr</code>: אם <code>True</code> (ברירת מחדל), נוצרת שיטת <span dir="ltr">__repr__</span>. אם <code>False</code>, שיטת <span dir="ltr">__repr__</span> לא נוצרת.</li>
+    <li><code>eq</code>: אם <code>True</code> (ברירת מחדל), נוצרת שיטת <span dir="ltr">__eq__</span>. אם <code>False</code>, שיטת <span dir="ltr">__eq__</span> לא נוצרת.</li>
+    <li><code>order</code>: אם <code>True</code>, נוצרות שיטות השוואה (<span dir="ltr">__lt__</span>, <span dir="ltr">__le__</span>, <span dir="ltr">__gt__</span>, <span dir="ltr">__ge__</span>). ברירת המחדל היא <code>False</code>.</li>
+    <li><code>unsafe_hash</code>: אם <code>False</code> (ברירת מחדל), שיטת <span dir="ltr">__hash__</span> לא נוצרת. אם <code>True</code>, שיטת <span dir="ltr">__hash__</span> תיווצר, ו-<code>dataclass</code> תהפוך לניתנת לגיבוב (hashable).</li>
+    <li><code>frozen</code>: אם <code>True</code>, מופעי המחלקה יהיו בלתי ניתנים לשינוי (לקריאה בלבד). ברירת המחדל היא <code>False</code>.</li>
+</ul>
 
-    <h2>דוגמאות לשימוש בפרמטרים</h2>
-    <ol>
-        <li>
-            השבתת שיטת <code>__repr__</code> והפיכת המחלקה לבלתי ניתנת לשינוי
-            <pre><code class="language-python">from dataclasses import dataclass
+<h2 dir="rtl">דוגמאות לשימוש בפרמטרים</h2>
+<ol dir="rtl">
+    <li>
+        השבתת שיטת <span dir="ltr">__repr__</span> והפיכת המחלקה לבלתי ניתנת לשינוי
+        <pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
 
 @dataclass(repr=False, frozen=True)
 class Point:
@@ -139,18 +77,18 @@ class Point:
 # יצירת מופע של המחלקה
 point1 = Point(1, 2)
 # פלט
-print(point1) # יוציא: <__main__.Point object at 0x000001D8322F6770> (מכיוון ש-__repr__ לא מוגדר)
+print(point1) # יוציא: <__main__.Point object at 0x...> (מכיוון ש-__repr__ לא מוגדר)
 
 # שינוי מופע יגרום לשגיאה
 try:
     point1.x = 10
 except Exception as e:
     print(e) # יוציא: cannot assign to field 'x'
-      </code></pre>
-        </li>
-        <li>
-            הגדרת סדר, הוספת שיטת hash והפיכת המחלקה לבלתי ניתנת לשינוי
-            <pre><code class="language-python">from dataclasses import dataclass
+    </code></pre>
+    </li>
+    <li>
+        הגדרת סדר, הוספת שיטת hash והפיכת המחלקה לבלתי ניתנת לשינוי
+        <pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
 
 @dataclass(order=True, unsafe_hash=True, frozen=True)
 class Point:
@@ -168,13 +106,13 @@ print(point1 == point3) # יוציא: True
 # כעת ניתן להשתמש במחלקה כמפתח מילון
 my_dict = {point1: "first", point2: "second"}
 print(my_dict) # יוציא: {Point(x=1, y=2): 'first', Point(x=3, y=4): 'second'}
-      </code></pre>
-        </li>
-    </ol>
+    </code></pre>
+    </li>
+</ol>
 
-    <h2>ערכי ברירת מחדל</h2>
-    <p>תוכל להגדיר ערכי ברירת מחדל לשדות:</p>
-    <pre><code class="language-python">from dataclasses import dataclass
+<h2 dir="rtl">ערכי ברירת מחדל</h2>
+<p dir="rtl">תוכל להגדיר ערכי ברירת מחדל לשדות:</p>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
 
 @dataclass
 class Point:
@@ -188,12 +126,12 @@ point2 = Point(1, 2)
 # פלט
 print(point1) # יוציא: Point(x=0, y=0)
 print(point2) # יוציא: Point(x=1, y=2)
-  </code></pre>
-    <p>בעת יצירת מופע של המחלקה, אם לא הועברו ערכים, ייעשה שימוש בערך ברירת המחדל.</p>
+</code></pre>
+<p dir="rtl">בעת יצירת מופע של המחלקה, אם לא הועברו ערכים, ייעשה שימוש בערך ברירת המחדל.</p>
 
-    <h2>שימוש ב-<code>dataclass</code> עם טיפוסים ניתנים לשינוי</h2>
-    <p>היזהר בעת שימוש בטיפוסי נתונים ניתנים לשינוי (רשימות, מילונים) כערכי ברירת מחדל. הם ייווצרו רק פעם אחת וישמשו את כל מופעי המחלקה:</p>
-    <pre><code class="language-python">from dataclasses import dataclass
+<h2 dir="rtl">שימוש ב-<code>dataclass</code> עם טיפוסים ניתנים לשינוי</h2>
+<p dir="rtl">היזהר בעת שימוש בטיפוסי נתונים ניתנים לשינוי (רשימות, מילונים) כערכי ברירת מחדל. הם ייווצרו רק פעם אחת וישמשו את כל מופעי המחלקה:</p>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
 from typing import List
 
 @dataclass
@@ -206,11 +144,9 @@ bad2 = BadExample()
 bad1.items.append(1)
 print(bad1.items) # יוציא: [1]
 print(bad2.items) # יוציא: [1] 
-  </code></pre>
-    <p>בדוגמה לעיל, שינויים ב-<code>bad1.items</code> משתקפים גם ב-<code>bad2.items</code>. זה קורה מכיוון ששני מופעי המחלקה משתמשים באותה רשימת ברירת מחדל.</p>
-
-    <p>כדי למנוע זאת, השתמש ב-<code>dataclasses.field</code> וב-<code>default_factory</code>:</p>
-    <pre><code class="language-python">from dataclasses import dataclass, field
+</code></pre>
+<p dir="rtl">כדי למנוע זאת, השתמש ב-<code>dataclasses.field</code> וב-<code>default_factory</code>:</p>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass, field
 from typing import List
 
 @dataclass
@@ -223,170 +159,97 @@ good2 = GoodExample()
 good1.items.append(1)
 print(good1.items) # יוציא: [1]
 print(good2.items) # יוציא: []
-  </code></pre>
-    <p>במקרה זה, <code>default_factory=list</code> תיצור רשימה ריקה חדשה עבור כל מופע חדש של המחלקה.</p>
+</code></pre>
 
-    <h2>דיאגרמה</h2>
-    <p>הנה דיאגרמה המציגה את המושגים העיקריים של <code>dataclass</code>:</p>
-    <div class="mermaid">
-        classDiagram
-        class DataClass {
-        <<decorator>
-            >
-            +init: bool = True
-            +repr: bool = True
-            +eq: bool = True
-            +order: bool = False
-            +unsafe_hash: bool = False
-            +frozen: bool = False
-            --
-            +__init__(...)
-            +__repr__()
-            +__eq__(...)
-            +__lt__(...)
-            +__le__(...)
-            +__gt__(...)
-            +__ge__(...)
-            +__hash__()
-            }
-            class UserDefinedClass {
-            <<class>
-                >
-                +field1: type
-                +field2: type
-                +field3: type = defaultValue
-                +field4: type = field(default_factory=...)
-                }
-                DataClass <|-- UserDefinedClass
-    </div>
+<h2 dir="rtl">דיאגרמה</h2>
+<p dir="rtl">הנה דיאגרמה המציגה את המושגים העיקריים של <code>dataclass</code>:</p>
+<pre class="line-numbers"><code class="language-mermaid">
+classDiagram
+    class DataClass {
+        <<decorator>>
+        +init: bool = True
+        +repr: bool = True
+        +eq: bool = True
+        +order: bool = False
+        +unsafe_hash: bool = False
+        +frozen: bool = False
+        --
+        +__init__(...)
+        +__repr__()
+        +__eq__(...)
+        +__lt__(...)
+        +__le__(...)
+        +__gt__(...)
+        +__ge__(...)
+        +__hash__()
+    }
+    class UserDefinedClass {
+        <<class>>
+        +field1: type
+        +field2: type
+        +field3: type = defaultValue
+        +field4: type = field(default_factory=...)
+    }
+    DataClass <|-- UserDefinedClass
+</code></pre>
 
-    <p>בדיאגרמה זו:</p>
-    <ul>
-        <li><code>DataClass</code> מייצגת את הדקורטור <code>@dataclass</code> ואת הפרמטרים שלו.</li>
-        <li><code>UserDefinedClass</code> — זוהי המחלקה שאתה מצהיר עליה באמצעות הדקורטור <code>@dataclass</code>.</li>
-        <li>החץ מ-<code>DataClass</code> ל-<code>UserDefinedClass</code> מראה ש-<code>DataClass</code> מיושמת על <code>UserDefinedClass</code>.</li>
-    </ul>
+<h2 dir="rtl"><span dir="ltr">dict()</span>, <span dir="ltr">__dir__()</span> ותכונות נוספות של <code>dataclass</code></h2>
 
-    <h2><code>dict()</code>, <code>__dir__()</code> ותכונות נוספות של <code>dataclass</code></h2>
-    <ul>
-        <li><code>dict()</code> לא עובד ישירות עם מופעי <code>dataclass</code>. כדי להמיר למילון, עליך להשתמש בשיטות ידניות או בספריות צד שלישי.</li>
-        <li><code>__dir__()</code> מחזיר רשימה של כל התכונות והשיטות של האובייקט, כולל שיטות ושדות שנוצרו על ידי <code>dataclass</code>.</li>
-        <li><code>__dataclass_fields__</code> ו-<code>__dataclass_params__</code> מספקים מטא-נתונים על שדות ופרמטרים של <code>dataclass</code>.</li>
-    </ul>
+<ul dir="rtl">
+    <li><span dir="ltr">dict()</span> לא עובד ישירות עם מופעי <code>dataclass</code>. כדי להמיר למילון, עליך להשתמש בשיטות ידניות או בספריות צד שלישי.</li>
+    <li><span dir="ltr">__dir__()</span> מחזיר רשימה של כל התכונות והשיטות של האובייקט, כולל שיטות ושדות שנוצרו על ידי <code>dataclass</code>.</li>
+    <li><span dir="ltr">__dataclass_fields__</span> ו-<span dir="ltr">__dataclass_params__</span> מספקים מטא-נתונים על שדות ופרמטרים של <code>dataclass</code>.</li>
+</ul>
 
-    <h3>1. <code>dict()</code> בהקשר של <code>dataclass</code></h3>
-    <ul>
-        <li><strong>אין תמיכה אוטומטית:</strong> הפונקציה המובנית <code>dict()</code> לא עובדת ישירות עם מופעי <code>dataclass</code>, כמו עם מילונים רגילים. אם תנסה לקרוא ל-<code>dict(instance_of_dataclass)</code>, תקבל שגיאה <code>TypeError: cannot convert dictionary update sequence element #0 to a sequence</code>.</li>
-        <li>
-            <strong>המרת למילון:</strong> כדי להמיר מופע <code>dataclass</code> למילון, עליך לעשות זאת ידנית או להשתמש בספריית צד שלישי. הנה איך ניתן לעשות זאת ידנית:
-            <pre><code class="language-python">from dataclasses import dataclass
-     
+<h3 dir="rtl">1. <span dir="ltr">dict()</span> בהקשר של <code>dataclass</code></h3>
+<p dir="rtl">אין תמיכה אוטומטית ב-<span dir="ltr">dict()</span>. עליך להשתמש בשיטה ידנית או ב-<span dir="ltr">__dict__</span>:</p>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
+
 @dataclass
 class Person:
     name: str
     age: int
-     
+
 person = Person("Alice", 30)
-     
-# המרה ידנית למילון
+
+# המרה ידנית
 person_dict = {field.name: getattr(person, field.name) for field in dataclasses.fields(Person)}
-print(person_dict)  # יוציא: {'name': 'Alice', 'age': 30}
+print(person_dict)  # {'name': 'Alice', 'age': 30}
 
-# אפשרות חלופית:
+# או דרך __dict__
 person_dict = person.__dict__
-print(person_dict) # יוציא: {'name': 'Alice', 'age': 30}
-      </code></pre>
-        </li>
-        <li><strong>למה כך?</strong> <code>dataclass</code> מיועדת בעיקר לייצג נתונים בצורת מחלקות. למרות שהנתונים נשמרים כתכונות אובייקט, <code>dataclass</code> לא הופכת אותם לנגישים אוטומטית כמילון.</li>
-    </ul>
+print(person_dict) # {'name': 'Alice', 'age': 30}
+</code></pre>
 
-    <h3>2. <code>__dir__()</code> ב-<code>dataclass</code></h3>
-    <ul>
-        <li>
-            <strong>מחזיר תכונות:</strong> השיטה <code>__dir__()</code> מחזירה רשימה של מחרוזות המייצגות את שמות התכונות והשיטות של האובייקט. עבור <code>dataclass</code>, <code>__dir__()</code> יכלול:
-            <ul>
-                <li>את כל שדות הנתונים המוגדרים.</li>
-                <li>שיטות שנוצרו אוטומטית (<code>__init__</code>, <code>__repr__</code>, <code>__eq__</code>, וכו', בהתאם להגדרות).</li>
-                <li>כל שיטות אחרות שנוספו ידנית.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>דוגמה:</strong>
-            <pre><code class="language-python">from dataclasses import dataclass
-      
+<h3 dir="rtl">2. <span dir="ltr">__dir__()</span> ב-<code>dataclass</code></h3>
+<p dir="rtl">השיטה <span dir="ltr">__dir__()</span> מחזירה רשימה של כל התכונות והשיטות של האובייקט:</p>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
+
 @dataclass
 class Point:
     x: int
     y: int
-          
+
     def distance(self):
         return (self.x**2 + self.y**2)**0.5
-      
+
 point = Point(1, 2)
 print(dir(point))
-# יוציא:
-#['__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'distance', 'x', 'y']
-      </code></pre>
-        </li>
-        <li><strong>שימושיות:</strong> <code>__dir__()</code> יכול להיות שימושי לאינטרוספקציה - צפייה בתכונות ובשיטות הזמינות של מופע <code>dataclass</code>.</li>
-    </ul>
+# ['__class__', '__dataclass_fields__', '__dataclass_params__', ..., 'distance', 'x', 'y']
+</code></pre>
 
-    <h3>3. תכונות נוספות של <code>dataclass</code></h3>
-    <ul>
-        <li>
-            <strong><code>__dataclass_fields__</code>:</strong>
-            <ul>
-                <li>זוהי תכונת מחלקה המכילה מילון, שבו המפתחות הם שמות שדות <code>dataclass</code>, והערכים הם אובייקטים <code>dataclasses.Field</code>.</li>
-                <li>תכונה זו מאפשרת לקבל מטא-נתונים על שדות <code>dataclass</code> (לדוגמה, סוג, ערך ברירת מחדל, וכו').</li>
-            </ul>
-            <pre><code class="language-python">from dataclasses import dataclass, fields
-     
+<h3 dir="rtl">3. תכונות נוספות של <code>dataclass</code></h3>
+<ul dir="rtl">
+    <li><strong><span dir="ltr">__dataclass_fields__</span>:</strong> מילון עם מידע על שדות ה-<code>dataclass</code>.</li>
+    <li><strong><span dir="ltr">__dataclass_params__</span>:</strong> מידע על הפרמטרים (כמו <span dir="ltr">frozen=True</span>).</li>
+</ul>
+<pre class="line-numbers"><code class="language-python">from dataclasses import dataclass, fields
+
 @dataclass
 class Point:
     x: int = 0
     y: int = 0
-     
+
 print(Point.__dataclass_fields__)
-# יוציא:
-#{'x': Field(name='x',type=<class 'int'>,default=0,default_factory=MISSING,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False), 'y': Field(name='y',type=<class 'int'>,default=0,default_factory=MISSING,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False)}
-      </code></pre>
-            <pre><code class="language-python"># נשתמש ב-fields() לאותה תוצאה
-for field in fields(Point):
-    print(field.name, field.type, field.default)
-# יוציא:
-#x <class 'int'> 0
-#y <class 'int'> 0
-      </code></pre>
-        </li>
-        <li>
-            <strong><code>__dataclass_params__</code>:</strong>
-            <ul>
-                <li>זוהי תכונת מחלקה המאחסנת מידע על פרמטרים של <code>dataclass</code> (לדוגמה, <code>init</code>, <code>repr</code>, <code>eq</code>, <code>order</code>, וכו').</li>
-                <li>זה מאפשר גישה להגדרות שבהן נוצרה ה-<code>dataclass</code>.</li>
-            </ul>
-            <pre><code class="language-python">from dataclasses import dataclass
-      
-@dataclass(order = True, frozen = True)
-class Point:
-    x: int
-    y: int
 print(Point.__dataclass_params__)
-# יוציא:
-#dataclass_params(init=True,repr=True,eq=True,order=True,unsafe_hash=False,frozen=True)
-      </code></pre>
-        </li>
-        <li><strong>שימוש עם ירושה:</strong> תוכל ליצור <code>dataclass</code> על ידי ירושה מ-<code>dataclass</code> אחרות.</li>
-        <li><strong>שימוש עם <code>typing.NamedTuple</code>:</strong> <code>dataclass</code> היא חלופה גמישה יותר ל-<code>typing.NamedTuple</code>, מכיוון שהיא מאפשרת להגדיר ערכי ברירת מחדל, להוסיף שיטות משלך, וכן להפוך את המחלקה לניתנת לשינוי או לבלתי ניתנת לשינוי.</li>
-    </ul>
-
-    <script>
-    // אתחול highlight.js
-    document.addEventListener('DOMContentLoaded', () => {
-      hljs.highlightAll();
-    });
-
-    // אתחול Mermaid
-    mermaid.initialize({ startOnLoad: true });
-    </script>
-</body>
-</html>
+</code></pre>

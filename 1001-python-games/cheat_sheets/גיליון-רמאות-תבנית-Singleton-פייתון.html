@@ -1,0 +1,136 @@
+<p dir="rtl"># סינגלטון (<span dir="ltr">Singleton</span>) ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, סינגלטון – זוהי תבנית עיצוב המבטיחה שלמחלקה יהיה רק מופע אחד, ומספקת נקודת גישה גלובלית למופע זה. זה אומר שבעת ניסיון ליצור אובייקט חדש של מחלקה זו, תמיד תקבל את אותו אובייקט.</p>
+<p dir="rtl">סינגלטונים שימושיים כאשר יש צורך להגביל את מספר המופעים של מחלקה, לדוגמה:</p>
+<li dir="rtl">לניהול חיבור לבסיס נתונים (כדי לא לפתוח חיבורים רבים).</li>
+<li dir="rtl">לאחסון תצורת יישום גלובלית (כדי שכל חלקי היישום ישתמשו באותה תצורה).</li>
+<li dir="rtl">לרישום (כדי שכל ההודעות יגיעו לקובץ אחד).</li>
+<p dir="rtl">כמה דרכים ליישום סינגלטון ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl"><<span dir="ltr">hr</span>></p>
+<p dir="rtl">**דרכים ליישום סינגלטון:**</p>
+<li dir="rtl">**באמצעות דריסת שיטת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__new__</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</li>
+<p dir="rtl">*   השיטה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__new__</<span dir="ltr">span</span>></<span dir="ltr">code</span>></<span dir="ltr">span</span>> אחראית על יצירת מופע של מחלקה. על ידי דריסתה, אוכל לשלוט בתהליך זה.</p>
+<p dir="rtl">*   בדוגמה זו אשמור את המופע היחיד של המחלקה במשתנה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>_instance</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">*   אם המופע עדיין לא נוצר, אצור אותו; אחרת, אחזיר את המופע הקיים.</p>
+<p dir="rtl">*   **קוד <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>:**</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">class</span> <span dir="ltr">Singleton</span>:</p>
+<p dir="rtl">_instance = <span dir="ltr">None</span>  # שומר את המופע היחיד</p>
+<p dir="rtl"><span dir="ltr">def</span> <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__new__</<span dir="ltr">span</span>>(<span dir="ltr">cls</span>, *<span dir="ltr">args</span>, **<span dir="ltr">kwargs</span>):</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">דורס את שיטת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__new__</<span dir="ltr">span</span>> כדי לשלוט ביצירת מופע.</p>
+<p dir="rtl"><span dir="ltr">Args</span>:</p>
+<p dir="rtl"><span dir="ltr">cls</span>: המחלקה שעבורה נוצר המופע.</p>
+<p dir="rtl">*<span dir="ltr">args</span>: ארגומנטים מיקומיים לבנאי.</p>
+<p dir="rtl">**<span dir="ltr">kwargs</span>: ארגומנטים בעלי שם לבנאי.</p>
+<p dir="rtl"><span dir="ltr">Returns</span>:</p>
+<p dir="rtl">המופע היחיד של המחלקה.</p>
+<p dir="rtl">"""</p>
+<p dir="rtl"><span dir="ltr">if</span> <span dir="ltr">not</span> <span dir="ltr">cls._instance</span>: # אם המופע עדיין לא נוצר</p>
+<p dir="rtl"><span dir="ltr">cls._instance</span> = <span dir="ltr">super</span>().<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__new__</<span dir="ltr">span</span>>(<span dir="ltr">cls</span>, *<span dir="ltr">args</span>, **<span dir="ltr">kwargs</span>) # יוצר מופע חדש</p>
+<p dir="rtl"><span dir="ltr">return</span> <span dir="ltr">cls._instance</span> # מחזיר את המופע הקיים</p>
+<p dir="rtl"># דוגמה לשימוש</p>
+<p dir="rtl"><span dir="ltr">s1</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">Singleton</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl"><span dir="ltr">s2</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">Singleton</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl"><span dir="ltr">print(s1</span> <span dir="ltr">is</span> <span dir="ltr">s2</span>)  # יוציא <span dir="ltr">True</span>, מכיוון שזהו אותו אובייקט</p>
+<p dir="rtl">```</p>
+<p dir="rtl"><<span dir="ltr">hr</span>></p>
+<li dir="rtl">**באמצעות דקורטור**</li>
+<p dir="rtl">*   דקורטור – זוהי פונקציה המשנה מחלקה.</p>
+<p dir="rtl">*   בדוגמה זו אצור פונקציית דקורטור <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">singleton</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, המקבלת מחלקה ומחזירה את גרסתה העטופה.</p>
+<p dir="rtl">*   בתוך הדקורטור אשמור את מופעי המחלקות במילון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">instances</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">*   אם מופע המחלקה עדיין לא נוצר, אצור אותו ואשמור אותו במילון; אחרת, אחזיר את המופע הקיים.</p>
+<p dir="rtl">*   **קוד <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>:**</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">def</span> <span dir="ltr">singleton(cls</span>):</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">דקורטור ליצירת סינגלטון.</p>
+<p dir="rtl"><span dir="ltr">Args</span>:</p>
+<p dir="rtl"><span dir="ltr">cls</span>: המחלקה שיש להפוך לסינגלטון.</p>
+<p dir="rtl"><span dir="ltr">Returns</span>:</p>
+<p dir="rtl">המחלקה שהשתנתה, שהיא סינגלטון.</p>
+<p dir="rtl">"""</p>
+<p dir="rtl"><span dir="ltr">instances</span> = {} # שומר מופעים</p>
+<p dir="rtl"><span dir="ltr">def</span> <span dir="ltr">wrapper</span>(*<span dir="ltr">args</span>, **<span dir="ltr">kwargs</span>):</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">פונקציית עטיפה המחזירה את המופע היחיד של המחלקה.</p>
+<p dir="rtl"><span dir="ltr">Args</span>:</p>
+<p dir="rtl">*<span dir="ltr">args</span>: ארגומנטים מיקומיים לבנאי.</p>
+<p dir="rtl">**<span dir="ltr">kwargs</span>: ארגומנטים בעלי שם לבנאי.</p>
+<p dir="rtl"><span dir="ltr">Returns</span>:</p>
+<p dir="rtl">המופע היחיד של המחלקה.</p>
+<p dir="rtl">"""</p>
+<p dir="rtl"><span dir="ltr">if</span> <span dir="ltr">cls</span> <span dir="ltr">not</span> <span dir="ltr">in</span> <span dir="ltr">instances</span>: # אם המופע עדיין לא נוצר</p>
+<p dir="rtl"><span dir="ltr">instances</span>[<span dir="ltr">cls</span>] = <span dir="ltr">cls</span>(*<span dir="ltr">args</span>, **<span dir="ltr">kwargs</span>) # יוצר מופע ושומר אותו</p>
+<p dir="rtl"><span dir="ltr">return</span> <span dir="ltr">instances</span>[<span dir="ltr">cls</span>] # מחזיר את המופע הקיים</p>
+<p dir="rtl"><span dir="ltr">return</span> <span dir="ltr">wrapper</span></p>
+<p dir="rtl">@<span dir="ltr">singleton</span> # מיישם את הדקורטור על המחלקה</p>
+<p dir="rtl"><span dir="ltr">class</span> <span dir="ltr">MyClass</span>:</p>
+<p dir="rtl"><span dir="ltr">pass</span></p>
+<p dir="rtl"># דוגמה לשימוש</p>
+<p dir="rtl"><span dir="ltr">obj1</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">MyClass</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl"><span dir="ltr">obj2</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">MyClass</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl"><span dir="ltr">print(obj1</span> <span dir="ltr">is</span> <span dir="ltr">obj2</span>)  # יוציא <span dir="ltr">True</span>, מכיוון שזהו אותו אובייקט</p>
+<p dir="rtl">```</p>
+<p dir="rtl"><<span dir="ltr">hr</span>></p>
+<li dir="rtl">**באמצעות מטא-מחלקה**</li>
+<p dir="rtl">*   מטא-מחלקה מאפשרת לשלוט ביצירת מחלקות.</p>
+<p dir="rtl">*   בדוגמה זו אצור מטא-מחלקה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">SingletonMeta</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, שתפקח על יצירת מופעים.</p>
+<p dir="rtl">*   המטא-מחלקה שומרת מופעי מחלקות במילון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>_instances</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">*   בעת יצירת מופע חדש, אבדוק אם הוא כבר קיים במילון; אם לא – אצור אותו; אחרת, אחזיר את המופע הקיים.</p>
+<p dir="rtl">*   **קוד <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>:**</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">class</span> <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">SingletonMeta(type</span>)</<span dir="ltr">span</span>>:</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">מטא-מחלקה ליצירת סינגלטון.</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">_instances = {} # שומר מופעים</p>
+<p dir="rtl"><span dir="ltr">def</span> <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__call__</<span dir="ltr">span</span>>(<span dir="ltr">cls</span>, *<span dir="ltr">args</span>, **<span dir="ltr">kwargs</span>):</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">דורס את שיטת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__call__</<span dir="ltr">span</span>> כדי לשלוט ביצירת מופע.</p>
+<p dir="rtl"><span dir="ltr">Args</span>:</p>
+<p dir="rtl"><span dir="ltr">cls</span>: המחלקה שעבורה נוצר המופע.</p>
+<p dir="rtl">*<span dir="ltr">args</span>: ארגומנטים מיקומיים לבנאי.</p>
+<p dir="rtl">**<span dir="ltr">kwargs</span>: ארגומנטים בעלי שם לבנאי.</p>
+<p dir="rtl"><span dir="ltr">Returns</span>:</p>
+<p dir="rtl">המופע היחיד של המחלקה.</p>
+<p dir="rtl">"""</p>
+<p dir="rtl"><span dir="ltr">if</span> <span dir="ltr">cls</span> <span dir="ltr">not</span> <span dir="ltr">in</span> <span dir="ltr">cls._instances</span>: # אם המופע עדיין לא נוצר</p>
+<p dir="rtl"><span dir="ltr">cls._instances</span>[<span dir="ltr">cls</span>] = <span dir="ltr">super</span>().<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>">__call__</<span dir="ltr">span</span>>(*<span dir="ltr">args</span>, **<span dir="ltr">kwargs</span>) # יוצר מופע חדש</p>
+<p dir="rtl"><span dir="ltr">return</span> <span dir="ltr">cls._instances</span>[<span dir="ltr">cls</span>] # מחזיר את המופע הקיים</p>
+<p dir="rtl"><span dir="ltr">class</span> <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">Singleton(metaclass</span>=<span dir="ltr">SingletonMeta</span>)</<span dir="ltr">span</span>>:</p>
+<p dir="rtl">"""</p>
+<p dir="rtl">מחלקה שהיא סינגלטון.</p>
+<p dir="rtl">"""</p>
+<p dir="rtl"><span dir="ltr">pass</span></p>
+<p dir="rtl"># דוגמה לשימוש</p>
+<p dir="rtl"><span dir="ltr">s1</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">Singleton</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl"><span dir="ltr">s2</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">Singleton</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl"><span dir="ltr">print(s1</span> <span dir="ltr">is</span> <span dir="ltr">s2</span>)  # יוציא <span dir="ltr">True</span>, מכיוון שזהו אותו אובייקט</p>
+<p dir="rtl">```</p>
+<p dir="rtl"><<span dir="ltr">hr</span>></p>
+<li dir="rtl">**באמצעות מודול**</li>
+<p dir="rtl">*   ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> מודול הוא סינגלטון בפני עצמו.</p>
+<p dir="rtl">*   אני יכול ליצור אובייקט במודול, והוא יהיה המופע היחיד.</p>
+<p dir="rtl">*   **קוד <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">Python</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>:**</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"># קובץ <span dir="ltr">singleton.py</span></p>
+<p dir="rtl"><span dir="ltr">class</span> <span dir="ltr">Singleton</span>:</p>
+<p dir="rtl"><span dir="ltr">pass</span></p>
+<p dir="rtl"><span dir="ltr">instance</span> = <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">Singleton</span>()</<span dir="ltr">span</span>></p>
+<p dir="rtl">```</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"># בקובץ אחר</p>
+<p dir="rtl"><span dir="ltr">from</span> <span dir="ltr">singleton</span> <span dir="ltr">import</span> <span dir="ltr">instance</span></p>
+<p dir="rtl"><span dir="ltr">obj1</span> = <span dir="ltr">instance</span></p>
+<p dir="rtl"><span dir="ltr">obj2</span> = <span dir="ltr">instance</span></p>
+<p dir="rtl"><span dir="ltr">print(obj1</span> <span dir="ltr">is</span> <span dir="ltr">obj2</span>)  # יוציא <span dir="ltr">True</span>, מכיוון שזהו אותו אובייקט</p>
+<p dir="rtl">```</p>
+<p dir="rtl">**יתרונות הסינגלטון:**</p>
+<li dir="rtl">**הבטחת מופע יחיד:** סינגלטון מבטיח שלמחלקה יהיה רק מופע אחד. זה שימושי לניהול משאבים שחייבים להיות ייחודיים.</li>
+<li dir="rtl">**גישה גלובלית:** סינגלטון מספק נקודת גישה גלובלית למופע המחלקה, מה שמפשט את השימוש במופע זה בכל חלק בתוכנית.</li>
+<p dir="rtl">**חסרונות הסינגלטון:**</p>
+<li dir="rtl">**מצב גלובלי:** סינגלטון יכול להוביל לשימוש במצב גלובלי, מה שעלול לגרום לתופעות לוואי בלתי צפויות ולסבך את הבדיקות.</li>
+<li dir="rtl">**הפרת עקרונות <span dir="ltr">OOP</span>:** סינגלטון יכול להפר את עקרון האחריות היחידה ואת האנקפסולציה.</li>
+<p dir="rtl">**מתי להשתמש בסינגלטון?**</p>
+<li dir="rtl">כאשר אתה צריך שאובייקט יתקיים כמופע יחיד (לדוגמה, תצורה, לוגר, חיבור לבסיס נתונים).</li>
+<li dir="rtl">כאשר אתה זקוק לגישה גלובלית לאובייקט זה.</li>

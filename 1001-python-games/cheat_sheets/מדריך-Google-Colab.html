@@ -1,0 +1,147 @@
+<p dir="rtl">מה זה <span dir="ltr">Google</span> <span dir="ltr">Colab</span>?</p>
+<p dir="rtl"><span dir="ltr">Google</span> <span dir="ltr">Colab</span> היא פלטפורמה מבוססת ענן, שנוצרה על ידי גוגל, לעבודה עם מחברות <span dir="ltr">Jupyter</span> אינטראקטיביות.</p>
+<p dir="rtl">היא מספקת כלים רבי עוצמה לכתיבה והרצת קוד <span dir="ltr">Python</span>, ניתוח נתונים, אימון מודלים של למידת מכונה ושיתוף פעולה בפרויקטים.</p>
+<p dir="rtl"><span dir="ltr">Colab</span> מספקת גישה למשאבי מחשוב חזקים, כולל יחידות עיבוד גרפיות (<span dir="ltr">GPU</span>) ויחידות עיבוד טנסוריות (<span dir="ltr">TPU</span>).</p>
+<p dir="rtl">זה מאפשר לך לפתור בעיות מורכבות, כגון עיבוד נתונים גדולים או אימון רשתות עצביות, ללא צורך ברכישת חומרה יקרה. <span dir="ltr">Colab</span> בנויה על בסיס <span dir="ltr">Jupyter</span> <span dir="ltr">Notebook</span>, ומספקת ממשק נוח לעבודה עם קוד, טקסט והדמיות. תוכל להריץ תאי קוד, להוסיף טקסט הסבר, ליצור גרפים והדמיות ישירות בדפדפן שלך. ניתן להשתמש ב-<span dir="ltr">Colab</span> מיד לאחר פתיחתו. אין צורך להתקין תוכניות, ספריות או דרייברים נוספים. הכל כבר מוגדר לעבודה. תוכל לחבר את <span dir="ltr">Google</span> <span dir="ltr">Drive</span> שלך, מה שמאפשר לך להעלות נתונים בקלות, לשמור פרויקטים ולהבטיח גישה לקבצים מכל מקום. <span dir="ltr">Colab</span> תומכת בעבודה שיתופית. תוכל לשתף את הפרויקטים שלך עם עמיתים, לערוך מחברות בו זמנית ולדון בשינויים בזמן אמת.</p>
+<h3 dir="rtl">איך עובד <span dir="ltr">Google</span> <span dir="ltr">Colab</span>?</h3>
+<p dir="rtl">- אתה מריץ מחברת <span dir="ltr">Jupyter</span> בדפדפן שלך, מה שמבטל את הצורך בהתקנת סביבה מקומית.</p>
+<p dir="rtl">- הקוד מבוצע בשרתים מרוחקים של גוגל, והתוצאות מוצגות במחברת שלך.</p>
+<p dir="rtl">- נתונים יכולים להיטען ממכשיר מקומי או מהענן, כגון <span dir="ltr">Google</span> <span dir="ltr">Drive</span>.</p>
+<p dir="rtl">- אתה יכול להשתמש ב-<span dir="ltr">Colab</span> לכתיבת קוד <span dir="ltr">Python</span>, עבודה עם ספריות למידת מכונה (לדוגמה, <span dir="ltr">TensorFlow</span>, <span dir="ltr">PyTorch</span>), ניתוח נתונים באמצעות <span dir="ltr">Pandas</span>, או יצירת הדמיות באמצעות <span dir="ltr">Matplotlib</span> ו-<span dir="ltr">Seaborn</span>.</p>
+<p dir="rtl">איך נראה <span dir="ltr">Google</span> <span dir="ltr">Colab</span>?</p>
+<p dir="rtl">הממשק של <span dir="ltr">Colab</span> מורכב מכמה חלקים עיקריים:</p>
+<p dir="rtl">תאי קוד: אלו הם התאים שבהם תכתוב ותריץ את קוד ה-<span dir="ltr">Python</span> שלך.</p>
+<p dir="rtl">תאי טקסט: כאן תוכל להוסיף תיאורים, הסברים והערות לקוד שלך.</p>
+<p dir="rtl">תפריט: למעלה יש תפריט עם אפשרויות שונות לעבודה עם המחברת (קובץ, עריכה, תצוגה, כלים וכו').</p>
+<p dir="rtl">מנהל קבצים: משמאל יש פאנל של מנהל הקבצים שבו תוכל להציג קבצים ותיקיות בסביבת <span dir="ltr">Colab</span> שלך.</p>
+<p dir="rtl">ב-<span dir="ltr">Google</span> <span dir="ltr">Colab</span>, אתה עובד בסביבת ענן,</p>
+<p dir="rtl">שבה מערכת הקבצים מאורגנת כמו במחשב רגיל עם תיקיות וקבצים.</p>
+<p dir="rtl"><span dir="ltr">Colab</span> מספקת כלים לניווט, יצירה, צפייה ועריכה של קבצים.</p>
+<p dir="rtl">תוכל לתקשר עם מערכת הקבצים באמצעות **פקודות קסם של <span dir="ltr">Jupyter</span>** (המתחילות ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%</<span dir="ltr">code</span>></<span dir="ltr">span</span>>)</p>
+<p dir="rtl">ו**פקודות <span dir="ltr">bash</span>** (המתחילות ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!</<span dir="ltr">code</span>></<span dir="ltr">span</span>>).</p>
+<p dir="rtl">**רשימת פקודות בסיסיות:**</p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">pwd</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>** (<span dir="ltr">print</span> <span dir="ltr">working</span> <span dir="ltr">directory</span>):</li>
+<p dir="rtl">*   **תיאור**: מציג את ספריית העבודה הנוכחית (היכן אתה נמצא כרגע במערכת הקבצים).</p>
+<p dir="rtl">*   **דוגמה**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">pwd</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">*   **תוצאה**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>/<span dir="ltr">content</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> (או ספרייה נוכחית אחרת)</p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">ls</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>** (<span dir="ltr">list</span>):</li>
+<p dir="rtl">*   **תיאור**: מציג קבצים ותיקיות בספרייה הנוכחית.</p>
+<p dir="rtl">*   **דוגמה**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">ls</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">*   **תוצאה**: רשימת קבצים ותיקיות, לדוגמה: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">sample_data</span>/  <span dir="ltr">my_file.txt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">cd</span> <נתיב></<span dir="ltr">code</span>></<span dir="ltr">span</span>>** (<span dir="ltr">change</span> <span dir="ltr">directory</span>):</li>
+<p dir="rtl">*   **תיאור**: עובר לספרייה שצוינה.</p>
+<p dir="rtl">*   **דוגמה**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">cd</span> <span dir="ltr">sample_data</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">*   **תוצאה**: ספריית העבודה הנוכחית משתנה ל-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>/<span dir="ltr">content</span>/<span dir="ltr">sample_data</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!<span dir="ltr">head</span> -<מספר שורות> <שם קובץ></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**:</li>
+<p dir="rtl">*   **תיאור**: מציג את השורות הראשונות של קובץ הטקסט שצוין.</p>
+<p dir="rtl">*   **דוגמה**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!<span dir="ltr">head</span> -5 <span dir="ltr">README.md</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">*   **תוצאה**: 5 השורות הראשונות של הקובץ <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">README.md</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!<span dir="ltr">cat</span> <שם קובץ></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**:</li>
+<p dir="rtl">*   **תיאור**: מציג את תוכן קובץ הטקסט שצוין.</p>
+<p dir="rtl">*   **דוגמה**: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!<span dir="ltr">cat</span> <span dir="ltr">sample_file.txt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">*   **תוצאה**: כל תוכן הקובץ <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">sample_file.txt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<li dir="rtl">**<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!<span dir="ltr">echo</span> "<טקסט>" > <שם קובץ></<span dir="ltr">code</span>></<span dir="ltr">span</span>>**</li>
+<p dir="rtl">*   **תיאור:** יוצר קובץ חדש עם השם שצוין וכותב בו טקסט. אם הקובץ כבר קיים, הוא יידרס.</p>
+<p dir="rtl">*   **דוגמה:** <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!<span dir="ltr">echo</span> "זה הקובץ החדש שלי!" > <span dir="ltr">new_file.txt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>></p>
+<p dir="rtl">*   **תוצאה:** יוצר את הקובץ <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">new_file.txt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> עם התוכן <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>זה הקובץ החדש שלי!</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">**נקודות מפתח:**</p>
+<li dir="rtl">**פקודות קסם** (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%</<span dir="ltr">code</span>></<span dir="ltr">span</span>>) - אלו הן פקודות <span dir="ltr">Jupyter</span> מיוחדות לעבודה עם סביבת <span dir="ltr">Colab</span>.</li>
+<li dir="rtl">**פקודות <span dir="ltr">bash</span>** (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>!</<span dir="ltr">code</span>></<span dir="ltr">span</span>>) - אלו הן פקודות המבוצעות בשורת הפקודה של לינוקס.</li>
+<li dir="rtl">**נתיב קובץ**: נתיב הקובץ מציין היכן בדיוק הקובץ ממוקם במערכת הקבצים (לדוגמה, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>/<span dir="ltr">content</span>/<span dir="ltr">sample_data</span>/<span dir="ltr">my_file.txt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>).</li>
+<li dir="rtl">**ספרייה נוכחית**: המיקום שלך במערכת הקבצים (משתנה באמצעות הפקודה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>%<span dir="ltr">cd</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>).</li>
+<p dir="rtl">**דיאגרמה הממחישה את רצף הפקודות:**</p>
+<pre class="line-numbers"><code class="language-mermaid">
+graph TD
+    A[התחלה] --> B(pwd: קבל את הספרייה הנוכחית);
+    B --> C(ls: ראה את תוכן הספרייה הנוכחית);
+    C --> D(cd: שנה ספרייה נוכחית);
+    D --> E(head: הצג את תחילת קובץ הטקסט);
+     E --> F(cat: הצג את תוכן קובץ הטקסט);
+       F --> G(echo: צור או דרוס קובץ טקסט);
+    G --> H(ls: הצג את תוכן הספרייה שהשתנה);
+     H --> I[סיום];
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+        style I fill:#ccf,stroke:#333,stroke-width:2px
+
+</code></pre>
+<p dir="rtl">**העלאת קבצים ל-<span dir="ltr">Google</span> <span dir="ltr">Colab</span>**</p>
+<p dir="rtl">ישנן מספר דרכים להעלות קבצים ל-<span dir="ltr">Colab</span>, ואנו נבחן את הנפוצות שבהן.</p>
+<li dir="rtl">**העלאה באמצעות מנהל הקבצים (<span dir="ltr">GUI</span>)**</li>
+<p dir="rtl">*   **תיאור:** הדרך הקלה ביותר להעלות קבצים, במיוחד קטנים, היא להשתמש בממשק הגרפי של מנהל הקבצים של <span dir="ltr">Colab</span>.</p>
+<p dir="rtl">*   **כיצד לעשות זאת:**</p>
+<p dir="rtl">1.  פתח את פאנל מנהל הקבצים משמאל (סמל תיקייה).</p>
+<p dir="rtl">2.  לחץ על סמל ההעלאה (בדרך כלל זה סימן פלוס או חץ למעלה).</p>
+<p dir="rtl">3.  בחלון שנפתח, בחר את הקבצים במחשב שלך שברצונך להעלות.</p>
+<p dir="rtl">4.  לחץ על "פתח" או "העלה".</p>
+<p dir="rtl">*   **יתרונות:** פשטות, בהירות, אינו דורש כתיבת קוד.</p>
+<p dir="rtl">*   **חסרונות:** מתאים לקבצים קטנים, יש לבצע ידנית.</p>
+<li dir="rtl">**העלאה באמצעות קוד <span dir="ltr">Python</span> (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">google.colab.files.upload</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>)**</li>
+<p dir="rtl">*   **תיאור**: שיטה זו מאפשרת לך להעלות קבצים באמצעות קוד <span dir="ltr">Python</span>, מה שמעניק גמישות רבה יותר.</p>
+<p dir="rtl">*   **כיצד לעשות זאת:**</p>
+<p dir="rtl">1.  ייבא את המודול <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">files</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> מהספרייה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">google.colab</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">from</span> <span dir="ltr">google.colab</span> <span dir="ltr">import</span> <span dir="ltr">files</span></p>
+<p dir="rtl">```</p>
+<p dir="rtl">2.  קרא לפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">files.upload</span>()</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">uploaded</span> = <span dir="ltr">files.upload</span>()</p>
+<p dir="rtl">```</p>
+<p dir="rtl">3.  כאשר תריץ קוד זה, יופיע חלון דיאלוג שבו תוכל לבחור קבצים להעלאה.</p>
+<p dir="rtl">*   **יתרונות:** ניתן להשתמש בקוד, מאפשר עיבוד תוכנתי של קבצים שהועלו.</p>
+<p dir="rtl">*   **חסרונות:** דורש כתיבת קוד, פחות אינטואיטיבי ממנהל הקבצים.</p>
+<p dir="rtl">לאחר ביצוע קוד זה, הקבצים שהועלו יהיו זמינים כמילון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">uploaded</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, כאשר המפתחות הם שמות הקבצים והערכים הם תוכנם כמחרוזות בתים.</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"># דוגמה לשימוש בקבצים שהועלו</p>
+<p dir="rtl"><span dir="ltr">for</span> <span dir="ltr">file_name</span>, <span dir="ltr">file_data</span> <span dir="ltr">in</span> <span dir="ltr">uploaded.items</span>():</p>
+<p dir="rtl"><span dir="ltr">print(f</span>"קובץ: {<span dir="ltr">file_name</span>}")</p>
+<p dir="rtl"># עיבוד נתוני קובץ</p>
+<p dir="rtl"># לדוגמה:</p>
+<p dir="rtl"># <span dir="ltr">import</span> <span dir="ltr">pandas</span> <span dir="ltr">as</span> <span dir="ltr">pd</span></p>
+<p dir="rtl"># <span dir="ltr">df</span> = <span dir="ltr">pd.read_csv(io</span>.<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">BytesIO(file_data</span>)</<span dir="ltr">span</span>>)</p>
+<p dir="rtl"># <span dir="ltr">print(df.head</span>())</p>
+<p dir="rtl">```</p>
+<li dir="rtl">**שכפול מאגר <span dir="ltr">GitHub</span> (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">git</span> <span dir="ltr">clone</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>)**</li>
+<p dir="rtl">*   **תיאור**: אם הקבצים שלך נמצאים במאגר <span dir="ltr">GitHub</span>, תוכל להוריד אותם על ידי שכפול המאגר ל-<span dir="ltr">Colab</span>.</p>
+<p dir="rtl">*   **כיצד לעשות זאת:**</p>
+<p dir="rtl">1.  השתמש בפקודה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">git</span> <span dir="ltr">clone</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> עם כתובת ה-<span dir="ltr">URL</span> של המאגר.</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl">!<span dir="ltr">git</span> <span dir="ltr">clone</span> <<span dir="ltr">URL_מאגר</span>></p>
+<p dir="rtl">```</p>
+<p dir="rtl">לדוגמה:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl">!<span dir="ltr">git</span> <span dir="ltr">clone</span> <span dir="ltr">https</span>://<span dir="ltr">github.com</span>/<span dir="ltr">username</span>/<span dir="ltr">my_repository.git</span></p>
+<p dir="rtl">```</p>
+<p dir="rtl">2. לאחר שכפול המאגר, התוכן יהיה זמין בתיקייה בעלת אותו שם כמו המאגר.</p>
+<p dir="rtl">*   **יתרונות:** קל להוריד את כל הקבצים מהמאגר, דרך נוחה לפרויקטים עם בקרת גרסאות.</p>
+<p dir="rtl">*   **חסרונות:** מתאים רק לקבצים במאגרי <span dir="ltr">GitHub</span>.</p>
+<p dir="rtl">```<span dir="ltr">html</span></p>
+<p dir="rtl"><<span dir="ltr">div</span> <span dir="ltr">align</span>="<span dir="ltr">center</span>"></p>
+<p dir="rtl"><<span dir="ltr">img</span> <span dir="ltr">src</span>="<span dir="ltr">https</span>://<span dir="ltr">i.ibb.co</span>/7R1QG5Q/<span dir="ltr">colab</span>-<span dir="ltr">git</span>-<span dir="ltr">clone.png</span>" <span dir="ltr">alt</span>="שכפול מאגר <span dir="ltr">GitHub</span> ב-<span dir="ltr">Colab</span>" <span dir="ltr">width</span>="600" ></p>
+<p dir="rtl"><<span dir="ltr">p</span>><<span dir="ltr">em</span>>שכפול מאגר <span dir="ltr">GitHub</span> ב-<span dir="ltr">Colab</span></<span dir="ltr">em</span>></<span dir="ltr">p</span>></p>
+<p dir="rtl"></<span dir="ltr">div</span>></p>
+<pre class="line-numbers"><code class="language-python">
+
+4.  **הורדת קובץ בודד מ-GitHub**
+     *   **תיאור**: אם אתה צריך רק קובץ אחד או כמה קבצים ממאגר GitHub, תוכל להוריד אותם באמצעות קישור ישיר.
+     *   **כיצד לעשות זאת:**
+         1.  פתח את הקובץ הרצוי במאגר GitHub.
+         2.  לחץ על כפתור "View raw" (או "תצוגה גולמית").
+         3.  העתק את כתובת ה-URL של קובץ זה.
+        4.  השתמש ב-`wget` או ב-`curl` כדי להוריד את הקובץ.
+            ```python
+            !wget <URL_קובץ>
+            ```
+           או
+             ```python
+            !curl <URL_קובץ> -o <שם_קובץ_ב-colab>
+             ```
+    *   **יתרונות**: קל להוריד רק את הקבצים הנחוצים, ללא שכפול כל המאגר.
+    *   **חסרונות**: דורש ידיעת הקישור הישיר לקובץ.
+
+
+**איזו שיטה לבחור?**
+
+*   לקבצים קטנים שצריך להעלות במהירות ובאופן ידני, **מנהל הקבצים** מתאים.
+*   אם אתה צריך לעבד קבצים שהועלו באופן תוכנתי, השתמש ב-**`files.upload()`**.
+*   להעלאת פרויקטים שלמים, השתמש ב-**`git clone`**.
+*  להורדת קבצים בודדים, השתמש ב-**`wget` או ב-`curl`**

@@ -1,0 +1,60 @@
+<p dir="rtl"># ייבוא מודולים בפייתון</p>
+<p dir="rtl">ייבוא ספריות בפייתון מאפשר להשתמש במודולים ופונקציות חיצוניים או משלך, המוגדרים בקבצים או ספריות אחרות. זה עוזר לארגן את הקוד, לשפר את קריאותו ולמנוע כפילויות.</p>
+<h3 dir="rtl">מהם מודולים?</h3>
+<p dir="rtl">מודול בפייתון הוא פשוט קובץ עם סיומת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>.<span dir="ltr">py</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, המכיל קוד (פונקציות, מחלקות, משתנים וכו'). כאשר אתה רוצה להשתמש בקוד ממודול אחר, עליך לייבא אותו לקובץ הנוכחי.</p>
+<h3 dir="rtl">מודולים חיצוניים ופנימיים</h3>
+<li dir="rtl">**מודולים חיצוניים** — אלו מודולים שאינם חלק מהספרייה הסטנדרטית של פייתון ויש להתקין אותם בנפרד. לדוגמה, מודולים לעבודה עם שרת אינטרנט, עיבוד נתונים או למידת מכונה, כגון <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">numpy</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">requests</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ואחרים.</li>
+<li dir="rtl">**מודולים פנימיים** — אלו מודולים שכבר כלולים בספרייה הסטנדרטית של פייתון. לדוגמה, מודולים לעבודה עם קבצים, זמן, פעולות מתמטיות: <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">os</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">math</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">datetime</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</li>
+<h3 dir="rtl">התקנת מודולים חיצוניים באמצעות <span dir="ltr">pip</span></h3>
+<p dir="rtl">כדי להתקין מודול חיצוני, נשתמש בפקודה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">pip</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> — זהו כלי לניהול חבילות פייתון. לדוגמה, כדי להתקין את ספריית <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">requests</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, יש להריץ את הפקודה הבאה בטרמינל:</p>
+<pre class="line-numbers"><code class="language-bash">
+pip install requests
+</code></pre>
+<p dir="rtl">פקודה זו תוריד ותתקין את הספרייה בפרויקט שלך.</p>
+<h3 dir="rtl">ייבוא מודולים</h3>
+<p dir="rtl">כאשר אתה רוצה להשתמש במודול בפייתון, עליך לייבא אותו:</p>
+<li dir="rtl">**ייבוא מודול שלם**:</li>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">import</span> <span dir="ltr">os</span></p>
+<p dir="rtl">```</p>
+<p dir="rtl">לאחר מכן תוכל להשתמש בכל הפונקציות והמשתנים מהמודול, לדוגמה:</p>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">os.list</span><<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><span dir="ltr">dir</span>()</<span dir="ltr">span</span>>  # רשימת קבצים בספרייה</p>
+<p dir="rtl">```</p>
+<li dir="rtl">**ייבוא אלמנטים ספציפיים ממודול**:</li>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">from</span> <span dir="ltr">math</span> <span dir="ltr">import</span> <span dir="ltr">sqrt</span></p>
+<p dir="rtl">```</p>
+<p dir="rtl">כעת ניתן להשתמש בפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">sqrt</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> ללא צורך לפנות למודול <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">math</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<li dir="rtl">**ייבוא עם כינוי**:</li>
+<p dir="rtl">```<span dir="ltr">python</span></p>
+<p dir="rtl"><span dir="ltr">import</span> <span dir="ltr">pandas</span> <span dir="ltr">as</span> <span dir="ltr">pd</span></p>
+<p dir="rtl">```</p>
+<p dir="rtl">במקרה זה, כדי להשתמש בפונקציות של ספריית <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">pandas</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, תכתוב <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">pd</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>, ולא את השם המלא <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">pandas</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<h3 dir="rtl">ייבוא מודולים משלך</h3>
+<p dir="rtl">אם אתה כותב מספר קבצים בפרויקט אחד, ניתן ליצור מודולים משלך. לדוגמה, אם יש לך קובץ <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">utils.py</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> עם פונקציות שימושיות, תוכל לייבא אותו לקבצים אחרים כך:</p>
+<pre class="line-numbers"><code class="language-python">
+import utils
+</code></pre>
+<p dir="rtl">או לייבא פונקציה ספציפית:</p>
+<pre class="line-numbers"><code class="language-python">
+from utils import my_function
+</code></pre>
+<h3 dir="rtl">למה ליצור מודול אחד ולייבא אותו לחלקים אחרים של הפרויקט?</h3>
+<li dir="rtl">**ארגון קוד**: הפרדת לוגיקה למודולים שונים עוזרת למנוע בלאגן בפרויקט גדול. לדוגמה, ניתן ליצור מודול לעבודה עם נתונים, אחר לעיבוד בקשות, ושלישי לממשק.</li>
+<li dir="rtl">**שימוש חוזר בקוד**: כאשר לוגיקה מופרדת למודולים, ניתן להשתמש בה בחלקים שונים של הפרויקט. זה מפחית כפילויות קוד ומקל על תחזוקה.</li>
+<li dir="rtl">**קריאות ותחזוקתיות**: כאשר קוד מופרד למודולים, מפתחים אחרים (או אתה בעצמך בעתיד) יוכלו להבין ולתחזק את הפרויקט בקלות רבה יותר.</li>
+<p dir="rtl">דוגמה:</p>
+<pre class="line-numbers"><code class="language-python">
+# utils.py
+def greet(name):
+    return f"Hello, {name}!"
+    
+# main.py
+from utils import greet
+
+print(greet("Alice"))
+</code></pre>
+<p dir="rtl">בדוגמה זו, הפונקציה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">greet</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> מוגדרת במודול אחד (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">utils.py</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>), אך משמשת במודול אחר (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">main.py</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>), מה שמשפר את המבנה והופך את הקוד למודולרי ונוח יותר לשינוי.</p>
+<p dir="rtl">---</p>
+<p dir="rtl">[לתוכן העניינים](<span dir="ltr">https</span>://<span dir="ltr">github.com</span>/<span dir="ltr">hypo69</span>/101_python_computer_games_ru/<span dir="ltr">blob</span>/<span dir="ltr">master</span>/<span dir="ltr">cheat_sheets</span>#<span dir="ltr">readme</span>)</p>

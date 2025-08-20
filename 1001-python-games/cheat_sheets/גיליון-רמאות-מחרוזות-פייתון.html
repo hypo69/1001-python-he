@@ -1,0 +1,120 @@
+<p dir="rtl">בפייתון, מחרוזות הן אחד מטיפוסי הנתונים החשובים והנפוצים ביותר. הנה סקירה קצרה של סוגי מחרוזות שונים ומאפייניהם:</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">1. **מחרוזות רגילות**</h3>
+<p dir="rtl">מחרוזת רגילה נוצרת באמצעות גרשיים בודדים ''' או כפולים "".</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+s1 = 'שלום, עולם!'
+s2 = "פייתון — זה מגניב!"
+</code></pre>
+<p dir="rtl">הן זהות, אך חשוב להיות עקביים בשימוש בסגנון אחד.</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">2. **מחרוזות מרובות שורות**</h3>
+<p dir="rtl">מחרוזות מרובות שורות נכללות בגרשיים משולשים ''' או """. הן מאפשרות לכתוב טקסט על פני מספר שורות.</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+s3 = '''זוהי מחרוזת
+על פני מספר
+שורות.'''
+</code></pre>
+<p dir="rtl">---</p>
+<h3 dir="rtl">3. **<span dir="ltr">f</span>-<span dir="ltr">strings</span> (מחרוזות מעוצבות)**</h3>
+<p dir="rtl"><span dir="ltr">f</span>-<span dir="ltr">strings</span> (או מחרוזות מעוצבות) משמשות להכנסת ערכי משתנים וביטויים ישירות לתוך המחרוזת. לפני תחילת המחרוזת מתווסף הסימן <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">f</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+name = 'בוריס'
+age = 25
+s4 = f'שמי {name}, אני בן {age} שנים.'
+print(s4)  # שמי בוריס, אני בן 25 שנים.
+</code></pre>
+<p dir="rtl">היתרון של <span dir="ltr">f</span>-<span dir="ltr">strings</span> הוא שהן פשוטות וקריאות.</p>
+<p dir="rtl">בגרסאות חדשות של פייתון (החל מ-**3.8**), הופיעה אפשרות נוחה להשתמש בביטוי מהצורה <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">f</span>'{<span dir="ltr">name</span>=}'</<span dir="ltr">code</span>></<span dir="ltr">span</span>> ב-<span dir="ltr">f</span>-<span dir="ltr">strings</span>. מבנה זה מציג לא רק את ערך המשתנה, אלא גם את שמו, מה ששימושי במיוחד לדיבוג.</p>
+<h3 dir="rtl">דוגמה לשימוש ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">f</span>'{<span dir="ltr">name</span>=}'</<span dir="ltr">code</span>></<span dir="ltr">span</span>>:</h3>
+<pre class="line-numbers"><code class="language-python">
+name = 'בוריס'
+age = 25
+
+# הדפסת שם המשתנה וערכו
+print(f'{name=}, {age=}')
+# תוצאה: name='בוריס', age=25
+</code></pre>
+<h3 dir="rtl">מאפיינים:</h3>
+<li dir="rtl">**ציון אוטומטי של שם המשתנה**:</li>
+<p dir="rtl">פייתון מציבה אוטומטית את שם המשתנה ואת ערכו, מפרידה ביניהם בסימן <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>=</<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<li dir="rtl">**עובד עם ביטויים**:</li>
+<p dir="rtl">ניתן להשתמש בביטויים בתוך <span dir="ltr">f</span>-<span dir="ltr">string</span>, והם גם יוצגו.</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+x = 10
+y = 5
+print(f'{x + y=}')
+# תוצאה: x + y=15
+</code></pre>
+<li dir="rtl">**יישום לפונקציות מחרוזת**:</li>
+<p dir="rtl">ניתן להדפיס את תוצאת שיטות או פעולות על מחרוזות.</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+s = 'Python'
+print(f'{s.upper()=}')
+# תוצאה: s.upper()='PYTHON'
+</code></pre>
+<h3 dir="rtl">למה זה שימושי:</h3>
+<p dir="rtl">- **דיבוג קוד**: בדיקה מהירה של ערכי משתנים וביטויים.</p>
+<p dir="rtl">- **קריאות**: ברור לאיזה משתנה שייך הערך.</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">4. **<span dir="ltr">r</span>-<span dir="ltr">strings</span> (מחרוזות גולמיות)**</h3>
+<p dir="rtl"><span dir="ltr">r</span>-<span dir="ltr">strings</span> (<span dir="ltr">raw</span> <span dir="ltr">strings</span>) נוצרות על ידי הוספת הסימן <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">r</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> לפני המחרוזת. הן משמשות לעבודה עם תווים שבדרך כלל מפורשים כתווים מיוחדים, לדוגמה, תווי מעבר שורה (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>\<span dir="ltr">n</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>) או טאב (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>\<span dir="ltr">t</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>).</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+s5 = r'C:\new_folder\test'
+print(s5)  # C:\new_folder\test
+</code></pre>
+<p dir="rtl">ללא <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">r</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> מחרוזת זו הייתה מפורשת עם החלפת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>\<span dir="ltr">n</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> במעבר שורה.</p>
+<p dir="rtl">---</p>
+<h3 dir="rtl">5. **<span dir="ltr">u</span>-<span dir="ltr">strings</span> (מחרוזות <span dir="ltr">Unicode</span>)**</h3>
+<p dir="rtl"><span dir="ltr">u</span>-<span dir="ltr">strings</span> היו חשובות בפייתון 2 לעבודה עם <span dir="ltr">Unicode</span>, אך בפייתון 3 מחרוזות הן <span dir="ltr">Unicode</span> כברירת מחדל, ולכן הוספת <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">u</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>> כבר אינה חובה.</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+s6 = u'שלום, עולם!'
+</code></pre>
+<p dir="rtl">---</p>
+<h3 dir="rtl">6. **<span dir="ltr">b</span>-<span dir="ltr">strings</span> (מחרוזות בייט)**</h3>
+<p dir="rtl">מחרוזות בייט משמשות לעבודה עם נתונים בינאריים. מחרוזות כאלה מתחילות ב-<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">b</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>. הן אינן תומכות בתווי <span dir="ltr">Unicode</span>, אלא רק בבייטים.</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+# מחרוזת בייט המייצגת כותרת קובץ PNG
+image_bytes = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR'
+
+# בדיקה שהנתונים תואמים לפורמט PNG
+if image_bytes.startswith(b'\x89PNG'):
+    print('זוהי תמונת PNG.')
+else:
+    print('פורמט לא ידוע.')
+
+</code></pre>
+<p dir="rtl">---</p>
+<h3 dir="rtl">7. **מחרוזות עם בריחה**</h3>
+<p dir="rtl">כדי לכלול תווים מיוחדים במחרוזת, משתמשים ברצפי בריחה עם לוכסן אחורי (<<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>>\</<span dir="ltr">code</span>></<span dir="ltr">span</span>>).</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+s8 = 'זוהי מחרוזת עם גרשיים: \'בודדים\' ו-\"כפולים\".'
+</code></pre>
+<p dir="rtl">---</p>
+<h3 dir="rtl">8. **שילוב של <span dir="ltr">f</span>-<span dir="ltr">strings</span> ו-<span dir="ltr">r</span>-<span dir="ltr">strings</span>**</h3>
+<p dir="rtl">ניתן לשלב סוגי מחרוזות. לדוגמה, <span dir="ltr">f</span>-<span dir="ltr">strings</span> ומחרוזות גולמיות:</p>
+<p dir="rtl">**דוגמה:**</p>
+<pre class="line-numbers"><code class="language-python">
+path = 'new_folder'
+s9 = fr'C:\{path}\test'
+print(s9)  # C:\new_folder\test
+</code></pre>
+<p dir="rtl">---</p>
+<h3 dir="rtl">סיכום</h3>
+<p dir="rtl">בפייתון מחרוזות גמישות ונוחות. בחירת סוג המחרוזת תלויה במשימה:</p>
+<p dir="rtl">- לטקסט רגיל — ''' או "".</p>
+<p dir="rtl">- לטקסט מרובה שורות — ''' או """.</p>
+<p dir="rtl">- להצבת ערכים — <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">f</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">- לנתיבים או ביטויים רגולריים — <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">r</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">- לנתונים בינאריים — <<span dir="ltr">span</span> <span dir="ltr">dir</span>="<span dir="ltr">ltr</span>"><<span dir="ltr">code</span>><span dir="ltr">b</span></<span dir="ltr">code</span>></<span dir="ltr">span</span>>.</p>
+<p dir="rtl">---</p>
+<p dir="rtl">[לתוכן העניינים](<span dir="ltr">https</span>://<span dir="ltr">github.com</span>/<span dir="ltr">hypo69</span>/101_python_computer_games_ru/<span dir="ltr">blob</span>/<span dir="ltr">master</span>/<span dir="ltr">cheat_sheets</span>#<span dir="ltr">readme</span>)</p>
