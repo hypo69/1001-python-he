@@ -1,180 +1,162 @@
-### ✅  промпт для Gemini (или другой LLM) — с поддержкой автоматизации
+
+
+### ✅ Prompt for Gemini / LLM: Markdown to HTML Converter with RTL, LTR, and Comment Translation
 
 ```text
-You are a highly precise and technical assistant designed to process and convert documentation files in a structured project. Your task is to help automate the transformation of Markdown (`.md`) files into properly formatted HTML (`.html`) files, following strict formatting rules for multilingual (Hebrew + Latin) content and compatibility with WordPress and Prism.js.
+You are a highly precise and technical assistant responsible for converting Markdown (`.md`) files into properly formatted HTML (`.html`) files for use in a WordPress environment with RTL (Hebrew) language support and syntax highlighting via Prism.js.
 
-This is **not a one-time conversion** — you must describe a **reusable, automated process** that can be implemented in code (e.g., Python, Node.js, or shell script), and optionally generate the HTML output for a given file.
-
----
-
-### 📌 OVERALL GOAL
-
-Given a **root directory**, recursively:
-1. Find all `.md` files.
-2. For each `.md` file:
-   - Check if a corresponding `.html` file (same name, same path) already exists.
-   - If it **does not exist**, create it.
-   - Convert the `.md` content to **correctly formatted HTML** using the rules below.
-   - Save the result as `.html` in the same directory.
-3. Preserve the directory structure.
+Your task is twofold:
+1. **Describe a complete automation process** for recursively processing `.md` files.
+2. **Generate correctly formatted HTML output** when given a Markdown input.
 
 ---
 
-### 🔧 STEP 1: FILE SYSTEM TRAVERSAL (Describe the logic)
+### 📌 OVERALL OBJECTIVE
 
-Implement a recursive traversal of the directory tree. For each file:
-- If the file ends with `.md`:
-  - Extract its path: `/path/to/file/example.md`
-  - Generate the corresponding HTML path: `/path/to/file/example.html`
-  - Check if `example.html` exists.
-  - If it **does NOT exist**, proceed to conversion.
-  - If it **exists**, skip (do not overwrite).
+Given a root directory:
+- Recursively scan for all `.md` files.
+- For each `.md` file:
+  - Check if a corresponding `.html` file (same name, same path) already exists.
+  - If it **does NOT exist**, convert the `.md` content to HTML using the rules below.
+  - Save the result as a new `.html` file in the same location.
+- Do **not** overwrite existing `.html` files.
 
-> This logic can be implemented in Python using `os.walk()` or `pathlib`, or in Bash with `find`.
+The output HTML must:
+- Be compatible with **WordPress** and the **Neve theme**.
+- Support **Prism.js** syntax highlighting (use `class="language-python"`, `line-numbers`, etc.).
+- Correctly display **Hebrew (RTL)** text and embedded **Latin/Python code (LTR)**.
+- Automatically **translate all comments inside code blocks to English**.
+- Be ready to paste into the WordPress editor in **"Code" mode**.
 
 ---
 
-### 🔧 STEP 2: MARKDOWN TO HTML CONVERSION RULES
+### 🔧 STEP-BY-STEP CONVERSION RULES
 
-When converting a `.md` file to `.html`, apply the following formatting rules **exactly**:
+#### 1. File System Traversal (Automation Logic)
+- Use recursive directory scanning (e.g., `os.walk()` in Python or `pathlib.Path.rglob()`).
+- For each `.md` file:
+  - Derive the `.html` path: replace `.md` → `.html`.
+  - If `.html` does **not exist**, proceed.
+  - Read the `.md` file with UTF-8 encoding.
+  - Apply conversion rules.
+  - Write the result to the `.html` file.
 
-#### 2.1. Structure and Semantics
-- Output **only the HTML body content** (no `<html>`, `<head>`, `<body>`).
-- Use proper HTML5 tags:
-  - Headings: `<h2>`, `<h3>`, etc.
-  - Paragraphs: `<p>`
-  - Lists: `<ul>`, `<ol>`, `<li>`
-  - Code: `<pre class="line-numbers"><code class="language-python">...</code></pre>`
-  - Inline code: `<code>...</code>`
+#### 2. Markdown to HTML Structure
+Convert Markdown elements to HTML:
+- Headings (`## Title`) → `<h2 dir="rtl">Title</h2>`
+- Paragraphs → `<p dir="rtl">...</p>`
+- Lists → `<ul><li dir="rtl">...</li></ul>`
+- Inline code (`` `dataclass` ``) → `<span dir="ltr"><code>dataclass</code></span>`
+- Do **not** include `<html>`, `<head>`, or `<body>` tags.
 
-#### 2.2. Bidirectional Text (RTL/LTR)
-- Wrap **all Hebrew text** in `dir="rtl"`:
-  ```html
-  <h2 dir="rtl">כותרת בעברית</h2>
-  <p dir="rtl">טקסט בעברית עם <span dir="ltr">__dict__() </span>ותכונות נוספות</p>
-  ```
-- For any **Latin script inside RTL text** (e.g., `__init__`, `dir()`, `dataclass`, `Point(1, 2)`), wrap in:
+#### 3. Bidirectional Text Handling
+- All **Hebrew text** must be wrapped in `dir="rtl"`.
+- All **Latin script within RTL text** (e.g., `__init__`, `dir()`, `Point(1, 2)`, `__dict__()`) must be wrapped in:
   ```html
   <span dir="ltr">__dict__()</span>
   ```
-- Do **not** apply `dir="ltr"` to code blocks — they are handled by Prism.js.
+- This ensures correct rendering in mixed-direction content.
 
-#### 2.3. Code Blocks (Critical: Must Not Be Modified)
-- All fenced code blocks (```` ```python ````) must be converted to:
+#### 4. Code Blocks (```` ``` ````)
+- Convert code blocks to:
   ```html
-  <pre class="line-numbers"><code class="language-python">[EXACT CONTENT]</code></pre>
+  <pre class="line-numbers"><code class="language-python">...</code></pre>
   ```
-- For Mermaid:
+  or
   ```html
-  <pre class="line-numbers"><code class="language-mermaid">[EXACT CONTENT]</code></pre>
+  <pre class="line-numbers"><code class="language-mermaid">...</code></pre>
   ```
-- **Do NOT:**
-  - Escape `(`, `)`, `_`, `__` as HTML entities
-  - Modify indentation, spacing, or syntax
-  - Add or remove lines
-  - Change case or content
-- The code must be **copied verbatim**.
+- Extract the language from the opening fence (e.g., ```` ```python ```` → `language-python`).
+- **Do NOT modify**:
+  - Code syntax
+  - Indentation
+  - Whitespace
+  - Variable names
+- **Exception: Translate comments to English** (see below).
 
-#### 2.4. Inline Code
-- Convert `` `dataclass` `` → `<code>dataclass</code>`
-- If inline code contains Latin in RTL context:
+#### 5. Translate Comments in Code Blocks to English
+- Identify and translate **all comments** inside code blocks to English.
+- Supported comment styles:
+  - Python: `# comment`
+  - Python: `"""multiline string/comment"""` (if used as docstring/comment)
+  - JavaScript/JSON: `// comment`, `/* comment */`
+- Use translation logic (e.g., Google Translate API or LLM-based) to convert Hebrew comments.
+- Example:
+  ```python
+  # יוצר מופע של המחלקה
+  point = Point(1, 2)
+  ```
+  → becomes:
+  ```python
+  # Create an instance of the class
+  point = Point(1, 2)
+  ```
+- Preserve all code logic and structure.
+
+#### 6. Inline Code and Technical Terms
+- Convert any inline code or technical term in Latin script to:
   ```html
-  <span dir="ltr"><code>__dir__()</code></span>
+  <span dir="ltr"><code>__dict__()</code></span>
   ```
+- Apply this even if inside a `<p dir="rtl">` or `<li dir="rtl">`.
 
-#### 2.5. No Extra Output
-- Do **not** add:
-  - `<html>`, `<head>`, `<body>`
-  - CSS or JavaScript
-  - Comments or explanations
-- Output only the **clean HTML content** ready for WordPress.
-
----
-
-### 🛠️ STEP 3: FILE CREATION
-
-After conversion:
-- Create the `.html` file in the **same directory** as the `.md` file.
-- Ensure the directory exists (create if needed).
-- Write the generated HTML content.
-- Do **not** overwrite existing `.html` files.
+#### 7. Output Format
+- Return only the **HTML body content** (no explanations, no Markdown).
+- The output must be directly pasteable into the **WordPress block editor in "Code" mode**.
+- Ensure all tags are properly closed.
 
 ---
 
 ### 📁 EXAMPLE
 
-Input file:  
-`/docs/posts/dataclass.md`
+Input file: `/docs/python/dataclass.md`
 
-Output file (if not exists):  
-`/docs/posts/dataclass.html`
-
-Content of `dataclass.html`:
+If `/docs/python/dataclass.html` does **not exist**, create it with content like:
 ```html
-<h2 dir="rtl">מה זה <code>dataclass</code>?</h2>
-<p dir="rtl"><code>dataclass</code> — זהו דקורטור...</p>
+<h2 dir="rtl">מה זה <span dir="ltr"><code>dataclass</code></span>?</h2>
+<p dir="rtl"><span dir="ltr"><code>dataclass</code></span> — זהו דקורטור...</p>
 <pre class="line-numbers"><code class="language-python">from dataclasses import dataclass
+
 @dataclass
 class Point:
     x: int
     y: int
+
+# Create an instance
+point = Point(1, 2)
 </code></pre>
 ```
 
 ---
 
-### 🧩 OPTIONAL: Generate HTML for a Given File
+### 🧩 OPTIONAL: Generate HTML from Input
 
-If the user provides a specific `.md` file content, apply the rules above and output the **converted HTML** as if writing to `.html`.
+If the user provides a Markdown snippet, apply all rules and return the converted HTML.
 
 ---
 
-### 📥 INPUT (Optional: Markdown content)
+### 📥 INPUT (Markdown)
 {INSERT MARKDOWN CONTENT HERE}
 
 ---
 
-### 📤 OUTPUT (HTML or Instructions)
-{GENERATE HTML OR PROCESS DESCRIPTION HERE}
+### 📤 OUTPUT (HTML)
+{GENERATE HTML HERE}
 ```
 
 ---
 
-### ✅ Как использовать этот промпт:
+### ✅ How to Use This Prompt
 
-#### Вариант 1: Для автоматизации (описание алгоритма)
-- Дайте этот промпт модели и скажите:
-  > "Опиши, как реализовать этот процесс на Python."
-- Gemini ответит кодом с `pathlib`, `os`, чтением/записью файлов и логикой конвертации.
+1. **With Gemini / LLM**:
+   - Paste this full prompt.
+   - Replace `{INSERT MARKDOWN CONTENT HERE}` with your actual Markdown.
+   - The model will return properly formatted HTML with:
+     - RTL/LTR handling
+     - Translated comments
+     - Prism.js compatibility
 
-#### Вариант 2: Для конвертации одного файла
-- Вставьте содержимое `.md` вместо `{INSERT MARKDOWN CONTENT HERE}`
-- Модель вернёт готовый HTML с `dir="rtl"` и правильным кодом.
-
-#### Вариант 3: Для интеграции в CI/CD или скрипт
-- Используйте вывод как спецификацию для разработки автоматического конвертера.
-
----
-
-### 💡 Пример Python-логики (что модель может сгенерировать):
-
-```python
-import os
-from pathlib import Path
-
-def convert_md_to_html(md_content):
-    # Здесь вызывается LLM или применяются правила
-    return formatted_html
-
-root = Path("/your/project/docs")
-for md_file in root.rglob("*.md"):
-    html_file = md_file.with_suffix(".html")
-    if not html_file.exists():
-        md_content = md_file.read_text(encoding="utf-8")
-        html_content = convert_md_to_html(md_content)
-        html_file.write_text(html_content, encoding="utf-8")
-        print(f"Created: {html_file}")
-```
-
----
+2. **For Automation**:
+   - Use this prompt as a specification to build a Python script (as shown in previous messages).
+   - The prompt clearly defines logic for recursion, translation, and formatting.
 
